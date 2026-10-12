@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  ArrowRight, Phone, Shield, Cpu, Factory, Warehouse, Truck, 
-  CheckCircle2, Wrench, Layers, ChevronRight 
+import {
+  ArrowRight, Phone, Shield, Cpu, Factory, Warehouse, Truck,
+  CheckCircle2, Wrench, Layers, ChevronRight
 } from 'lucide-react';
 import Button from '../components/Button';
-import ProductGrid from '../components/ProductGrid';
+import heroImage from "../assets/Modern Warehouse Logistics in Motion1.png";
+import facilityImage from "../assets/Modern Warehouse Logistics in Mo12tion.png";
+import ProductGrid from "../components/ProductGrid";
+import IndustrialShapes from "../components/IndustrialShapes";
+import AnimatedSection from "../components/AnimatedSection";
 
 export default function Home() {
   return (
@@ -14,9 +18,12 @@ export default function Home() {
           HERO SECTION: Industrial Theme, Gears, Moving Conveyor & Direct CTA
          ========================================================================= */}
       <section className="relative bg-brand-deep text-white overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
+        {/* Floating Geometric Industrial Shapes (Navy, Orange, Grey) */}
+        <IndustrialShapes />
+
         {/* Subtle Industrial Grid and Radial Mask */}
         <div className="absolute inset-0 industrial-grid opacity-25 pointer-events-none" />
-        
+
         {/* Ambient Glows */}
         <div className="absolute -top-32 -left-32 w-96 h-96 bg-brand-blueAccent/30 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-brand-orange/20 rounded-full blur-3xl pointer-events-none" />
@@ -37,7 +44,7 @@ export default function Home() {
               {/* Badge */}
               <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-brand-navy border border-brand-orange/40 text-brand-paleOrange text-xs font-bold tracking-widest uppercase">
                 <span className="w-2 h-2 rounded-full bg-brand-orange animate-ping" />
-                Heavy-Duty Material Handling Equipment
+                <h5>Heavy-Duty Material Handling Equipment</h5>
               </div>
 
               {/* Exact Required Headline */}
@@ -64,12 +71,12 @@ export default function Home() {
                 {/* Visual Equipment Graphic */}
                 <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-slate-950 border border-slate-800">
                   <img
-                    src="/assets/images/hero/hero-warehouse.jpg"
+                    src={heroImage}
                     alt="Material Handling Operations in Modern Industrial Facility"
-                    className="w-full h-full object-cover opacity-90"
+                    className="w-full h-full object-cover opacity-90 animate-float-equipment"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-deep via-transparent to-transparent" />
-                  
+
                   {/* Floating Specs Card */}
                   <div className="absolute bottom-4 left-4 right-4 bg-brand-deep/90 backdrop-blur-md p-3.5 rounded-lg border border-slate-700 flex items-center justify-between text-xs">
                     <div>
@@ -113,7 +120,7 @@ export default function Home() {
       {/* =========================================================================
           COMPANY INTRODUCTION: Operational focus & reliability without fluff
          ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <AnimatedSection animation="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6 space-y-6">
             <div className="inline-flex items-center gap-2 text-brand-orange text-xs font-bold uppercase tracking-widest border-b-2 border-brand-orange pb-1">
@@ -157,7 +164,7 @@ export default function Home() {
           <div className="lg:col-span-6">
             <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-slate-100">
               <img
-                src="/assets/images/about/about-facility.jpg"
+                src={facilityImage}
                 alt="ARYVON Equipment Facility & Storage Solutions"
                 className="w-full h-full object-cover"
               />
@@ -173,12 +180,12 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* =========================================================================
           FEATURED PRODUCTS: Live Catalogue Grid with API Fetch & Filter
          ========================================================================= */}
-      <section className="bg-slate-100/70 py-16 sm:py-24 border-y border-slate-200">
+      <AnimatedSection animation="fade-up" className="bg-slate-100/70 py-16 sm:py-24 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
@@ -200,12 +207,12 @@ export default function Home() {
           {/* Product Grid Component */}
           <ProductGrid limit={8} />
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* =========================================================================
           INDUSTRIES WE SERVE: 3 Visual Cards (Manufacturing, Warehousing, Logistics)
          ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <AnimatedSection animation="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
             Sector Expertise
@@ -224,7 +231,7 @@ export default function Home() {
             <div>
               <div className="aspect-[16/10] overflow-hidden bg-slate-100 relative">
                 <img
-                  src="/assets/images/industries/manufacturing.jpg"
+                  src="/assets/images/industries/manufacturing.svg"
                   alt="Manufacturing Material Movement"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -257,7 +264,7 @@ export default function Home() {
             <div>
               <div className="aspect-[16/10] overflow-hidden bg-slate-100 relative">
                 <img
-                  src="/assets/images/industries/warehousing.jpg"
+                  src="/assets/images/industries/warehousing.svg"
                   alt="Warehousing and Storage Operations"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -290,7 +297,7 @@ export default function Home() {
             <div>
               <div className="aspect-[16/10] overflow-hidden bg-slate-100 relative">
                 <img
-                  src="/assets/images/industries/logistics.jpg"
+                  src="/assets/images/industries/logistics.svg"
                   alt="Logistics & Distribution Dock Operations"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -318,12 +325,13 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* =========================================================================
           CLOSING CALL TO ACTION: Exact Required Headline & Request a Quote button
          ========================================================================= */}
-      <section className="bg-brand-navy text-white relative overflow-hidden py-16 sm:py-20 border-t-4 border-brand-orange">
+      <AnimatedSection animation="fade-up" className="bg-brand-navy text-white relative overflow-hidden py-16 sm:py-20 border-t-4 border-brand-orange">
+        <IndustrialShapes />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-heading text-white">
             Looking for the Right Material Handling Solution?
@@ -344,7 +352,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
     </div>
   );
 }

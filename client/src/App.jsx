@@ -24,12 +24,14 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  const location = useLocation();
+
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 antialiased">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 antialiased selection:bg-brand-orange selection:text-white">
       <ScrollToTop />
       <Navbar />
-      <main className="flex-grow">
-        <Routes>
+      <main key={location.pathname} className="flex-grow animate-fade-in-smooth">
+        <Routes location={location}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />

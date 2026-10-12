@@ -1,17 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Building2, Wrench, ShieldCheck, Factory, Warehouse, Truck, 
-  ArrowRight, Phone, CheckCircle2, FileText, Info 
+import {
+  Building2, Wrench, ShieldCheck, Factory, Warehouse, Truck,
+  ArrowRight, Phone, CheckCircle2, FileText, Info
 } from 'lucide-react';
 import Button from '../components/Button';
+import aboutImage from "../assets/Modern Warehouse Logistics in Motion1.png";
+import IndustrialShapes from "../components/IndustrialShapes";
+import AnimatedSection from "../components/AnimatedSection";
 
 export default function About() {
   return (
     <div className="space-y-16 sm:space-y-24 py-10 sm:py-16">
       {/* Page Header Banner */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="bg-brand-deep rounded-2xl p-8 sm:p-14 text-white relative overflow-hidden border-b-4 border-brand-orange shadow-xl">
+          <IndustrialShapes />
           <div className="absolute inset-0 industrial-grid opacity-20 pointer-events-none" />
           <div className="relative z-10 max-w-3xl space-y-4">
             <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block">
@@ -28,7 +32,7 @@ export default function About() {
       </section>
 
       {/* Company Overview & Business Focus */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <AnimatedSection animation="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 space-y-6">
             <span className="text-xs font-bold uppercase tracking-widest text-brand-orange border-b-2 border-brand-orange pb-1 inline-block">
@@ -43,25 +47,14 @@ export default function About() {
             <p className="text-slate-600 text-base leading-relaxed">
               At <strong>ARYVON</strong>, our single business focus is matching industrial operations with the most practical, durable, and safe material handling equipment. Whether your operation requires a dependable manual pallet truck for dock staging or an automated conveyor and EOT crane system for heavy fabrication, we deliver equipment engineered to perform under demanding conditions.
             </p>
-
-            {/* Editable Placeholder Note for Client Confirmation */}
-            <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg flex items-start gap-3 text-xs text-amber-900">
-              <Info className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-              <div>
-                <span className="font-bold uppercase tracking-wider block">Company Background Note:</span>
-                <span>
-                  ARYVON operates as an equipment solutions provider. Additional company milestones, registered headquarters address, and specific accreditation numbers will be updated upon final client verification.
-                </span>
-              </div>
-            </div>
           </div>
 
           <div className="lg:col-span-5">
-            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-slate-100">
+            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-slate-100 group">
               <img
-                src="/assets/images/about/about-facility.jpg"
-                alt="ARYVON Material Handling Solutions Equipment"
-                className="w-full h-full object-cover"
+                src={aboutImage}
+                alt="ARYVON Material Handling Solutions"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
               <div className="p-5 bg-brand-navy text-white text-center">
                 <span className="text-brand-paleOrange font-bold text-xs uppercase tracking-widest block">
@@ -74,10 +67,10 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Customer Service & Practical Solutions Approach */}
-      <section className="bg-slate-100/80 py-16 border-y border-slate-200">
+      <AnimatedSection animation="fade-up" className="bg-slate-100/80 py-16 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
@@ -129,10 +122,10 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Industries Supported Overview */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <AnimatedSection animation="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="text-center max-w-2xl mx-auto space-y-2">
           <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
             Sectors Covered
@@ -167,11 +160,12 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Call to Action */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-brand-navy rounded-2xl p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-6 border-b-4 border-brand-orange">
+      <AnimatedSection animation="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-brand-navy rounded-2xl p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-6 border-b-4 border-brand-orange relative overflow-hidden">
+          <IndustrialShapes />
           <div className="space-y-2 text-center md:text-left">
             <h3 className="text-2xl sm:text-3xl font-bold font-heading">
               Ready to Upgrade Your Material Handling Efficiency?
@@ -182,7 +176,7 @@ export default function About() {
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-4 whitespace-nowrap">
             <Button to="/contact" variant="primary" size="md" icon={ArrowRight} iconPosition="right">
-              Request a Quote
+              Request a Quotation
             </Button>
             <a
               href="tel:8329358214"
@@ -193,7 +187,7 @@ export default function About() {
             </a>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
     </div>
   );
 }

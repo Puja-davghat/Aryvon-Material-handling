@@ -2,13 +2,16 @@ import React from 'react';
 import { Package, ShieldCheck, CheckCircle2, Phone } from 'lucide-react';
 import ProductGrid from '../components/ProductGrid';
 import Button from '../components/Button';
+import IndustrialShapes from '../components/IndustrialShapes';
+import AnimatedSection from '../components/AnimatedSection';
 
 export default function Products() {
   return (
     <div className="space-y-12 sm:space-y-16 py-10 sm:py-16">
       {/* Catalogue Hero Banner */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="bg-brand-deep rounded-2xl p-8 sm:p-14 text-white relative overflow-hidden border-b-4 border-brand-orange shadow-xl">
+          <IndustrialShapes />
           <div className="absolute inset-0 industrial-grid opacity-20 pointer-events-none" />
           <div className="relative z-10 max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-navy rounded-full text-brand-paleOrange text-xs font-bold uppercase tracking-wider border border-brand-orange/30">
@@ -26,14 +29,14 @@ export default function Products() {
       </section>
 
       {/* Main Interactive Product Grid & Search Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <AnimatedSection animation="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ProductGrid />
-      </section>
+      </AnimatedSection>
 
       {/* Equipment Assurance Callout Banner */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-2 text-center md:text-left">
+      <AnimatedSection animation="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
+          <div className="space-y-2 text-center md:text-left relative z-10">
             <h3 className="text-xl font-bold text-brand-navy font-heading">
               Need a Custom Capacity, Span, or Non-Standard Dimension?
             </h3>
@@ -42,7 +45,7 @@ export default function Products() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-3 whitespace-nowrap">
+          <div className="flex flex-col sm:flex-row items-center gap-3 whitespace-nowrap relative z-10">
             <Button to="/contact" variant="primary" size="md">
               Submit Custom Specs
             </Button>
@@ -55,7 +58,7 @@ export default function Products() {
             </a>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
     </div>
   );
 }

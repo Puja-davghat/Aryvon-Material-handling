@@ -1,16 +1,22 @@
 import React from 'react';
-import { 
-  Factory, Warehouse, Truck, CheckCircle2, ArrowRight, 
-  Layers, ShieldAlert, Cpu, Cog 
+import {
+  Factory, Warehouse, Truck, CheckCircle2, ArrowRight,
+  Layers, ShieldAlert, Cpu, Cog
 } from 'lucide-react';
 import Button from '../components/Button';
+import manufacturingImg from '../assets/aryvon-image-assets/industries/manufacturing.jpg';
+import warehousingImg from '../assets/aryvon-image-assets/industries/warehousing.jpg';
+import logisticsImg from '../assets/aryvon-image-assets/industries/logistics.jpg';
+import IndustrialShapes from '../components/IndustrialShapes';
+import AnimatedSection from '../components/AnimatedSection';
 
 export default function Industries() {
   return (
     <div className="space-y-16 sm:space-y-24 py-10 sm:py-16">
       {/* Header Banner */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="bg-brand-deep rounded-2xl p-8 sm:p-14 text-white relative overflow-hidden border-b-4 border-brand-orange shadow-xl">
+          <IndustrialShapes />
           <div className="absolute inset-0 industrial-grid opacity-20 pointer-events-none" />
           <div className="relative z-10 max-w-3xl space-y-4">
             <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block">
@@ -56,7 +62,7 @@ export default function Industries() {
       </section>
 
       {/* SECTION 1: MANUFACTURING */}
-      <section id="manufacturing" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-28">
+      <AnimatedSection id="manufacturing" animation="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-28">
         <div className="bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
           <div className="lg:col-span-6 p-8 sm:p-12 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-lightBlue text-brand-navy rounded-full text-xs font-bold uppercase tracking-wider">
@@ -98,7 +104,7 @@ export default function Industries() {
 
             <div className="pt-4 flex flex-wrap gap-4">
               <Button to="/contact?subject=Manufacturing+Solutions+Enquiry" variant="primary" size="md" icon={ArrowRight} iconPosition="right">
-                Request a Quote for Manufacturing
+                Request a Quotation for Manufacturing
               </Button>
               <Button to="/products" variant="secondary" size="md">
                 View Related Equipment
@@ -106,25 +112,37 @@ export default function Industries() {
             </div>
           </div>
 
-          <div className="lg:col-span-6 bg-slate-100 h-full min-h-[350px] relative overflow-hidden">
-            <img
-              src="/assets/images/industries/manufacturing.jpg"
-              alt="Manufacturing Facility Material Handling Systems"
-              className="w-full h-full object-cover"
-            />
+          <div className="lg:col-span-6 bg-slate-900/5 h-full min-h-[380px] relative overflow-hidden flex items-center justify-center p-4">
+            <div className="w-full h-full relative overflow-hidden rounded-xl group">
+              <img
+                src={manufacturingImg}
+                alt="Manufacturing Facility Material Handling Systems"
+                className="w-full h-full object-cover animate-float-equipment group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute bottom-3 left-3 bg-brand-deep/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-brand-orange/40 flex items-center gap-2 text-white text-xs font-semibold">
+                <span className="w-2 h-2 rounded-full bg-brand-orange animate-ping" />
+                <span>Overhead Cranes & Conveyor Routing</span>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* SECTION 2: WAREHOUSING */}
-      <section id="warehousing" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-28">
+      <AnimatedSection id="warehousing" animation="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-28">
         <div className="bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
-          <div className="lg:col-span-6 order-2 lg:order-1 bg-slate-100 h-full min-h-[350px] relative overflow-hidden">
-            <img
-              src="/assets/images/industries/warehousing.jpg"
-              alt="Warehousing High-Density Pallet Racking and Reach Trucks"
-              className="w-full h-full object-cover"
-            />
+          <div className="lg:col-span-6 order-2 lg:order-1 bg-slate-900/5 h-full min-h-[380px] relative overflow-hidden flex items-center justify-center p-4">
+            <div className="w-full h-full relative overflow-hidden rounded-xl group">
+              <img
+                src={warehousingImg}
+                alt="Warehousing High-Density Pallet Racking and Reach Trucks"
+                className="w-full h-full object-cover animate-lift-mast group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute bottom-3 left-3 bg-brand-deep/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-brand-orange/40 flex items-center gap-2 text-white text-xs font-semibold">
+                <span className="w-2 h-2 rounded-full bg-brand-orange animate-ping" />
+                <span>Reach Trucks & High-Bay Vertical Lift</span>
+              </div>
+            </div>
           </div>
 
           <div className="lg:col-span-6 order-1 lg:order-2 p-8 sm:p-12 space-y-6">
@@ -138,7 +156,7 @@ export default function Industries() {
             </h2>
 
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              Modern warehousing demands optimal vertical cubic space utilization while preserving rapid access to individual stock-keeping units (SKUs). 
+              Modern warehousing demands optimal vertical cubic space utilization while preserving rapid access to individual stock-keeping units (SKUs).
             </p>
 
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
@@ -167,7 +185,7 @@ export default function Industries() {
 
             <div className="pt-4 flex flex-wrap gap-4">
               <Button to="/contact?subject=Warehousing+Equipment+Enquiry" variant="primary" size="md" icon={ArrowRight} iconPosition="right">
-                Request a Quote for Warehousing
+                Request a Quotation for Warehousing
               </Button>
               <Button to="/products" variant="secondary" size="md">
                 View Related Equipment
@@ -175,10 +193,10 @@ export default function Industries() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* SECTION 3: LOGISTICS */}
-      <section id="logistics" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-28">
+      <AnimatedSection id="logistics" animation="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-28">
         <div className="bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
           <div className="lg:col-span-6 p-8 sm:p-12 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-lightBlue text-brand-navy rounded-full text-xs font-bold uppercase tracking-wider">
@@ -220,7 +238,7 @@ export default function Industries() {
 
             <div className="pt-4 flex flex-wrap gap-4">
               <Button to="/contact?subject=Logistics+Solutions+Enquiry" variant="primary" size="md" icon={ArrowRight} iconPosition="right">
-                Request a Quote for Logistics
+                Request a Quotation for Logistics
               </Button>
               <Button to="/products" variant="secondary" size="md">
                 View Related Equipment
@@ -228,32 +246,39 @@ export default function Industries() {
             </div>
           </div>
 
-          <div className="lg:col-span-6 bg-slate-100 h-full min-h-[350px] relative overflow-hidden">
-            <img
-              src="/assets/images/industries/logistics.jpg"
-              alt="Logistics Distribution Loading Dock Operations"
-              className="w-full h-full object-cover"
-            />
+          <div className="lg:col-span-6 bg-slate-900/5 h-full min-h-[380px] relative overflow-hidden flex items-center justify-center p-4">
+            <div className="w-full h-full relative overflow-hidden rounded-xl group">
+              <img
+                src={logisticsImg}
+                alt="Logistics Distribution Loading Dock Operations"
+                className="w-full h-full object-cover animate-float-equipment-delayed group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute bottom-3 left-3 bg-brand-deep/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-brand-orange/40 flex items-center gap-2 text-white text-xs font-semibold">
+                <span className="w-2 h-2 rounded-full bg-brand-orange animate-ping" />
+                <span>Dock Levelers & Electric Cross-Dock Fleet</span>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Common CTA */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-brand-navy rounded-2xl p-8 sm:p-12 text-white text-center space-y-4 border-b-4 border-brand-orange">
-          <h3 className="text-2xl sm:text-3xl font-extrabold font-heading">
+      <AnimatedSection animation="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-brand-navy rounded-2xl p-8 sm:p-12 text-white text-center space-y-4 border-b-4 border-brand-orange relative overflow-hidden">
+          <IndustrialShapes />
+          <h3 className="text-2xl sm:text-3xl font-extrabold font-heading relative z-10">
             Need Expert Advice for Your Specific Industrial Setup?
           </h3>
-          <p className="text-slate-300 text-sm max-w-xl mx-auto">
+          <p className="text-slate-300 text-sm max-w-xl mx-auto relative z-10">
             Our material handling team can help you identify equipment configurations that best fit your floorplan, load profiles, and budget.
           </p>
-          <div className="pt-2">
+          <div className="pt-2 relative z-10">
             <Button to="/contact" variant="primary" size="lg" icon={ArrowRight} iconPosition="right">
               Contact Us for a Consultation
             </Button>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
     </div>
   );
 }

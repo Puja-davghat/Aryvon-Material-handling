@@ -164,7 +164,7 @@ export default function Footer() {
             <Clock className="w-6 h-6 text-brand-orange flex-shrink-0" />
             <div>
               <p className="font-bold text-white text-sm">Prompt Technical Support</p>
-              <p className="text-xs text-slate-400">Dedicated assistance for quotes & servicing</p>
+              <p className="text-xs text-slate-400">Dedicated assistance for quotations & servicing</p>
             </div>
           </div>
         </div>

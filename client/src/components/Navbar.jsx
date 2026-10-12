@@ -44,9 +44,8 @@ export default function Navbar() {
 
       {/* Main Navbar */}
       <nav
-        className={`bg-white/95 backdrop-blur-md transition-shadow duration-300 ${
-          scrolled ? 'shadow-lg border-b border-slate-200/80' : 'border-b border-slate-200'
-        }`}
+        className={`bg-white/95 backdrop-blur-md transition-shadow duration-300 ${scrolled ? 'shadow-lg border-b border-slate-200/80' : 'border-b border-slate-200'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
@@ -78,10 +77,9 @@ export default function Navbar() {
                   key={link.path}
                   to={link.path}
                   className={({ isActive }) =>
-                    `px-3.5 py-2 text-sm font-semibold tracking-wide transition-all duration-200 rounded-md ${
-                      isActive
-                        ? 'text-brand-navy bg-brand-lightBlue/60 border-b-2 border-brand-orange font-bold'
-                        : 'text-slate-700 hover:text-brand-navy hover:bg-slate-100/80'
+                    `px-3.5 py-2 text-sm font-semibold tracking-wide transition-all duration-200 rounded-md ${isActive
+                      ? 'text-brand-navy bg-brand-lightBlue/60 border-b-2 border-brand-orange font-bold'
+                      : 'text-slate-700 hover:text-brand-navy hover:bg-slate-100/80'
                     }`
                   }
                 >
@@ -90,14 +88,7 @@ export default function Navbar() {
               ))}
 
               {/* CTA: Get a Quote */}
-              <button
-                onClick={() => navigate('/contact')}
-                className="ml-3 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-orange text-white text-sm font-bold uppercase tracking-wider shadow-md shadow-orange-500/20 hover:bg-brand-orangeHover active:translate-y-0.5 transition-all duration-200 btn-shine"
-                aria-label="Get a Quote"
-              >
-                <PhoneCall className="w-4 h-4" />
-                Get a Quote
-              </button>
+
             </div>
 
             {/* Mobile Hamburger Button */}
@@ -125,10 +116,9 @@ export default function Navbar() {
                 key={link.path}
                 to={link.path}
                 className={({ isActive }) =>
-                  `block px-4 py-3 rounded-lg text-base font-semibold transition-colors ${
-                    isActive
-                      ? 'bg-brand-navy text-white font-bold'
-                      : 'text-slate-800 hover:bg-slate-100 hover:text-brand-navy'
+                  `block px-4 py-3 rounded-lg text-base font-semibold transition-colors ${isActive
+                    ? 'bg-brand-navy text-white font-bold'
+                    : 'text-slate-800 hover:bg-slate-100 hover:text-brand-navy'
                   }`
                 }
               >
@@ -141,7 +131,7 @@ export default function Navbar() {
               className="w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-brand-orange text-white text-base font-bold uppercase tracking-wider shadow-md hover:bg-brand-orangeHover transition-all duration-200"
             >
               <PhoneCall className="w-5 h-5" />
-              Get a Quote
+              Request a Quotation
             </button>
           </div>
         )}

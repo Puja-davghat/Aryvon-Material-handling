@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Walkie Electric Stacker</title><desc id="desc">Compact powered walkie stacker for narrow-aisle storage</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4f7f8"/><stop offset="1" stop-color="#e2eaee"/></linearGradient>
+ <linearGradient id="orange" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffbd55"/><stop offset="1" stop-color="#e58a19"/></linearGradient>
+</defs>
+<rect width="1200" height="800" rx="28" fill="url(#bg)"/>
+<path d="M0 600 L1200 560 V800 H0Z" fill="#d5e0e5"/>
+<path d="M0 650 L1200 610" stroke="#c0cdd4" stroke-width="5"/>
+<g opacity=".35" stroke="#9eb0ba" stroke-width="4"><path d="M90 80V600M1110 80V600M90 180H1110M90 300H1110M90 420H1110"/></g>
+
+<g transform="translate(180 150)">
+ <rect x="390" y="70" width="30" height="410" rx="8" fill="#263f50"/><rect x="430" y="70" width="30" height="410" rx="8" fill="#263f50"/>
+ <rect x="420" y="70" width="205" height="20" rx="6" fill="#263f50"/>
+ <rect x="350" y="120" width="240" height="105" rx="8" fill="#c8752b"/><path d="M365 145H575M365 175H575M365 205H575" stroke="#f7c46b" stroke-width="7"/>
+ <rect x="145" y="325" width="360" height="95" rx="20" fill="url(#orange)"/>
+ <rect x="180" y="220" width="135" height="125" rx="14" fill="#edaa39"/><rect x="198" y="242" width="100" height="65" rx="7" fill="#294c62"/>
+ <path d="M210 220L170 125L125 125" stroke="#263f50" stroke-width="18" fill="none" stroke-linecap="round"/>
+ <circle cx="210" cy="445" r="42" fill="#263f50"/><circle cx="210" cy="445" r="18" fill="#b8c7ce"/>
+ <circle cx="420" cy="445" r="42" fill="#263f50"/><circle cx="420" cy="445" r="18" fill="#b8c7ce"/>
+ <path d="M460 420H690" stroke="#263f50" stroke-width="20"/><path d="M490 420V455M675 420V455" stroke="#263f50" stroke-width="16"/>
+</g>
+<rect x="54" y="48" width="12" height="68" rx="6" fill="#e58a19"/>
+<text x="88" y="92" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="700" fill="#18384d">Walkie Electric Stacker</text>
+<text x="88" y="140" font-family="Arial,Helvetica,sans-serif" font-size="19" fill="#607684">Compact powered walkie stacker for narrow-aisle storage</text>
+</svg>

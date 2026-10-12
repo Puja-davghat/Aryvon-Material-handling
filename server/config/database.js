@@ -58,7 +58,7 @@ const fallbackData = {
       description: 'Rugged standard hand pallet truck engineered for daily warehouse movement of standard pallets with sealed leak-proof hydraulic pump and tandem polyurethane rollers.',
       category_id: 1,
       category_name: 'Pallet Trucks & Stackers',
-      image_url: '/assets/images/products/hand-pallet-truck.jpg',
+      image_url: '/assets/images/products/hand-pallet-truck.svg',
       specifications: {
         "Capacity": "2,500 kg / 3,000 kg",
         "Fork Length": "1150 mm / 1220 mm",
@@ -77,7 +77,7 @@ const fallbackData = {
       description: 'Compact powered lifting and travel stacker designed for narrow aisle warehouse stacking, rack loading, and trailer unloading.',
       category_id: 1,
       category_name: 'Pallet Trucks & Stackers',
-      image_url: '/assets/images/products/electric-stacker.jpg',
+      image_url: '/assets/images/products/electric-stacker.svg',
       specifications: {
         "Capacity": "1,500 kg",
         "Lift Height": "1,600 mm - 3,500 mm",
@@ -95,7 +95,7 @@ const fallbackData = {
       description: 'Zero-emission AC electric forklift delivering high torque, low noise, and minimal maintenance for indoor manufacturing facilities and high-throughput distribution hubs.',
       category_id: 2,
       category_name: 'Forklifts & Reach Trucks',
-      image_url: '/assets/images/products/electric-forklift.jpg',
+      image_url: '/assets/images/products/electric-forklift.svg',
       specifications: {
         "Capacity": "3,000 kg",
         "Load Center": "500 mm",
@@ -113,7 +113,7 @@ const fallbackData = {
       description: 'Specialized high-lift reach truck designed for high-density racking aisles with articulated chassis and precision proportional controls.',
       category_id: 2,
       category_name: 'Forklifts & Reach Trucks',
-      image_url: '/assets/images/products/reach-truck.jpg',
+      image_url: '/assets/images/products/reach-truck.svg',
       specifications: {
         "Capacity": "1,600 kg - 2,000 kg",
         "Max Lift Height": "8,500 mm",
@@ -131,7 +131,7 @@ const fallbackData = {
       description: 'Custom-engineered electrical overhead travelling crane providing efficient lifting across fabrication shops, machine bays, and assembly lines.',
       category_id: 3,
       category_name: 'Industrial Cranes & Hoists',
-      image_url: '/assets/images/products/eot-crane.jpg',
+      image_url: '/assets/images/products/eot-crane.svg',
       specifications: {
         "Capacity": "3 Ton - 15 Ton",
         "Span Range": "7.5 m - 28.5 m",
@@ -149,7 +149,7 @@ const fallbackData = {
       description: 'Motorized zero-pressure accumulation roller conveyor line for smooth component transit between manufacturing cells, packaging, and shipping docks.',
       category_id: 4,
       category_name: 'Conveyors & Sorting Systems',
-      image_url: '/assets/images/products/roller-conveyor.jpg',
+      image_url: '/assets/images/products/roller-conveyor.svg',
       specifications: {
         "Conveyor Width": "450 mm - 1,000 mm",
         "Load Capacity": "Up to 120 kg per linear meter",
@@ -167,7 +167,7 @@ const fallbackData = {
       description: 'High-capacity industrial steel storage racking designed for multi-tier warehouse pallet storage with direct accessibility to every pallet.',
       category_id: 5,
       category_name: 'Warehouse Storage & Racking',
-      image_url: '/assets/images/products/pallet-racking.jpg',
+      image_url: '/assets/images/products/pallet-racking.svg',
       specifications: {
         "Beam Load Capacity": "1,000 kg - 4,000 kg per level",
         "Frame Height": "2,000 mm - 11,000 mm",
@@ -185,7 +185,7 @@ const fallbackData = {
       description: 'Pit-mounted electro-hydraulic dock leveler bridging the height gap between warehouse loading docks and commercial transport vehicle beds for safe forklift transit.',
       category_id: 6,
       category_name: 'Dock Levelers & Scissor Lifts',
-      image_url: '/assets/images/products/dock-leveler.jpg',
+      image_url: '/assets/images/products/dock-leveler.svg',
       specifications: {
         "Static / Dynamic Capacity": "10,000 kg / 6,000 kg",
         "Platform Size": "2000 mm x 2500 mm",

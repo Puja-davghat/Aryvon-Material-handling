@@ -17,14 +17,15 @@ export default function ProductCard({ product, onViewDetails }) {
         <img
           src={product.image_url}
           alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-cover group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-500 ease-out"
           onError={(e) => {
             e.target.src = '/assets/images/hero/hero-warehouse.jpg';
           }}
         />
-        {/* Category Pill Badge */}
-        <div className="absolute top-3 left-3 bg-brand-navy/90 text-white text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded backdrop-blur-sm border border-white/20">
-          {product.category_name || 'Equipment'}
+        {/* Category Pill Badge with Pulse Beacon */}
+        <div className="absolute top-3 left-3 bg-brand-navy/90 text-white text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded backdrop-blur-sm border border-white/20 flex items-center gap-1.5 shadow-sm">
+          <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-ping" />
+          <span>{product.category_name || 'Equipment'}</span>
         </div>
 
         {/* Quick View Overlay Icon */}
@@ -70,7 +71,7 @@ export default function ProductCard({ product, onViewDetails }) {
             className="w-full text-[11px] px-2.5 py-2 tracking-normal"
             icon={FileText}
           >
-            Request Quote
+            Request Quotation
           </Button>
         </div>
       </div>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Stationary Hydraulic Dock Leveler</title><desc id="desc">Pit-mounted electro-hydraulic dock leveler for loading bays</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4f7f8"/><stop offset="1" stop-color="#e2eaee"/></linearGradient>
+ <linearGradient id="orange" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffbd55"/><stop offset="1" stop-color="#e58a19"/></linearGradient>
+</defs>
+<rect width="1200" height="800" rx="28" fill="url(#bg)"/>
+<path d="M0 600 L1200 560 V800 H0Z" fill="#d5e0e5"/>
+<path d="M0 650 L1200 610" stroke="#c0cdd4" stroke-width="5"/>
+<g opacity=".35" stroke="#9eb0ba" stroke-width="4"><path d="M90 80V600M1110 80V600M90 180H1110M90 300H1110M90 420H1110"/></g>
+
+<g transform="translate(110 145)">
+ <rect x="90" y="100" width="790" height="260" rx="12" fill="#c5d1d7"/>
+ <rect x="120" y="125" width="730" height="195" rx="8" fill="#e6ecef"/>
+ <path d="M170 320L780 205L850 265L240 380Z" fill="url(#orange)" stroke="#263f50" stroke-width="12" stroke-linejoin="round"/>
+ <path d="M240 380L240 465M780 265V350" stroke="#263f50" stroke-width="18"/>
+ <path d="M350 430L420 385L500 400L445 455Z" fill="#c8752b" stroke="#263f50" stroke-width="8"/>
+ <path d="M880 90V440" stroke="#263f50" stroke-width="18"/>
+ <rect x="875" y="80" width="120" height="230" rx="10" fill="#c8752b"/>
+ <rect x="895" y="105" width="80" height="125" rx="5" fill="#294c62"/>
+ <circle cx="910" cy="335" r="30" fill="#263f50"/><circle cx="970" cy="335" r="30" fill="#263f50"/>
+</g>
+<rect x="54" y="48" width="12" height="68" rx="6" fill="#e58a19"/>
+<text x="88" y="92" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="700" fill="#18384d">Stationary Hydraulic Dock Leveler</text>
+<text x="88" y="140" font-family="Arial,Helvetica,sans-serif" font-size="19" fill="#607684">Pit-mounted electro-hydraulic dock leveler for loading bays</text>
+</svg>

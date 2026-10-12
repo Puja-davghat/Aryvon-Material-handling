@@ -117,7 +117,7 @@ export default function ProductDetailModal({ product, onClose }) {
               icon={ArrowRight}
               iconPosition="right"
             >
-              Request a Quote for this Product
+              Request a Quotation for this Product
             </Button>
           </div>
         </div>

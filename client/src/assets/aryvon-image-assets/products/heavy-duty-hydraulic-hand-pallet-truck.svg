@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Heavy-Duty Hydraulic Hand Pallet Truck</title><desc id="desc">Manual hydraulic pallet truck with tandem rollers</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4f7f8"/><stop offset="1" stop-color="#e2eaee"/></linearGradient>
+ <linearGradient id="orange" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffbd55"/><stop offset="1" stop-color="#e58a19"/></linearGradient>
+</defs>
+<rect width="1200" height="800" rx="28" fill="url(#bg)"/>
+<path d="M0 600 L1200 560 V800 H0Z" fill="#d5e0e5"/>
+<path d="M0 650 L1200 610" stroke="#c0cdd4" stroke-width="5"/>
+<g opacity=".35" stroke="#9eb0ba" stroke-width="4"><path d="M90 80V600M1110 80V600M90 180H1110M90 300H1110M90 420H1110"/></g>
+
+<g transform="translate(165 170)">
+ <path d="M245 370 L150 105 Q143 80 168 72 L205 60" fill="none" stroke="#263f50" stroke-width="24" stroke-linecap="round"/>
+ <path d="M205 60 L238 82 L219 111" fill="none" stroke="#e58a19" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+ <rect x="225" y="340" width="545" height="30" rx="12" fill="url(#orange)"/>
+ <path d="M300 370V425M735 370V425" stroke="#d77c16" stroke-width="22"/>
+ <rect x="350" y="230" width="275" height="98" rx="12" fill="#c8752b"/>
+ <path d="M370 250H605M370 278H605M370 306H605" stroke="#f7c46b" stroke-width="8"/>
+ <circle cx="245" cy="435" r="38" fill="#263f50"/><circle cx="245" cy="435" r="15" fill="#b8c7ce"/>
+ <circle cx="735" cy="435" r="38" fill="#263f50"/><circle cx="735" cy="435" r="15" fill="#b8c7ce"/>
+ <circle cx="310" cy="375" r="20" fill="#263f50"/><circle cx="665" cy="375" r="20" fill="#263f50"/>
+ <rect x="215" y="325" width="90" height="52" rx="10" fill="#e58a19"/>
+</g>
+<rect x="54" y="48" width="12" height="68" rx="6" fill="#e58a19"/>
+<text x="88" y="92" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="700" fill="#18384d">Heavy-Duty Hydraulic Hand Pallet Truck</text>
+<text x="88" y="140" font-family="Arial,Helvetica,sans-serif" font-size="19" fill="#607684">Manual hydraulic pallet truck with tandem rollers</text>
+</svg>

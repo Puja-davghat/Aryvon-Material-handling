@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Stand-on Electric Reach Truck</title><desc id="desc">Stand-on electric reach truck for high-density racking aisles</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4f7f8"/><stop offset="1" stop-color="#e2eaee"/></linearGradient>
+ <linearGradient id="orange" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffbd55"/><stop offset="1" stop-color="#e58a19"/></linearGradient>
+</defs>
+<rect width="1200" height="800" rx="28" fill="url(#bg)"/>
+<path d="M0 600 L1200 560 V800 H0Z" fill="#d5e0e5"/>
+<path d="M0 650 L1200 610" stroke="#c0cdd4" stroke-width="5"/>
+<g opacity=".35" stroke="#9eb0ba" stroke-width="4"><path d="M90 80V600M1110 80V600M90 180H1110M90 300H1110M90 420H1110"/></g>
+
+<g transform="translate(180 140)">
+ <rect x="420" y="65" width="26" height="435" rx="6" fill="#263f50"/><rect x="455" y="65" width="26" height="435" rx="6" fill="#263f50"/>
+ <path d="M455 490H735" stroke="#263f50" stroke-width="22"/>
+ <rect x="480" y="105" width="205" height="95" rx="8" fill="#c8752b"/><path d="M495 130H670M495 160H670" stroke="#f7c46b" stroke-width="8"/>
+ <rect x="180" y="315" width="350" height="105" rx="22" fill="url(#orange)"/>
+ <rect x="225" y="210" width="145" height="125" rx="12" fill="#e8a139"/><rect x="245" y="230" width="105" height="72" rx="8" fill="#294c62"/>
+ <rect x="370" y="275" width="90" height="65" rx="8" fill="#263f50"/>
+ <path d="M250 210L220 155H185" stroke="#263f50" stroke-width="17" fill="none" stroke-linecap="round"/>
+ <circle cx="235" cy="445" r="42" fill="#263f50"/><circle cx="235" cy="445" r="17" fill="#b8c7ce"/>
+ <circle cx="445" cy="445" r="42" fill="#263f50"/><circle cx="445" cy="445" r="17" fill="#b8c7ce"/>
+ <path d="M460 420H720" stroke="#263f50" stroke-width="18"/>
+</g>
+<rect x="54" y="48" width="12" height="68" rx="6" fill="#e58a19"/>
+<text x="88" y="92" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="700" fill="#18384d">Stand-on Electric Reach Truck</text>
+<text x="88" y="140" font-family="Arial,Helvetica,sans-serif" font-size="19" fill="#607684">Stand-on electric reach truck for high-density racking aisles</text>
+</svg>
