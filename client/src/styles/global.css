@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #042c5c;
+  --deep: #021a38;
+  --orange: #fc6c04;
+  --orange-hover: #e25f00;
+  --light-blue: #eef4fc;
+  --pale-orange: #ffb27a;
+}
+
+body {
+  font-family: 'Inter', "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: #334155;
+  background-color: #f8fafc;
+  overflow-x: hidden;
+}
+
+/* Industrial Safety Hazard Stripe */
+.hazard-stripe {
+  height: 8px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--orange) 0 16px,
+    var(--deep) 16px 32px
+  );
+  background-size: 45px 100%;
+}
+
+/* Animated Grid Background */
+.industrial-grid {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Shine effect on buttons */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.35) 50%, transparent 65%);
+  background-size: 250% 100%;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  from { background-position: 150% 0; }
+  to { background-position: -100% 0; }
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
