@@ -57,6 +57,56 @@ body {
   to { background-position: -100% 0; }
 }
 
+/* ── Fade-in-up animation ─────────────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Scroll-reveal sections: add class, JS toggles .is-visible */
+.fade-section {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.fade-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children inside a visible parent */
+.fade-section.is-visible > * {
+  animation: fadeInUp 0.55s ease both;
+}
+
+.fade-section.is-visible > *:nth-child(1) { animation-delay: 0.05s; }
+.fade-section.is-visible > *:nth-child(2) { animation-delay: 0.15s; }
+.fade-section.is-visible > *:nth-child(3) { animation-delay: 0.25s; }
+.fade-section.is-visible > *:nth-child(4) { animation-delay: 0.35s; }
+.fade-section.is-visible > *:nth-child(5) { animation-delay: 0.45s; }
+
+/* Image fade-in */
+img.lazy-fade {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+img.lazy-fade.loaded {
+  opacity: 1;
+}
+
 /* Respect Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

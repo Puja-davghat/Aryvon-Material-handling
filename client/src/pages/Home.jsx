@@ -55,21 +55,6 @@ export default function Home() {
                 <Button to="/products" variant="primary" size="lg" icon={ArrowRight} iconPosition="right" className="w-full sm:w-auto">
                   Explore Our Products
                 </Button>
-                <Button to="/contact" variant="outlineWhite" size="lg" className="w-full sm:w-auto">
-                  Request a Quote
-                </Button>
-              </div>
-
-              {/* Clickable Phone Number Banner */}
-              <div className="pt-4 border-t border-slate-700/80 inline-flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-slate-300">
-                <span className="text-slate-400 font-semibold uppercase tracking-wider">Direct Equipment Desk:</span>
-                <a
-                  href="tel:8329358214"
-                  className="inline-flex items-center gap-2 text-brand-paleOrange hover:text-white font-extrabold text-base tracking-wider transition-colors"
-                >
-                  <Phone className="w-4 h-4 text-brand-orange" />
-                  83293 58214
-                </a>
               </div>
             </div>
 

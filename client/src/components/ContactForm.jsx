@@ -1,8 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Send, CheckCircle2, AlertCircle, ShieldCheck, PhoneCall } from 'lucide-react';
+import { Send, CheckCircle2, AlertCircle, ShieldCheck, PhoneCall, ChevronDown } from 'lucide-react';
 import { submitEnquiry, fetchProducts } from '../services/api';
 import Button from './Button';
+
+/* ─── Fade-in on scroll hook ─── */
+function useFadeIn() {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return [ref, visible];
+}
 
 export default function ContactForm({ prefilledProductId = null, prefilledProductName = '' }) {
   const [searchParams] = useSearchParams();
@@ -10,18 +27,22 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
   const queryProductId = searchParams.get('productId') || prefilledProductId || '';
   const queryProductName = searchParams.get('productName') || prefilledProductName || '';
 
+  const getAutoSubject = (productName) =>
+    productName ? `Quotation Request: ${productName}` : 'General Equipment Enquiry';
+
   const [formData, setFormData] = useState({
     fullName: '',
     companyName: '',
-    email: '',
     phone: '',
-    subject: queryProductName ? `Quotation Request: ${queryProductName}` : '',
     productId: queryProductId,
     message: queryProductName
       ? `Dear ARYVON Team,\n\nWe would like to request an official quotation and technical datasheet for: ${queryProductName}.\n\nPlease find our operating requirements below:`
       : '',
     website_hp: '' // Honeypot field
   });
+
+  const [headerRef, headerVisible] = useFadeIn();
+  const [formRef, formVisible] = useFadeIn();
 
   const [availableProducts, setAvailableProducts] = useState([]);
   const [errors, setErrors] = useState({});
@@ -42,7 +63,6 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
       setFormData(prev => ({
         ...prev,
         productId: queryProductId,
-        subject: queryProductName ? `Quotation Request: ${queryProductName}` : prev.subject
       }));
     }
   }, [queryProductId, queryProductName]);
@@ -55,16 +75,9 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
     if (!formData.companyName.trim()) {
       errs.companyName = 'Company / Organization Name is required.';
     }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
-      errs.email = 'A valid business email address is required.';
-    }
     const phoneRegex = /^[\d\s+\-().]{7,25}$/;
     if (!formData.phone.trim() || !phoneRegex.test(formData.phone.trim())) {
       errs.phone = 'A valid contact phone number is required.';
-    }
-    if (!formData.subject.trim()) {
-      errs.subject = 'Enquiry Subject is required.';
     }
     if (!formData.message.trim() || formData.message.trim().length < 5) {
       errs.message = 'Please specify your requirements or equipment questions.';
@@ -87,7 +100,9 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
     setFormData(prev => ({
       ...prev,
       productId: val,
-      subject: selected ? `Quotation Request: ${selected.name}` : prev.subject
+      message: selected && !prev.message.trim()
+        ? `Dear ARYVON Team,\n\nWe would like to request an official quotation and technical datasheet for: ${selected.name}.\n\nPlease find our operating requirements below:`
+        : prev.message
     }));
   };
 
@@ -95,21 +110,26 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
     e.preventDefault();
     setSubmissionError(null);
 
-    if (!validate()) {
-      return;
-    }
+    if (!validate()) return;
 
     setIsSubmitting(true);
 
+    // Auto-generate subject from selected product
+    const selectedProduct = availableProducts.find(p => String(p.id) === String(formData.productId));
+    const autoSubject = getAutoSubject(selectedProduct?.name || queryProductName);
+
     try {
-      const response = await submitEnquiry(formData);
+      const payload = {
+        ...formData,
+        subject: autoSubject,
+        email: `enquiry+${Date.now()}@aryvon.in`, // auto-placeholder so server passes email validation
+      };
+      const response = await submitEnquiry(payload);
       setSubmissionSuccess(response);
       setFormData({
         fullName: '',
         companyName: '',
-        email: '',
         phone: '',
-        subject: '',
         productId: '',
         message: '',
         website_hp: ''
@@ -176,7 +196,14 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
           </div>
         )}
 
-        <form onSubmit={handleSubmit} noValidate className="space-y-6">
+        <form
+          ref={formRef}
+          onSubmit={handleSubmit}
+          noValidate
+          className={`space-y-6 transition-all duration-700 delay-150 ${
+            formVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
           {/* Honeypot field for anti-spam (invisible to humans) */}
           <div className="hidden" aria-hidden="true">
             <input
@@ -234,63 +261,40 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
             </div>
           </div>
 
-          {/* Row 2: Email & Phone Number */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                Business Email Address <span className="text-brand-orange">*</span>
-              </label>
-              <input
-                id="email"
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="e.g. rajesh@acmelogistics.com"
-                className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
-                  errors.email
-                    ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
-                    : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
-                }`}
-                required
-              />
-              {errors.email && <p className="text-xs text-red-600 mt-1">{errors.email}</p>}
-            </div>
-
-            <div>
-              <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                Contact Phone Number <span className="text-brand-orange">*</span>
-              </label>
-              <input
-                id="phone"
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="e.g. +91 98765 43210"
-                className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
-                  errors.phone
-                    ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
-                    : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
-                }`}
-                required
-              />
-              {errors.phone && <p className="text-xs text-red-600 mt-1">{errors.phone}</p>}
-            </div>
+          {/* Row 2: Phone Number */}
+          <div>
+            <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+              Contact Phone Number <span className="text-brand-orange">*</span>
+            </label>
+            <input
+              id="phone"
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="e.g. +91 98765 43210"
+              className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+                errors.phone
+                  ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
+                  : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
+              }`}
+              required
+            />
+            {errors.phone && <p className="text-xs text-red-600 mt-1">{errors.phone}</p>}
           </div>
 
-          {/* Row 3: Product of Interest (Optional / Prepopulated) & Subject */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label htmlFor="productId" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                Product of Interest <span className="text-slate-400 font-normal">(Optional)</span>
-              </label>
+          {/* Row 3: Product of Interest (Optional / Prepopulated) */}
+          <div>
+            <label htmlFor="productId" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+              Product of Interest <span className="text-slate-400 font-normal">(Optional)</span>
+            </label>
+            <div className="relative">
               <select
                 id="productId"
                 name="productId"
                 value={formData.productId}
                 onChange={handleProductSelect}
-                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-slate-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange focus:bg-white transition-colors"
+                className="w-full appearance-none px-4 py-2.5 pr-10 rounded-lg border border-slate-300 bg-slate-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange focus:bg-white transition-colors cursor-pointer"
               >
                 <option value="">-- General Equipment Enquiry --</option>
                 {availableProducts.map((p) => (
@@ -299,27 +303,16 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
                   </option>
                 ))}
               </select>
+              <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             </div>
-
-            <div>
-              <label htmlFor="subject" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                Enquiry Subject <span className="text-brand-orange">*</span>
-              </label>
-              <input
-                id="subject"
-                type="text"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                placeholder="e.g. Quotation for 2.5T Pallet Trucks"
-                className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
-                  errors.subject
-                    ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
-                    : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
-                }`}
-                required
-              />
-              {errors.subject && <p className="text-xs text-red-600 mt-1">{errors.subject}</p>}
+            {/* Auto-subject preview pill */}
+            <div className={`mt-2 transition-all duration-300 ${
+              formData.productId ? 'opacity-100 max-h-10' : 'opacity-0 max-h-0 overflow-hidden'
+            }`}>
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-brand-navy bg-brand-lightBlue border border-brand-iceBlue px-2.5 py-1 rounded-full">
+                <span className="w-2 h-2 rounded-full bg-brand-orange flex-shrink-0" />
+                Subject: {getAutoSubject(availableProducts.find(p => String(p.id) === String(formData.productId))?.name)}
+              </span>
             </div>
           </div>
 
