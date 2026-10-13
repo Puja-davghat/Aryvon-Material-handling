@@ -174,7 +174,7 @@ export default function Home() {
                   <p className="text-lg font-bold">Have an equipment specification requirement?</p>
                 </div>
                 <Button to="/contact" variant="primary" size="sm" className="whitespace-nowrap">
-                  Request a Quote
+                  Inquire Now
                 </Button>
               </div>
             </div>
@@ -328,7 +328,7 @@ export default function Home() {
       </AnimatedSection>
 
       {/* =========================================================================
-          CLOSING CALL TO ACTION: Exact Required Headline & Request a Quote button
+          CLOSING CALL TO ACTION: Inquire Now & Direct Phone Desk
          ========================================================================= */}
       <AnimatedSection animation="fade-up" className="bg-brand-navy text-white relative overflow-hidden py-16 sm:py-20 border-t-4 border-brand-orange">
         <IndustrialShapes />
@@ -337,11 +337,11 @@ export default function Home() {
             Looking for the Right Material Handling Solution?
           </h2>
           <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Contact ARYVON to discuss your equipment requirements, request official quotations, or consult with our engineering team on customized configurations.
+            Contact ARYVON to discuss your equipment requirements, request technical proposals, or consult with our engineering team on customized configurations.
           </p>
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button to="/contact" variant="primary" size="lg" icon={ArrowRight} iconPosition="right">
-              Request a Quote
+              Inquire Now
             </Button>
             <a
               href="tel:8329358214"

@@ -52,7 +52,7 @@ export default function Contact() {
                     83293 58214
                   </a>
                   <p className="text-xs text-slate-500 mt-1">
-                    Available for quotation requests, technical advice, and project evaluations.
+                    Available for equipment inquiries, technical advice, and project evaluations.
                   </p>
                 </div>
               </div>
@@ -70,7 +70,7 @@ export default function Contact() {
                     Submissions are routed directly to the confirmed ARYVON business desk.
                   </p>
                   <p className="text-xs text-slate-500 mt-1">
-                    Please use the enquiry form for prompt technical quotations with full specifications.
+                    Please use the enquiry form for prompt technical proposals with full specifications.
                   </p>
                 </div>
               </div>
@@ -88,7 +88,7 @@ export default function Contact() {
                     Prompt Review by Application Engineers
                   </p>
                   <p className="text-xs text-slate-500 mt-1">
-                    Quotations and datasheet recommendations typically furnished within 24 business hours.
+                    Technical proposals and datasheet recommendations typically furnished within 24 business hours.
                   </p>
                 </div>
               </div>
@@ -98,15 +98,15 @@ export default function Contact() {
             <div className="bg-brand-navy text-white rounded-2xl p-6 sm:p-8 space-y-4">
               <div className="flex items-center gap-3 text-brand-paleOrange">
                 <ShieldCheck className="w-6 h-6 text-brand-orange flex-shrink-0" />
-                <h4 className="font-bold text-base text-white">Quotation Transparency</h4>
+                <h4 className="font-bold text-base text-white">Proposal Transparency</h4>
               </div>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                All ARYVON quotation estimates clearly delineate equipment capacities, mast configurations, electrical battery requirements, warranty terms, and estimated dispatch schedules.
+                All ARYVON technical proposals clearly delineate equipment capacities, mast configurations, electrical battery requirements, warranty terms, and estimated dispatch schedules.
               </p>
             </div>
           </div>
 
-          {/* Right Column: Interactive Quotation & Enquiry Form */}
+          {/* Right Column: Interactive Equipment Enquiry Form */}
           <div className="lg:col-span-7">
             <ContactForm />
           </div>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Send, CheckCircle2, AlertCircle, ShieldCheck, PhoneCall, ChevronDown } from 'lucide-react';
-import { submitEnquiry, fetchProducts } from '../services/api';
+import { submitEnquiry } from '../services/api';
+import { products as localProducts } from '../data/products';
 import Button from './Button';
 
 /* ─── Fade-in on scroll hook ─── */
@@ -28,7 +29,7 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
   const queryProductName = searchParams.get('productName') || prefilledProductName || '';
 
   const getAutoSubject = (productName) =>
-    productName ? `Quotation Request: ${productName}` : 'General Equipment Enquiry';
+    productName ? `Equipment Enquiry: ${productName}` : 'General Equipment Enquiry';
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -36,7 +37,7 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
     phone: '',
     productId: queryProductId,
     message: queryProductName
-      ? `Dear ARYVON Team,\n\nWe would like to request an official quotation and technical datasheet for: ${queryProductName}.\n\nPlease find our operating requirements below:`
+      ? `Dear ARYVON Team,\n\nWe would like to request product details and a technical proposal for: ${queryProductName}.\n\nPlease find our operating requirements below:`
       : '',
     website_hp: '' // Honeypot field
   });
@@ -44,18 +45,11 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
   const [headerRef, headerVisible] = useFadeIn();
   const [formRef, formVisible] = useFadeIn();
 
-  const [availableProducts, setAvailableProducts] = useState([]);
+  const [availableProducts] = useState(localProducts.filter(p => p.is_active));
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionSuccess, setSubmissionSuccess] = useState(null);
   const [submissionError, setSubmissionError] = useState(null);
-
-  // Fetch product list for dropdown
-  useEffect(() => {
-    fetchProducts()
-      .then(items => setAvailableProducts(items))
-      .catch(err => console.warn('Could not load products for enquiry dropdown:', err));
-  }, []);
 
   // Update form if URL params change
   useEffect(() => {
@@ -101,7 +95,7 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
       ...prev,
       productId: val,
       message: selected && !prev.message.trim()
-        ? `Dear ARYVON Team,\n\nWe would like to request an official quotation and technical datasheet for: ${selected.name}.\n\nPlease find our operating requirements below:`
+        ? `Dear ARYVON Team,\n\nWe would like to request product details and a technical proposal for: ${selected.name}.\n\nPlease find our operating requirements below:`
         : prev.message
     }));
   };
@@ -149,10 +143,10 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
           Direct Client Communication
         </span>
         <h3 className="text-2xl font-black font-heading text-white tracking-wide">
-          Request a Quotation & Equipment Consultation
+          Equipment Inquiry & Technical Consultation
         </h3>
         <p className="text-slate-300 text-xs sm:text-sm mt-2 leading-relaxed">
-          Submit your material handling specifications below. Our technical engineering team will review your application and respond with technical recommendations and pricing.
+          Submit your material handling specifications below. Our technical engineering team will review your application and respond with technical recommendations and equipment specifications.
         </p>
       </div>
 
@@ -341,7 +335,7 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
           {/* Privacy & Anti-spam declaration */}
           <div className="flex items-center gap-2 text-xs text-slate-500">
             <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-            <span>Your contact details are securely stored and strictly used for technical quotation purposes.</span>
+            <span>Your contact details are securely handled and strictly used for technical consultation and enquiry response purposes.</span>
           </div>
 
           {/* Action Row */}
@@ -355,7 +349,7 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
               iconPosition="right"
               className="w-full sm:w-auto"
             >
-              {isSubmitting ? 'Submitting Enquiry...' : 'Submit Quotation Request'}
+              {isSubmitting ? 'Submitting Enquiry...' : 'Submit Equipment Enquiry'}
             </Button>
 
             <a

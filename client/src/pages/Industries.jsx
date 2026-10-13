@@ -104,7 +104,7 @@ export default function Industries() {
 
             <div className="pt-4 flex flex-wrap gap-4">
               <Button to="/contact?subject=Manufacturing+Solutions+Enquiry" variant="primary" size="md" icon={ArrowRight} iconPosition="right">
-                Request a Quotation for Manufacturing
+                Inquire for Manufacturing Solutions
               </Button>
               <Button to="/products" variant="secondary" size="md">
                 View Related Equipment
@@ -185,7 +185,7 @@ export default function Industries() {
 
             <div className="pt-4 flex flex-wrap gap-4">
               <Button to="/contact?subject=Warehousing+Equipment+Enquiry" variant="primary" size="md" icon={ArrowRight} iconPosition="right">
-                Request a Quotation for Warehousing
+                Inquire for Warehousing Solutions
               </Button>
               <Button to="/products" variant="secondary" size="md">
                 View Related Equipment
@@ -238,7 +238,7 @@ export default function Industries() {
 
             <div className="pt-4 flex flex-wrap gap-4">
               <Button to="/contact?subject=Logistics+Solutions+Enquiry" variant="primary" size="md" icon={ArrowRight} iconPosition="right">
-                Request a Quotation for Logistics
+                Inquire for Logistics Solutions
               </Button>
               <Button to="/products" variant="secondary" size="md">
                 View Related Equipment

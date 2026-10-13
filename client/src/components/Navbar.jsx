@@ -86,9 +86,7 @@ export default function Navbar() {
                   {link.name}
                 </NavLink>
               ))}
-
-              {/* CTA: Get a Quote */}
-
+              {/* CTA: Inquire Now */}
             </div>
 
             {/* Mobile Hamburger Button */}
@@ -131,7 +129,7 @@ export default function Navbar() {
               className="w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-brand-orange text-white text-base font-bold uppercase tracking-wider shadow-md hover:bg-brand-orangeHover transition-all duration-200"
             >
               <PhoneCall className="w-5 h-5" />
-              Request a Quotation
+              Contact Equipment Desk
             </button>
           </div>
         )}

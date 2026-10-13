@@ -8,7 +8,7 @@ export default function ProductDetailModal({ product, onClose }) {
 
   if (!product) return null;
 
-  const handleRequestQuote = () => {
+  const handleInquire = () => {
     onClose();
     navigate(`/contact?productId=${product.id}&productName=${encodeURIComponent(product.name)}`);
   };
@@ -50,7 +50,12 @@ export default function ProductDetailModal({ product, onClose }) {
                 alt={product.name}
                 className="w-full h-full object-cover"
                 onError={(e) => {
-                  e.target.src = '/assets/images/hero/hero-warehouse.jpg';
+                  if (product.fallback_image && !e.target.dataset.triedFallback) {
+                    e.target.dataset.triedFallback = 'true';
+                    e.target.src = product.fallback_image;
+                  } else {
+                    e.target.src = '/assets/images/hero/hero-warehouse.jpg';
+                  }
                 }}
               />
               <span className="absolute bottom-3 left-3 bg-brand-deep/90 text-brand-paleOrange text-xs font-bold px-2.5 py-1 rounded backdrop-blur-sm">
@@ -110,14 +115,14 @@ export default function ProductDetailModal({ product, onClose }) {
           </button>
           <div className="flex items-center gap-3 w-full sm:w-auto order-1 sm:order-2">
             <Button
-              onClick={handleRequestQuote}
+              onClick={handleInquire}
               variant="primary"
               size="md"
               className="w-full sm:w-auto"
               icon={ArrowRight}
               iconPosition="right"
             >
-              Request a Quotation for this Product
+              Inquire About This Equipment
             </Button>
           </div>
         </div>

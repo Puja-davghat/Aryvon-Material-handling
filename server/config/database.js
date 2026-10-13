@@ -149,7 +149,7 @@ const fallbackData = {
       description: 'Motorized zero-pressure accumulation roller conveyor line for smooth component transit between manufacturing cells, packaging, and shipping docks.',
       category_id: 4,
       category_name: 'Conveyors & Sorting Systems',
-      image_url: '/assets/images/products/roller-conveyor.svg',
+      image_url: '/assets/images/products/roller-conveyor.png',
       specifications: {
         "Conveyor Width": "450 mm - 1,000 mm",
         "Load Capacity": "Up to 120 kg per linear meter",

@@ -171,12 +171,12 @@ export default function About() {
               Ready to Upgrade Your Material Handling Efficiency?
             </h3>
             <p className="text-slate-300 text-sm max-w-xl">
-              Get in touch with ARYVON to request quotations or discuss customized solutions for your facility.
+              Get in touch with ARYVON to submit equipment inquiries or discuss customized solutions for your facility.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-4 whitespace-nowrap">
             <Button to="/contact" variant="primary" size="md" icon={ArrowRight} iconPosition="right">
-              Request a Quotation
+              Inquire Now
             </Button>
             <a
               href="tel:8329358214"

@@ -22,7 +22,7 @@ export default function Products() {
               Material Handling Equipment & Systems
             </h1>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Explore our industrial product line designed for rigorous material movement across manufacturing plants, warehouse racking, and logistics hubs. Request custom specifications and formal quotations directly from any product card.
+              Explore our industrial product line designed for rigorous material movement across manufacturing plants, warehouse racking, and logistics hubs. Request custom specifications and technical proposals directly from any product card.
             </p>
           </div>
         </div>

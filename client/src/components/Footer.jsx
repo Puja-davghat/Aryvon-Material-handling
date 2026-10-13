@@ -138,7 +138,7 @@ export default function Footer() {
                 </div>
               </div>
               <p className="text-xs text-slate-400">
-                Call us directly for equipment quotations, technical inquiries, and custom project consultations.
+                Call us directly for equipment inquiries, technical advice, and custom project consultations.
               </p>
             </div>
           </div>
@@ -164,7 +164,7 @@ export default function Footer() {
             <Clock className="w-6 h-6 text-brand-orange flex-shrink-0" />
             <div>
               <p className="font-bold text-white text-sm">Prompt Technical Support</p>
-              <p className="text-xs text-slate-400">Dedicated assistance for quotations & servicing</p>
+              <p className="text-xs text-slate-400">Dedicated assistance for inquiries & servicing</p>
             </div>
           </div>
         </div>

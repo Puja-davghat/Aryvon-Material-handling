@@ -6,20 +6,28 @@ import Button from './Button';
 export default function ProductCard({ product, onViewDetails }) {
   const navigate = useNavigate();
 
-  const handleRequestQuote = () => {
+  const handleInquire = () => {
     navigate(`/contact?productId=${product.id}&productName=${encodeURIComponent(product.name)}`);
   };
 
   return (
     <div className="group bg-white rounded-xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-brand-orange/40 transition-all duration-300 flex flex-col h-full">
       {/* Product Image Box */}
-      <div className="relative aspect-[16/10] bg-slate-100 overflow-hidden cursor-pointer" onClick={() => onViewDetails(product)}>
+      <div 
+        className="relative aspect-[16/10] bg-slate-100 overflow-hidden cursor-pointer" 
+        onClick={() => onViewDetails(product)}
+      >
         <img
           src={product.image_url}
           alt={product.name}
           className="w-full h-full object-cover group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-500 ease-out"
           onError={(e) => {
-            e.target.src = '/assets/images/hero/hero-warehouse.jpg';
+            if (product.fallback_image && !e.target.dataset.triedFallback) {
+              e.target.dataset.triedFallback = 'true';
+              e.target.src = product.fallback_image;
+            } else {
+              e.target.src = '/assets/images/hero/hero-warehouse.jpg';
+            }
           }}
         />
         {/* Category Pill Badge with Pulse Beacon */}
@@ -27,6 +35,13 @@ export default function ProductCard({ product, onViewDetails }) {
           <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-ping" />
           <span>{product.category_name || 'Equipment'}</span>
         </div>
+
+        {/* Feature Badge if exists */}
+        {product.badge && (
+          <div className="absolute top-3 right-3 bg-brand-orange text-white text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded shadow-sm">
+            {product.badge}
+          </div>
+        )}
 
         {/* Quick View Overlay Icon */}
         <div className="absolute inset-0 bg-brand-navy/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
@@ -52,7 +67,7 @@ export default function ProductCard({ product, onViewDetails }) {
           </p>
         </div>
 
-        {/* Buttons Row */}
+        {/* Action Buttons Row */}
         <div className="pt-2 border-t border-slate-100 grid grid-cols-2 gap-2">
           <Button
             onClick={() => onViewDetails(product)}
@@ -61,17 +76,17 @@ export default function ProductCard({ product, onViewDetails }) {
             className="w-full text-[11px] px-2.5 py-2 tracking-normal"
             icon={Eye}
           >
-            View Details
+            View Specs
           </Button>
 
           <Button
-            onClick={handleRequestQuote}
+            onClick={handleInquire}
             variant="primary"
             size="sm"
             className="w-full text-[11px] px-2.5 py-2 tracking-normal"
             icon={FileText}
           >
-            Request Quotation
+            Inquire Now
           </Button>
         </div>
       </div>
