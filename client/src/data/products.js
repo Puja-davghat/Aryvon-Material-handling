@@ -1,217 +1,246 @@
 /**
  * ARYVON - MATERIAL HANDLING SOLUTIONS
  * Centralized Frontend Product Catalogue & Category Data
- * Fully offline & independent of external backend APIs
+ * Strict product scope: 4 approved categories only
  */
-
-// Direct asset imports for guaranteed Vite bundling & resolution
-import handPalletTruckImg from '../assets/hand-pallet-truck.jpg';
-import electricStackerImg from '../assets/manual-stacker.jpg';
-import electricForkliftImg from '../assets/electric-forklift.jpg';
-import reachTruckImg from '../assets/reach-truck.jpg';
-import chainHoistImg from '../assets/chain-hoist.jpg';
-import equipmentScissorImg from '../assets/equipment.jpg';
-import industrieRackingImg from '../assets/industrie.jpg';
-import rollerConveyorImg from '../assets/roller-conveyor.png';
 
 export const categories = [
   {
     id: 1,
-    name: 'Pallet Trucks & Stackers',
-    slug: 'pallet-trucks-stackers',
-    description: 'Manual, semi-electric, and fully electric pallet handling equipment for warehouse transport and floor stacking.'
+    name: 'VRC',
+    fullName: 'Vertical Reciprocating Conveyor',
+    slug: 'vrc',
+    tagline: 'Move your goods between floors with ease.',
+    description: 'Industrial goods lifts engineered for reliable vertical movement of pallets, materials, and goods between floor levels — with enclosed safety cages and structural steel masts.',
+    image: '/assets/images/products/vrc-goods-lift.jpg',
+    fallback: '/assets/images/hero/hero-vrc-warehouse.jpg',
+    subcategories: null
   },
   {
     id: 2,
-    name: 'Forklifts & Reach Trucks',
-    slug: 'forklifts-reach-trucks',
-    description: 'Heavy-duty industrial electric counterbalance forklifts and high-reach aisle stackers for high-density storage.'
+    name: 'Scissor Lift',
+    fullName: 'Scissor Lift',
+    slug: 'scissor-lift',
+    tagline: 'Lift Your Materials To The Perfect Height.',
+    description: 'Heavy-duty hydraulic scissor lifts for precise material positioning at working height — available as self-propelled mobile units or stationary floor-mounted platforms.',
+    image: '/assets/images/products/scissor-self-propelled.jpg',
+    fallback: '/assets/images/products/scissor-floor-mounted.jpg',
+    subcategories: [
+      {
+        id: '2a',
+        name: 'Self-Propelled Scissor Lift',
+        slug: 'self-propelled-scissor-lift',
+        description: 'Mobile electric scissor lift with wheeled drive chassis and elevated work platform with safety railings for indoor maintenance, installation, and overhead access tasks.',
+        image: '/assets/images/products/scissor-self-propelled.jpg'
+      },
+      {
+        id: '2b',
+        name: 'Floor-Mounted Scissor Lift',
+        slug: 'floor-mounted-scissor-lift',
+        description: 'Stationary hydraulic scissor lift table bolted to the factory floor — designed for ergonomic material loading, pallet positioning, and height adjustment at fixed workstations.',
+        image: '/assets/images/products/scissor-floor-mounted.jpg'
+      }
+    ]
   },
   {
     id: 3,
-    name: 'Industrial Cranes & Hoists',
-    slug: 'industrial-cranes-hoists',
-    description: 'Overhead travelling cranes, gantry systems, and wire rope electric hoists for overhead lifting operations.'
+    name: 'EOT Crane',
+    fullName: 'EOT Crane',
+    slug: 'eot-crane',
+    tagline: 'Reliable Lifting. Precise Movement.',
+    description: 'Electric Overhead Travelling cranes engineered for heavy lifting across manufacturing bays, fabrication shops, and logistics handling areas.',
+    image: '/assets/images/products/eot-single-girder.jpg',
+    fallback: '/assets/images/products/eot-double-girder.jpg',
+    subcategories: [
+      {
+        id: '3a',
+        name: 'Single Girder Crane',
+        slug: 'single-girder-crane',
+        description: 'Single bridge girder EOT crane with underslung electric hoist and motorized trolley — economical choice for light to medium duty lifting across manufacturing and warehousing bays.',
+        image: '/assets/images/products/eot-single-girder.jpg'
+      },
+      {
+        id: '3b',
+        name: 'Double Girder Crane',
+        slug: 'double-girder-crane',
+        description: 'Twin bridge girder EOT crane with top-running crab trolley and hoist — designed for heavy-duty industrial lifting with a maintenance walkway on the girder for service access.',
+        image: '/assets/images/products/eot-double-girder.jpg'
+      }
+    ]
   },
   {
     id: 4,
-    name: 'Conveyors & Sorting Systems',
-    slug: 'conveyors-sorting-systems',
-    description: 'Modular powered roller, belt, and flexible expanding conveyor lines for continuous movement of cartons and totes.'
-  },
-  {
-    id: 5,
-    name: 'Warehouse Storage & Racking',
-    slug: 'warehouse-storage-racking',
-    description: 'Heavy-duty selective pallet racks, drive-in systems, and cantilever racking for long goods.'
-  },
-  {
-    id: 6,
-    name: 'Dock Levelers & Scissor Lifts',
-    slug: 'dock-levelers-scissor-lifts',
-    description: 'Electro-hydraulic stationary dock levellers, container ramps, and scissor lifting tables.'
+    name: 'Conveyor',
+    fullName: 'Conveyor',
+    slug: 'conveyor',
+    tagline: 'Keep Your Operations Moving.',
+    description: 'Robust industrial conveyor systems for continuous, automated movement of goods, components, and materials across production lines and distribution facilities.',
+    image: '/assets/images/products/roller-conveyor-line.png',
+    fallback: '/assets/images/products/roller-conveyor.jpg',
+    subcategories: [
+      {
+        id: '4a',
+        name: 'Roller Conveyor',
+        slug: 'roller-conveyor',
+        description: 'Industrial roller bed conveyor with heavy-gauge steel frame — available as powered (motorized drive roller) and gravity-feed configurations for box, tote, and pallet movement.',
+        image: '/assets/images/products/roller-conveyor-line.png'
+      },
+      {
+        id: '4b',
+        name: 'Chain Conveyor',
+        slug: 'chain-conveyor',
+        description: 'Heavy-duty chain-driven conveyor with clearly visible industrial chain tracks and a sturdy steel supporting frame — ideal for conveying heavy pallets, dies, and assemblies.',
+        image: '/assets/images/products/chain-conveyor.jpg'
+      }
+    ]
   }
 ];
 
+// Flat product list for the products grid — 4 main + subcategory items
 export const products = [
   {
     id: 1,
-    name: 'Heavy-Duty Hydraulic Hand Pallet Truck',
-    slug: 'hydraulic-hand-pallet-truck-2-5t',
+    name: 'Vertical Reciprocating Conveyor (VRC)',
+    slug: 'vertical-reciprocating-conveyor',
     category_id: 1,
-    category_name: 'Pallet Trucks & Stackers',
-    description: 'Rugged standard hand pallet truck engineered for daily warehouse movement of standard pallets with sealed leak-proof hydraulic pump and tandem polyurethane rollers.',
-    image_url: handPalletTruckImg || '/assets/images/products/hand-pallet-truck.jpg',
-    fallback_image: '/assets/images/products/hand-pallet-truck.jpg',
+    category_name: 'VRC',
+    tagline: 'Move your goods between floors with ease.',
+    description: 'Industrial goods lift engineered for reliable vertical movement of pallets, materials, and goods between floor levels. Features enclosed safety cage, structural steel mast, and interlocked landing gates for safe operation.',
+    image_url: '/assets/images/products/vrc-goods-lift.jpg',
+    fallback_image: '/assets/images/hero/hero-vrc-warehouse.jpg',
     is_active: true,
     specifications: {
-      'Capacity': '2,500 kg / 3,000 kg',
-      'Fork Length': '1150 mm / 1220 mm',
-      'Fork Width': '550 mm / 685 mm',
-      'Lowered Fork Height': '85 mm',
-      'Max Lift Height': '200 mm',
-      'Steering Wheel': 'Polyurethane / Nylon',
-      'Operation': 'Manual Hydraulic'
+      'Lift Type': 'Vertical Reciprocating Conveyor (Goods Lift)',
+      'Application': 'Multi-level pallet and goods transfer',
+      'Safety Features': 'Enclosed mesh cage, interlocked landing gates',
+      'Structural Frame': 'Heavy-duty steel mast and guide columns',
+      'Drive': 'Electric hydraulic or chain-drive system',
+      'Control': 'Push-button station at each level'
     }
   },
   {
     id: 2,
-    name: 'Walkie Electric Stacker',
-    slug: 'walkie-electric-stacker-1-5t',
-    category_id: 1,
-    category_name: 'Pallet Trucks & Stackers',
-    description: 'Compact powered lifting and travel stacker designed for narrow aisle warehouse stacking, rack loading, and trailer unloading.',
-    image_url: electricStackerImg || '/assets/images/products/electric-stacker.jpg',
-    fallback_image: '/assets/images/products/electric-stacker.jpg',
+    name: 'Self-Propelled Scissor Lift',
+    slug: 'self-propelled-scissor-lift',
+    category_id: 2,
+    category_name: 'Scissor Lift',
+    tagline: 'Lift Your Materials To The Perfect Height.',
+    description: 'Mobile electric scissor lift with wheeled drive chassis, hydraulic pantograph scissor mechanism, and elevated work platform with safety railings. Ideal for indoor maintenance, overhead installation, and access tasks.',
+    image_url: '/assets/images/products/scissor-self-propelled.jpg',
+    fallback_image: '/assets/images/products/scissor-floor-mounted.jpg',
     is_active: true,
     specifications: {
-      'Capacity': '1,500 kg',
-      'Lift Height': '1,600 mm - 3,500 mm',
-      'Mast Type': 'Duplex / Simplex',
-      'Battery': '24V / 210Ah Industrial Traction',
-      'Turning Radius': '1,490 mm',
-      'Control': 'Ergonomic Curtis Tiller Head'
+      'Type': 'Self-Propelled Electric Scissor Lift',
+      'Drive': 'Battery-electric wheel drive',
+      'Platform': 'Elevated work deck with safety railing',
+      'Scissor Mechanism': 'Hydraulic pantograph cross-arm',
+      'Tires': 'Non-marking solid industrial tires',
+      'Control': 'Platform and ground-level pendant'
     }
   },
   {
     id: 3,
-    name: '4-Wheel Electric Counterbalance Forklift',
-    slug: '4-wheel-electric-forklift-3t',
+    name: 'Floor-Mounted Scissor Lift',
+    slug: 'floor-mounted-scissor-lift',
     category_id: 2,
-    category_name: 'Forklifts & Reach Trucks',
-    description: 'Zero-emission AC electric forklift delivering high torque, low noise, and minimal maintenance for indoor manufacturing facilities and high-throughput distribution hubs.',
-    image_url: electricForkliftImg || '/assets/images/products/electric-forklift.jpg',
-    fallback_image: '/assets/images/products/electric-forklift.jpg',
+    category_name: 'Scissor Lift',
+    tagline: 'Lift Your Materials To The Perfect Height.',
+    description: 'Stationary hydraulic scissor lift table floor-bolted to the facility. Designed for ergonomic material loading, pallet height adjustment, and workstation positioning. Features flat platform deck and dual hydraulic cylinders.',
+    image_url: '/assets/images/products/scissor-floor-mounted.jpg',
+    fallback_image: '/assets/images/products/scissor-self-propelled.jpg',
     is_active: true,
     specifications: {
-      'Capacity': '3,000 kg',
-      'Load Center': '500 mm',
-      'Lift Height': '3,000 mm - 6,000 mm',
-      'Battery Voltage': '80V / 500Ah High-Efficiency Lithium/Lead-Acid',
-      'Travel Speed': '16 km/h',
-      'Mast': 'Triplex Full Free Lift Mast'
+      'Type': 'Stationary Floor-Mounted Hydraulic Scissor Lift',
+      'Platform': 'Heavy-duty flat steel deck',
+      'Drive': 'Hydraulic with electric power unit',
+      'Cylinders': 'Dual hydraulic ram design',
+      'Mounting': 'Anchor bolt floor-fixed base frame',
+      'Control': 'Push-button pendant or foot switch'
     }
   },
   {
     id: 4,
-    name: 'Stand-on Electric Reach Truck',
-    slug: 'stand-on-electric-reach-truck',
-    category_id: 2,
-    category_name: 'Forklifts & Reach Trucks',
-    description: 'Specialized high-lift reach truck designed for high-density racking aisles with articulated chassis and precision proportional controls.',
-    image_url: reachTruckImg || '/assets/images/products/reach-truck.jpg',
-    fallback_image: '/assets/images/products/reach-truck.jpg',
+    name: 'Single Girder EOT Crane',
+    slug: 'single-girder-eot-crane',
+    category_id: 3,
+    category_name: 'EOT Crane',
+    tagline: 'Reliable Lifting. Precise Movement.',
+    description: 'Single bridge girder Electric Overhead Travelling crane with underslung electric hoist and motorized trolley. Economical solution for light to medium duty overhead lifting across manufacturing bays and warehouses.',
+    image_url: '/assets/images/products/eot-single-girder.jpg',
+    fallback_image: '/assets/images/products/eot-double-girder.jpg',
     is_active: true,
     specifications: {
-      'Capacity': '1,600 kg - 2,000 kg',
-      'Max Lift Height': '8,500 mm',
-      'Aisle Width Required': '2,750 mm (800x1200 pallet)',
-      'Reach Travel': '600 mm',
-      'Speed Control': 'Regenerative Electronic Braking',
-      'Steering': '360-degree Electronic Power Steering'
+      'Type': 'Single Girder EOT Overhead Travelling Crane',
+      'Bridge': 'Single box section steel girder',
+      'Hoist': 'Electric wire rope hoist, underslung trolley',
+      'Cross-Travel': 'Motorized end carriage on runway rails',
+      'Control': 'Pendant pushbutton and wireless radio remote',
+      'Standards': 'IS 3177 / IS 807 compliant design'
     }
   },
   {
     id: 5,
-    name: 'Single Girder EOT Overhead Crane',
-    slug: 'single-girder-eot-crane',
+    name: 'Double Girder EOT Crane',
+    slug: 'double-girder-eot-crane',
     category_id: 3,
-    category_name: 'Industrial Cranes & Hoists',
-    description: 'Custom-engineered electrical overhead travelling crane providing efficient lifting across fabrication shops, machine bays, and assembly lines.',
-    image_url: chainHoistImg || '/assets/images/products/eot-crane.jpg',
-    fallback_image: '/assets/images/products/eot-crane.jpg',
+    category_name: 'EOT Crane',
+    tagline: 'Reliable Lifting. Precise Movement.',
+    description: 'Twin bridge girder Electric Overhead Travelling crane with top-running crab trolley and hoist. Engineered for heavy-duty industrial lifting with service walkway on the girder for maintenance access.',
+    image_url: '/assets/images/products/eot-double-girder.jpg',
+    fallback_image: '/assets/images/products/eot-single-girder.jpg',
     is_active: true,
     specifications: {
-      'Capacity': '3 Ton - 15 Ton',
-      'Span Range': '7.5 m - 28.5 m',
-      'Hoisting Speed': '4 / 8 m/min dual speed',
-      'Cross Travel Speed': '20 m/min variable frequency',
-      'Crane Control': 'Pendant Pushbutton & Wireless Radio Remote',
-      'Design Standard': 'IS 3177 / IS 807 compliant'
+      'Type': 'Double Girder EOT Overhead Travelling Crane',
+      'Bridge': 'Twin parallel box girder structure',
+      'Hoist': 'Electric crab trolley top-running on girders',
+      'Walkway': 'Maintenance service walkway on bridge',
+      'Cross-Travel': 'Heavy-duty motorized end carriage',
+      'Control': 'Cabin or radio remote control'
     }
   },
   {
     id: 6,
-    name: 'Automated Powered Roller Conveyor',
-    slug: 'powered-roller-conveyor-system',
+    name: 'Roller Conveyor',
+    slug: 'roller-conveyor',
     category_id: 4,
-    category_name: 'Conveyors & Sorting Systems',
-    description: 'Motorized zero-pressure accumulation roller conveyor line for smooth component transit between manufacturing cells, packaging, and shipping docks.',
-    image_url: rollerConveyorImg || '/assets/images/products/roller-conveyor.png',
-    fallback_image: rollerConveyorImg || '/assets/images/products/roller-conveyor.png',
+    category_name: 'Conveyor',
+    tagline: 'Keep Your Operations Moving.',
+    description: 'Industrial roller bed conveyor with heavy-gauge painted steel frame. Available in powered motorized drive roller (MDR) and gravity-feed configurations for continuous movement of boxes, totes, and pallets along production and dispatch lines.',
+    image_url: '/assets/images/products/roller-conveyor-line.png',
+    fallback_image: '/assets/images/products/roller-conveyor.jpg',
     is_active: true,
     specifications: {
-      'Conveyor Width': '450 mm - 1,000 mm',
-      'Load Capacity': 'Up to 120 kg per linear meter',
-      'Drive Type': 'Motorized Drive Roller (MDR) 24V DC / Chain Drive',
-      'Speed': '5 to 45 m/min adjustable',
-      'Structure': 'Powder-coated heavy gauge steel channel',
-      'Sensors': 'Integrated photoelectric accumulation sensors'
+      'Type': 'Industrial Roller Conveyor (Powered / Gravity)',
+      'Frame': 'Heavy-gauge powder-coated steel channel',
+      'Rollers': 'Steel precision rollers, adjustable pitch',
+      'Drive': 'Motorized Drive Roller (MDR) or chain drive',
+      'Load Capacity': 'Per specification and roller pitch',
+      'Speed': 'Adjustable for powered configurations'
     }
   },
   {
     id: 7,
-    name: 'Heavy-Duty Selective Pallet Racking',
-    slug: 'heavy-duty-pallet-racking',
-    category_id: 5,
-    category_name: 'Warehouse Storage & Racking',
-    description: 'High-capacity industrial steel storage racking designed for multi-tier warehouse pallet storage with direct accessibility to every pallet.',
-    image_url: industrieRackingImg || '/assets/images/products/pallet-racking.jpg',
-    fallback_image: '/assets/images/products/pallet-racking.jpg',
+    name: 'Chain Conveyor',
+    slug: 'chain-conveyor',
+    category_id: 4,
+    category_name: 'Conveyor',
+    tagline: 'Keep Your Operations Moving.',
+    description: 'Heavy-duty chain-driven conveyor system with clearly visible industrial chain tracks running in a sturdy steel supporting frame. Designed for reliable movement of heavy pallets, dies, engine assemblies, and bulk manufacturing loads.',
+    image_url: '/assets/images/products/chain-conveyor.jpg',
+    fallback_image: '/assets/images/products/roller-conveyor-line.png',
     is_active: true,
     specifications: {
-      'Beam Load Capacity': '1,000 kg - 4,000 kg per beam level',
-      'Frame Height': '2,000 mm - 11,000 mm',
-      'Depth': '1,000 mm / 1,100 mm',
-      'Material': 'High-tensile cold-rolled steel (IS 2062)',
-      'Finish': 'High-durability electrostatic epoxy polyester powder coat',
-      'Safety': 'Locking pins, column protectors, and frame row spacers'
-    }
-  },
-  {
-    id: 8,
-    name: 'Stationary Hydraulic Dock Leveler',
-    slug: 'hydraulic-dock-leveler-10t',
-    category_id: 6,
-    category_name: 'Dock Levelers & Scissor Lifts',
-    description: 'Pit-mounted electro-hydraulic dock leveler bridging the height gap between warehouse loading docks and commercial transport vehicle beds for safe forklift transit.',
-    image_url: equipmentScissorImg || '/assets/images/products/dock-leveler.jpg',
-    fallback_image: '/assets/images/products/dock-leveler.jpg',
-    is_active: true,
-    specifications: {
-      'Static / Dynamic Capacity': '10,000 kg / 6,000 kg',
-      'Platform Size': '2000 mm x 2500 mm',
-      'Lip Length': '400 mm telescopic / swing lip',
-      'Working Range': '+300 mm above dock / -300 mm below dock',
-      'Hydraulic Power': '1.1 kW 415V 3-phase unit',
-      'Safety Features': 'Emergency velocity fuse stop, toe guards, maintenance strut'
+      'Type': 'Chain Drive Industrial Conveyor',
+      'Frame': 'Robust welded steel supporting structure',
+      'Chain': 'Heavy-duty industrial roller chain tracks',
+      'Drive': 'Electric geared motor with chain drive',
+      'Application': 'Pallets, dies, heavy assemblies',
+      'Speed': 'Adjustable via VFD control'
     }
   }
 ];
 
-/**
- * Helper: Get categories with dynamically calculated accurate product count
- */
+// Helper: get categories list with product counts
 export function getCategories() {
   return categories.map(cat => ({
     ...cat,
@@ -219,65 +248,44 @@ export function getCategories() {
   }));
 }
 
-/**
- * Helper: Filter products synchronously entirely in the frontend
- */
+// Helper: get products filtered by category and search
 export function getProducts({ category = 'all', search = '', limit = null } = {}) {
-  let filtered = products.filter(p => p.is_active);
+  let list = products.filter(p => p.is_active);
 
-  // Filter by category
-  if (category && category !== 'all') {
-    const catId = Number(category);
-    if (!isNaN(catId) && catId > 0) {
-      filtered = filtered.filter(p => p.category_id === catId);
-    } else {
-      // Slug or name matching
-      filtered = filtered.filter(p => {
-        const cat = categories.find(
-          c => c.slug === category || c.name.toLowerCase() === category.toLowerCase()
-        );
-        return cat ? p.category_id === cat.id : true;
-      });
-    }
+  if (category !== 'all') {
+    list = list.filter(p => String(p.category_id) === String(category));
   }
 
-  // Filter by search query across name, description, category, and specifications
-  if (search && search.trim() !== '') {
-    const q = search.trim().toLowerCase();
-    filtered = filtered.filter(p => {
-      const nameMatch = p.name.toLowerCase().includes(q);
-      const descMatch = p.description.toLowerCase().includes(q);
-      const catMatch = p.category_name.toLowerCase().includes(q);
-      const specMatch = p.specifications
-        ? Object.entries(p.specifications).some(
-            ([k, v]) => k.toLowerCase().includes(q) || String(v).toLowerCase().includes(q)
-          )
-        : false;
-      return nameMatch || descMatch || catMatch || specMatch;
-    });
+  if (search && search.trim()) {
+    const q = search.toLowerCase();
+    list = list.filter(p =>
+      p.name.toLowerCase().includes(q) ||
+      p.description.toLowerCase().includes(q) ||
+      p.category_name.toLowerCase().includes(q)
+    );
   }
 
-  if (limit && typeof limit === 'number' && limit > 0) {
-    return filtered.slice(0, limit);
+  if (limit) {
+    list = list.slice(0, limit);
   }
 
-  return filtered;
+  return list;
 }
 
-/**
- * Helper: Find product by ID
- */
-export function getProductById(id) {
-  if (!id) return null;
-  return products.find(p => String(p.id) === String(id)) || null;
+// Helper: get a single product by numeric ID or by slug
+export function getProductById(idOrSlug) {
+  if (!idOrSlug) return null;
+  // numeric id
+  const asNum = Number(idOrSlug);
+  if (!isNaN(asNum) && asNum > 0) {
+    return products.find(p => p.id === asNum) || null;
+  }
+  // slug string fallback
+  return products.find(p => p.slug === String(idOrSlug)) || null;
 }
 
-/**
- * Helper: Find product by Slug
- */
+// Helper: get a single product by slug
 export function getProductBySlug(slug) {
   if (!slug) return null;
-  return products.find(p => p.slug === slug) || null;
+  return products.find(p => p.slug === String(slug)) || null;
 }
-
-export default products;

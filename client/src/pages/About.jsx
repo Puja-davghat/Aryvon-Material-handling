@@ -1,190 +1,280 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Building2, Wrench, ShieldCheck, Factory, Warehouse, Truck,
-  ArrowRight, Phone, CheckCircle2, FileText, Info
+  CheckCircle2, ArrowRight, Shield, Wrench,
+  Settings, Award, Users, Zap, Package
 } from 'lucide-react';
-import Button from '../components/Button';
-import aboutImage from "../assets/Modern Warehouse Logistics in Motion1.png";
-import IndustrialShapes from "../components/IndustrialShapes";
-import AnimatedSection from "../components/AnimatedSection";
+import AnimatedSection from '../components/AnimatedSection';
+import IndustrialShapes from '../components/IndustrialShapes';
+import manufacturingImg from '../assets/aryvon-image-assets/industries/manufacturing.jpg';
+import warehousingImg from '../assets/aryvon-image-assets/industries/warehousing.jpg';
+
+const values = [
+  {
+    icon: Shield,
+    title: 'Safety First',
+    desc: 'Every product we provide is selected and configured with operator safety as the primary design criteria. Structural integrity, fail-safe controls, and compliant safety features are non-negotiable.'
+  },
+  {
+    icon: Wrench,
+    title: 'Engineering Quality',
+    desc: 'We work with proven, industrial-grade equipment designed to perform under continuous heavy-duty operational demands. No compromises on materials, drives, or structural design.'
+  },
+  {
+    icon: Settings,
+    title: 'Practical Configuration',
+    desc: 'Every system is reviewed and configured to the actual dimensions, load characteristics, and workflow requirements of the client facility — not generic catalogue specifications.'
+  },
+  {
+    icon: Zap,
+    title: 'Operational Efficiency',
+    desc: 'Our solutions are evaluated for their contribution to reducing manual handling, increasing throughput, and lowering operational running costs across the facility.'
+  }
+];
+
+const products = [
+  {
+    name: 'VRC',
+    full: 'Vertical Reciprocating Conveyor',
+    tagline: 'Move your goods between floors with ease.',
+    href: '/products#vrc'
+  },
+  {
+    name: 'Scissor Lift',
+    full: 'Self-Propelled & Floor-Mounted',
+    tagline: 'Lift Your Materials To The Perfect Height.',
+    href: '/products#scissor-lift'
+  },
+  {
+    name: 'EOT Crane',
+    full: 'Single Girder & Double Girder',
+    tagline: 'Reliable Lifting. Precise Movement.',
+    href: '/products#eot-crane'
+  },
+  {
+    name: 'Conveyor',
+    full: 'Roller & Chain Conveyor',
+    tagline: 'Keep Your Operations Moving.',
+    href: '/products#conveyor'
+  }
+];
 
 export default function About() {
   return (
-    <div className="space-y-16 sm:space-y-24 py-10 sm:py-16">
-      {/* Page Header Banner */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div className="space-y-0 py-10 sm:py-16">
+
+      {/* Header Banner */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-brand-deep rounded-2xl p-8 sm:p-14 text-white relative overflow-hidden border-b-4 border-brand-orange shadow-xl">
           <IndustrialShapes />
           <div className="absolute inset-0 industrial-grid opacity-20 pointer-events-none" />
           <div className="relative z-10 max-w-3xl space-y-4">
             <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block">
-              About ARYVON
+              Our Company
             </span>
             <h1 className="text-3xl sm:text-5xl font-black font-heading tracking-tight leading-tight">
-              Engineering Practical Material Handling Solutions
+              About ARYVON
             </h1>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              ARYVON is dedicated to providing high-reliability material handling equipment and custom systems engineered for manufacturing plants, high-bay warehousing, and continuous logistics operations.
+              Dedicated material handling solutions for industrial operations — focused on safety, reliability, and practical engineering.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Company Overview & Business Focus */}
-      <AnimatedSection animation="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7 space-y-6">
-            <span className="text-xs font-bold uppercase tracking-widest text-brand-orange border-b-2 border-brand-orange pb-1 inline-block">
-              Company Overview & Focus
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-brand-navy font-heading">
-              Focused Exclusively on Material Handling Equipment
-            </h2>
-            <p className="text-slate-600 text-base leading-relaxed">
-              Material handling is the operational backbone of any productive industrial facility. Equipment failures, inefficient routing, or ill-suited tools directly impact throughput, worker safety, and operational costs.
-            </p>
-            <p className="text-slate-600 text-base leading-relaxed">
-              At <strong>ARYVON</strong>, our single business focus is matching industrial operations with the most practical, durable, and safe material handling equipment. Whether your operation requires a dependable manual pallet truck for dock staging or an automated conveyor and EOT crane system for heavy fabrication, we deliver equipment engineered to perform under demanding conditions.
-            </p>
-          </div>
-
-          <div className="lg:col-span-5">
-            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-slate-100 group">
-              <img
-                src={aboutImage}
-                alt="ARYVON Material Handling Solutions"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-              />
-              <div className="p-5 bg-brand-navy text-white text-center">
-                <span className="text-brand-paleOrange font-bold text-xs uppercase tracking-widest block">
-                  Tagline
+      {/* Company Introduction */}
+      <section className="py-16 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <AnimatedSection animation="fade-up">
+              <div className="space-y-6">
+                <span className="text-xs font-bold uppercase tracking-widest text-brand-orange border-b border-brand-orange pb-1 inline-block">
+                  Who We Are
                 </span>
-                <p className="text-xl font-black font-heading mt-1">
-                  MATERIAL HANDLING SOLUTIONS
-                </p>
+                <h2 className="text-2xl sm:text-4xl font-extrabold text-brand-navy font-heading leading-tight">
+                  Material Handling Solutions Engineered for Industry
+                </h2>
+                <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
+                  <p>
+                    ARYVON provides material handling equipment and solutions tailored to industrial operational requirements. We focus exclusively on four core product categories — Vertical Reciprocating Conveyors, Scissor Lifts, EOT Cranes, and Conveyor Systems.
+                  </p>
+                  <p>
+                    Our approach is direct and practical: we work with your operations team to understand the exact requirements of your facility, and then we recommend, configure, and supply equipment that resolves the actual handling challenges you face.
+                  </p>
+                  <p>
+                    We prioritize reliable, proven technology over speculative solutions — backing every system with transparent specifications and accessible technical support.
+                  </p>
+                </div>
+
+                <div className="space-y-3 pt-2">
+                  {[
+                    'Four focused product categories — no distractions, no irrelevant offerings',
+                    'Equipment selected and configured to your facility dimensions and load needs',
+                    'Operator safety embedded in every product recommendation',
+                    'Direct contact with our technical team throughout the enquiry process'
+                  ].map(point => (
+                    <div key={point} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-brand-orange flex-shrink-0 mt-0.5" />
+                      <span className="text-slate-600 text-sm">{point}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="pt-4 flex flex-wrap gap-4">
+                  <Link
+                    to="/products"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors group"
+                  >
+                    View Our Products <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center gap-2 px-6 py-3 border border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors group"
+                  >
+                    Get In Touch <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
               </div>
-            </div>
+            </AnimatedSection>
+
+            <AnimatedSection animation="fade-up">
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="rounded-xl overflow-hidden aspect-square border border-slate-200 shadow-lg">
+                    <img
+                      src={manufacturingImg}
+                      alt="ARYVON material handling — manufacturing facility"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="rounded-xl overflow-hidden aspect-square border border-slate-200 shadow-lg mt-6">
+                    <img
+                      src={warehousingImg}
+                      alt="ARYVON material handling — warehousing operations"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+                <div className="bg-brand-deep text-white rounded-xl p-5 flex items-center gap-4 border border-brand-orange/30 shadow-lg">
+                  <div className="p-3 bg-brand-orange rounded-lg flex-shrink-0">
+                    <Package className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-black text-2xl text-brand-orange">4 Categories</p>
+                    <p className="text-xs text-slate-400 uppercase tracking-widest mt-0.5">VRC · Scissor Lifts · EOT Cranes · Conveyors</p>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
-      </AnimatedSection>
+      </section>
 
-      {/* Customer Service & Practical Solutions Approach */}
-      <AnimatedSection animation="fade-up" className="bg-slate-100/80 py-16 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          <div className="text-center max-w-3xl mx-auto space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
-              Service Philosophy
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy font-heading">
-              Our Customer-Centric Service Approach
-            </h2>
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              We approach each enquiry from an engineering and operational standpoint rather than generic sales pitches.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm space-y-4">
-              <div className="p-3 bg-brand-lightBlue text-brand-navy rounded-lg w-fit">
-                <Building2 className="w-6 h-6 text-brand-orange" />
-              </div>
-              <h3 className="text-lg font-bold text-brand-navy font-heading">
-                1. Requirement Analysis
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                We assess your load dimensions, pallet weights, lift heights, aisle clearances, and duty cycle requirements before recommending equipment.
+      {/* Our Values */}
+      <section className="py-16 sm:py-24 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection animation="fade-up">
+            <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
+              <span className="text-xs font-bold uppercase tracking-widest text-brand-orange block">
+                Our Principles
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black text-brand-navy font-heading">
+                How We Work
+              </h2>
+              <p className="text-slate-600 text-base leading-relaxed">
+                These operational principles guide every equipment recommendation and client engagement.
               </p>
             </div>
+          </AnimatedSection>
 
-            <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm space-y-4">
-              <div className="p-3 bg-brand-lightBlue text-brand-navy rounded-lg w-fit">
-                <Wrench className="w-6 h-6 text-brand-orange" />
-              </div>
-              <h3 className="text-lg font-bold text-brand-navy font-heading">
-                2. Practical Equipment Matching
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                We specify machines built with standard, easily serviceable components to ensure straightforward maintenance and high availability.
+          <AnimatedSection animation="fade-up">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {values.map((val) => (
+                <div
+                  key={val.title}
+                  className="group bg-white p-8 rounded-2xl border border-slate-200 hover:border-brand-orange/40 hover:shadow-xl transition-all duration-300 text-center"
+                >
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-lightBlue text-brand-orange mb-5 group-hover:bg-brand-orange group-hover:text-white transition-all duration-300">
+                    <val.icon className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-lg font-bold text-brand-navy font-heading mb-3 group-hover:text-brand-orange transition-colors">
+                    {val.title}
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    {val.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Product Focus */}
+      <section className="py-16 sm:py-24 bg-brand-deep text-white relative overflow-hidden">
+        <div className="absolute inset-0 industrial-grid opacity-10 pointer-events-none" />
+        <IndustrialShapes />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection animation="fade-up">
+            <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
+              <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block">
+                Our Product Focus
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black font-heading">
+                Four Core Categories. Focused Expertise.
+              </h2>
+              <p className="text-slate-300 text-base leading-relaxed">
+                By concentrating on four key product categories, ARYVON delivers deeper expertise, better specifications, and more appropriate solutions than broader-scope competitors.
               </p>
             </div>
+          </AnimatedSection>
 
-            <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm space-y-4">
-              <div className="p-3 bg-brand-lightBlue text-brand-navy rounded-lg w-fit">
-                <ShieldCheck className="w-6 h-6 text-brand-orange" />
-              </div>
-              <h3 className="text-lg font-bold text-brand-navy font-heading">
-                3. Safety & Ergonomics
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Every unit emphasizes operator protection, ergonomic control handles, emergency stops, and fail-safe hydraulic relief valves.
-              </p>
+          <AnimatedSection animation="fade-up">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {products.map(prod => (
+                <Link
+                  to={prod.href}
+                  key={prod.name}
+                  className="group p-6 rounded-2xl border border-white/10 bg-brand-navy/40 hover:border-brand-orange hover:bg-brand-navy transition-all duration-300"
+                >
+                  <div className="w-10 h-1 bg-brand-orange rounded-full mb-4" />
+                  <h3 className="text-xl font-black text-white font-heading mb-1 group-hover:text-brand-orange transition-colors">
+                    {prod.name}
+                  </h3>
+                  <p className="text-brand-paleOrange text-xs font-semibold mb-2">{prod.full}</p>
+                  <p className="text-slate-400 text-xs italic">"{prod.tagline}"</p>
+                  <div className="mt-4 flex items-center gap-1 text-brand-orange text-xs font-bold uppercase tracking-wider group-hover:gap-2 transition-all">
+                    View Products <ArrowRight className="w-3.5 h-3.5" />
+                  </div>
+                </Link>
+              ))}
             </div>
-          </div>
+          </AnimatedSection>
         </div>
-      </AnimatedSection>
+      </section>
 
-      {/* Industries Supported Overview */}
-      <AnimatedSection animation="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        <div className="text-center max-w-2xl mx-auto space-y-2">
-          <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
-            Sectors Covered
-          </span>
-          <h2 className="text-3xl font-extrabold text-brand-navy font-heading">
-            Target Industries We Support
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 bg-white rounded-xl border border-slate-200 flex items-start gap-4">
-            <Factory className="w-8 h-8 text-brand-orange flex-shrink-0" />
-            <div>
-              <h4 className="font-bold text-brand-navy text-base">Manufacturing</h4>
-              <p className="text-xs text-slate-600 mt-1">Raw material intake, inter-departmental transport, and finished goods assembly lines.</p>
-            </div>
-          </div>
-
-          <div className="p-6 bg-white rounded-xl border border-slate-200 flex items-start gap-4">
-            <Warehouse className="w-8 h-8 text-brand-orange flex-shrink-0" />
-            <div>
-              <h4 className="font-bold text-brand-navy text-base">Warehousing</h4>
-              <p className="text-xs text-slate-600 mt-1">Pallet racking access, order picking, narrow-aisle stacking, and bulk storage.</p>
-            </div>
-          </div>
-
-          <div className="p-6 bg-white rounded-xl border border-slate-200 flex items-start gap-4">
-            <Truck className="w-8 h-8 text-brand-orange flex-shrink-0" />
-            <div>
-              <h4 className="font-bold text-brand-navy text-base">Logistics</h4>
-              <p className="text-xs text-slate-600 mt-1">Trailer docking, cargo consolidation, cross-dock loading, and rapid distribution.</p>
-            </div>
-          </div>
-        </div>
-      </AnimatedSection>
-
-      {/* Call to Action */}
-      <AnimatedSection animation="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-brand-navy rounded-2xl p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-6 border-b-4 border-brand-orange relative overflow-hidden">
-          <IndustrialShapes />
-          <div className="space-y-2 text-center md:text-left">
-            <h3 className="text-2xl sm:text-3xl font-bold font-heading">
-              Ready to Upgrade Your Material Handling Efficiency?
-            </h3>
-            <p className="text-slate-300 text-sm max-w-xl">
-              Get in touch with ARYVON to submit equipment inquiries or discuss customized solutions for your facility.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row items-center gap-4 whitespace-nowrap">
-            <Button to="/contact" variant="primary" size="md" icon={ArrowRight} iconPosition="right">
-              Inquire Now
-            </Button>
-            <a
-              href="tel:8329358214"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-white/10 hover:bg-white hover:text-brand-navy text-white text-sm font-bold tracking-wider transition-colors"
+      {/* CTA */}
+      <AnimatedSection animation="fade-up" className="py-16 sm:py-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          <h3 className="text-2xl sm:text-4xl font-black font-heading text-brand-navy">
+            Ready to Work With ARYVON?
+          </h3>
+          <p className="text-slate-600 text-base leading-relaxed">
+            Submit your facility and operational requirements — our team will respond with a tailored material handling recommendation.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-10 py-4 bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm uppercase tracking-widest rounded-lg shadow-lg shadow-brand-orange/30 transition-all group"
             >
-              <Phone className="w-4 h-4 text-brand-orange" />
-              83293 58214
-            </a>
+              Contact Us <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-2 px-10 py-4 border-2 border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white font-bold text-sm uppercase tracking-widest rounded-lg transition-all"
+            >
+              View Products
+            </Link>
           </div>
         </div>
       </AnimatedSection>
