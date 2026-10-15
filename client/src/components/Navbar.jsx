@@ -55,8 +55,8 @@ export default function Navbar() {
 
       {/* Main Navbar */}
       <nav
-        className={`bg-white/96 backdrop-blur-md transition-all duration-300 ${
-          scrolled ? 'shadow-lg border-b border-slate-200/80' : 'border-b border-slate-200'
+        className={`bg-white transition-all duration-300 ${
+          scrolled ? 'shadow-md border-b border-slate-200' : 'border-b border-slate-200'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,10 +74,10 @@ export default function Navbar() {
               />
               <div className="flex flex-col">
                 <div className="text-2xl sm:text-3xl font-black tracking-widest font-heading leading-none">
-                  <span className="text-brand-navy">ARY</span>
-                  <span className="text-brand-orange">VON</span>
+                  <span className="text-[#0B2545]">ARY</span>
+                  <span className="text-[#F97316]">VON</span>
                 </div>
-                <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.25em] text-slate-500 uppercase mt-1">
+                <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.25em] text-[#0B2545]/70 uppercase mt-1">
                   Material Handling Solutions
                 </span>
               </div>
@@ -93,13 +93,13 @@ export default function Navbar() {
                       className={({ isActive }) =>
                         `px-3.5 py-2 text-sm font-semibold tracking-wide transition-all duration-200 rounded-md inline-flex items-center gap-1 ${
                           isActive
-                            ? 'text-brand-navy bg-brand-lightBlue/60 border-b-2 border-brand-orange font-bold'
-                            : 'text-slate-700 hover:text-brand-navy hover:bg-slate-100/80'
+                            ? 'text-[#F97316] font-bold border-b-2 border-[#F97316] bg-orange-50/60'
+                            : 'text-[#0B2545] hover:text-[#F97316] hover:bg-orange-50/50'
                         }`
                       }
                     >
                       {link.name}
-                      <ChevronDown className="w-3.5 h-3.5 text-brand-orange group-hover:rotate-180 transition-transform duration-200" />
+                      <ChevronDown className="w-3.5 h-3.5 text-[#F97316] group-hover:rotate-180 transition-transform duration-200" />
                     </NavLink>
 
                     {/* Products Dropdown */}
@@ -110,18 +110,18 @@ export default function Navbar() {
                             key={cat.name}
                             href={cat.href}
                             onClick={(e) => { e.preventDefault(); navigate(cat.href.split('#')[0]); setTimeout(() => { document.getElementById(cat.href.split('#')[1])?.scrollIntoView({ behavior: 'smooth' }); }, 100); }}
-                            className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-brand-lightBlue group/item transition-colors"
+                            className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-orange-50 group/item transition-colors"
                           >
-                            <span className="w-2 h-2 rounded-full bg-brand-orange flex-shrink-0" />
+                            <span className="w-2 h-2 rounded-full bg-[#F97316] flex-shrink-0" />
                             <div>
-                              <p className="text-sm font-bold text-brand-navy group-hover/item:text-brand-orange transition-colors">{cat.name}</p>
+                              <p className="text-sm font-bold text-[#0B2545] group-hover/item:text-[#F97316] transition-colors">{cat.name}</p>
                               <p className="text-xs text-slate-500">{cat.sub}</p>
                             </div>
                           </a>
                         ))}
                       </div>
                       <div className="border-t border-slate-100 px-4 py-3 bg-slate-50">
-                        <Link to="/products" className="text-xs font-bold text-brand-orange hover:text-brand-orangeHover uppercase tracking-wider">
+                        <Link to="/products" className="text-xs font-bold text-[#F97316] hover:text-orange-700 uppercase tracking-wider">
                           View All Products →
                         </Link>
                       </div>
@@ -134,8 +134,8 @@ export default function Navbar() {
                     className={({ isActive }) =>
                       `px-3.5 py-2 text-sm font-semibold tracking-wide transition-all duration-200 rounded-md ${
                         isActive
-                          ? 'text-brand-navy bg-brand-lightBlue/60 border-b-2 border-brand-orange font-bold'
-                          : 'text-slate-700 hover:text-brand-navy hover:bg-slate-100/80'
+                          ? 'text-[#F97316] font-bold border-b-2 border-[#F97316] bg-orange-50/60'
+                          : 'text-[#0B2545] hover:text-[#F97316] hover:bg-orange-50/50'
                       }`
                     }
                   >
@@ -147,7 +147,7 @@ export default function Navbar() {
               {/* Request a Quote CTA */}
               <button
                 onClick={() => navigate('/contact')}
-                className="ml-3 px-5 py-2.5 bg-brand-orange hover:bg-brand-orangeHover text-white text-sm font-bold uppercase tracking-wider rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                className="ml-3 px-5 py-2.5 bg-[#F97316] hover:bg-orange-600 active:scale-95 text-white text-sm font-bold uppercase tracking-wider rounded-lg transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-orange-500/25"
               >
                 Request a Quote
               </button>
@@ -158,7 +158,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-md text-slate-700 hover:text-brand-navy hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-orange"
+                className="p-2 rounded-md text-[#0B2545] hover:text-[#F97316] hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-[#F97316]"
                 aria-label="Toggle Navigation"
               >
                 {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -180,8 +180,8 @@ export default function Navbar() {
                 className={({ isActive }) =>
                   `block px-4 py-3 rounded-lg text-base font-semibold transition-colors ${
                     isActive
-                      ? 'bg-brand-navy text-white font-bold'
-                      : 'text-slate-800 hover:bg-slate-100 hover:text-brand-navy'
+                      ? 'text-[#F97316] bg-orange-50 font-bold border-l-4 border-[#F97316]'
+                      : 'text-[#0B2545] hover:bg-orange-50 hover:text-[#F97316]'
                   }`
                 }
               >
@@ -191,15 +191,15 @@ export default function Navbar() {
 
             {/* Mobile product quick links */}
             <div className="pt-2 border-t border-slate-100">
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest px-4 mb-2">Products</p>
+              <p className="text-xs font-bold text-[#0B2545]/60 uppercase tracking-widest px-4 mb-2">Products</p>
               {productCategories.map(cat => (
                 <a
                   key={cat.name}
                   href={cat.href}
                   onClick={(e) => { e.preventDefault(); navigate(cat.href.split('#')[0]); setIsOpen(false); }}
-                  className="flex items-center gap-2 px-4 py-2 text-sm text-slate-700 hover:text-brand-orange"
+                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#0B2545] hover:text-[#F97316] hover:bg-orange-50/50 rounded-md transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#F97316]" />
                   {cat.name}
                 </a>
               ))}
@@ -207,7 +207,7 @@ export default function Navbar() {
 
             <button
               onClick={() => { navigate('/contact'); setIsOpen(false); }}
-              className="w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-brand-orange text-white text-base font-bold uppercase tracking-wider shadow-md hover:bg-brand-orangeHover transition-all"
+              className="w-full mt-3 inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-lg bg-[#F97316] text-white text-base font-bold uppercase tracking-wider shadow-md hover:bg-orange-600 transition-all"
             >
               <Phone className="w-5 h-5" />
               Request a Quote
