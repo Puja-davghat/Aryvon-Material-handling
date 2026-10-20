@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, ChevronRight, Eye } from 'lucide-react';
 import Button from '../components/Button';
 import IndustrialShapes from '../components/IndustrialShapes';
@@ -8,7 +8,6 @@ import { categories } from '../data/products';
 
 // Individual product card (subcategory or main)
 function ProductCard({ item, categoryName }) {
-  const navigate = useNavigate();
   return (
     <div className="group bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-orange/50 transition-all duration-300 flex flex-col">
       {/* Image */}
@@ -28,11 +27,15 @@ function ProductCard({ item, categoryName }) {
           <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-ping" />
           {categoryName}
         </div>
-        <div className="absolute inset-0 bg-brand-navy/0 group-hover:bg-brand-navy/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+        <Link
+          to={`/products/${item.slug}`}
+          aria-label={`View details for ${item.name}`}
+          className="absolute inset-0 bg-brand-navy/0 group-hover:bg-brand-navy/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100"
+        >
           <span className="bg-white/90 text-brand-navy text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5">
             <Eye className="w-3.5 h-3.5 text-brand-orange" /> View Details
           </span>
-        </div>
+        </Link>
       </div>
 
       {/* Content */}
@@ -45,12 +48,20 @@ function ProductCard({ item, categoryName }) {
             {item.description}
           </p>
         </div>
-        <button
-          onClick={() => navigate('/contact')}
-          className="inline-flex items-center gap-2 text-xs font-bold text-brand-navy hover:text-brand-orange uppercase tracking-wider transition-colors group/btn"
-        >
-          Request a Quote <ChevronRight className="w-4 h-4 text-brand-orange group-hover/btn:translate-x-1 transition-transform" />
-        </button>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <Link
+            to={`/products/${item.slug}`}
+            className="inline-flex items-center gap-2 text-xs font-bold text-brand-navy hover:text-brand-orange uppercase tracking-wider transition-colors group/btn"
+          >
+            View Details <ChevronRight className="w-4 h-4 text-brand-orange group-hover/btn:translate-x-1 transition-transform" />
+          </Link>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 text-xs font-bold text-brand-navy hover:text-brand-orange uppercase tracking-wider transition-colors group/btn"
+          >
+            Request a Quote <ChevronRight className="w-4 h-4 text-brand-orange group-hover/btn:translate-x-1 transition-transform" />
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -65,8 +76,8 @@ function CategorySection({ category }) {
         <div className="bg-brand-deep text-white p-6 sm:p-8 relative overflow-hidden border-b-4 border-brand-orange">
           <div className="absolute inset-0 industrial-grid opacity-10 pointer-events-none" />
           <IndustrialShapes />
-          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div className="space-y-2">
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+            <div className="space-y-2 flex-1">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-navy rounded-full text-brand-paleOrange text-xs font-bold uppercase tracking-widest border border-brand-orange/30">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-ping" />
                 Product Category
@@ -75,6 +86,13 @@ function CategorySection({ category }) {
               <p className="text-brand-paleOrange text-sm font-semibold italic">&ldquo;{category.tagline}&rdquo;</p>
               <p className="text-slate-300 text-sm leading-relaxed max-w-2xl">{category.description}</p>
             </div>
+            {category.promoImage && (
+              <img
+                src={category.promoImage}
+                alt={`ARYVON ${category.fullName} with product highlights`}
+                className="w-full max-w-xs self-center sm:w-56 sm:max-w-none sm:self-auto lg:w-64 rounded-xl border border-white/10 shadow-xl"
+              />
+            )}
           </div>
         </div>
 
@@ -106,10 +124,10 @@ function CategorySection({ category }) {
                   <h3 className="text-lg font-bold text-brand-navy font-heading">{category.fullName}</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">{category.description}</p>
                   <Link
-                    to="/contact"
+                    to={`/products/${category.productSlug}`}
                     className="inline-flex items-center gap-2 text-xs font-bold text-brand-navy hover:text-brand-orange uppercase tracking-wider transition-colors group/btn"
                   >
-                    Request a Quote <ChevronRight className="w-4 h-4 text-brand-orange group-hover/btn:translate-x-1 transition-transform" />
+                    View Details <ChevronRight className="w-4 h-4 text-brand-orange group-hover/btn:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>

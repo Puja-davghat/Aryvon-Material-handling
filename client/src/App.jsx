@@ -7,6 +7,7 @@ import About from './pages/About';
 import Products from './pages/Products';
 import Industries from './pages/Industries';
 import Contact from './pages/Contact';
+import ProductDetail from './pages/ProductDetail';
 import NotFound from './pages/NotFound';
 
 function ScrollToTop() {
@@ -35,6 +36,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/products/:slug" element={<ProductDetail />} />
           <Route path="/industries" element={<Industries />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />

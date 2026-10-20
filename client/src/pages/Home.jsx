@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import {
   ArrowRight, Phone, Shield, Wrench, Zap, Settings,
   ChevronRight, CheckCircle2, Star, Award, Users, Truck,
-  Factory, Warehouse, Package
+  Factory, Warehouse, Package, ClipboardCheck, DraftingCompass,
+  HardHat, ShieldCheck
 } from 'lucide-react';
 import Button from '../components/Button';
 import AnimatedSection from '../components/AnimatedSection';
@@ -108,6 +109,45 @@ const whyChoose = [
   }
 ];
 
+const engineeringSteps = [
+  {
+    number: '01',
+    title: 'Application & Requirement Analysis',
+    icon: ClipboardCheck,
+    color: 'blue'
+  },
+  {
+    number: '02',
+    title: 'Equipment Configuration & Load Assessment',
+    icon: Settings,
+    color: 'green'
+  },
+  {
+    number: '03',
+    title: 'Structural Design & Engineering Calculations',
+    icon: DraftingCompass,
+    color: 'orange'
+  },
+  {
+    number: '04',
+    title: 'Design Development & Component Selection',
+    icon: Factory,
+    color: 'blue'
+  },
+  {
+    number: '05',
+    title: 'Manufacturing Quality & Inspection',
+    icon: ShieldCheck,
+    color: 'teal'
+  },
+  {
+    number: '06',
+    title: 'Installation Planning & Operational Support',
+    icon: HardHat,
+    color: 'rose'
+  }
+];
+
 // Industries data
 const industries = [
   {
@@ -167,6 +207,10 @@ export default function Home() {
         {/* Industrial grid overlay */}
         <div className="absolute inset-0 industrial-grid opacity-10 pointer-events-none" />
 
+        <p className="absolute top-12 left-1/2 z-10 -translate-x-1/2 px-4 text-center text-lg sm:text-xl text-slate-300 font-bold tracking-wide whitespace-nowrap">
+          Smart Solutions That Move
+        </p>
+
         {/* Ambient glows */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-orange/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-blueAccent/20 rounded-full blur-[100px] pointer-events-none" />
@@ -195,15 +239,6 @@ export default function Home() {
               Tomorrow
             </h1>
 
-            {/* Supporting line */}
-            <p className="text-xl sm:text-2xl text-slate-300 font-semibold tracking-wide">
-              Smart Solutions That Move
-            </p>
-
-            <p className="text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed">
-              ARYVON provides engineered material handling equipment — VRCs, Scissor Lifts, EOT Cranes, and Conveyors — tailored to your industrial operational requirements.
-            </p>
-
             {/* CTA buttons */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
               <Link
@@ -225,7 +260,6 @@ export default function Home() {
             {/* Quick stats bar */}
             <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-white/10">
               {[
-                { label: 'Product Categories', value: '4' },
                 { label: 'Material Handling Focus', value: '100%' },
                 { label: 'Custom Configurations', value: 'Yes' },
                 { label: 'Direct Enquiry Line', value: '83293 58214' }
@@ -321,6 +355,80 @@ export default function Home() {
                   </p>
                 </div>
               ))}
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          ENGINEERING PROCESS
+         ========================================================================= */}
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20">
+        <div className="pointer-events-none absolute -bottom-20 -left-10 select-none text-[18rem] font-black leading-none text-slate-50" aria-hidden="true">
+          A
+        </div>
+        <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.5fr] lg:gap-14 lg:px-8">
+          <AnimatedSection animation="fade-up">
+            <div className="max-w-md">
+              <div className="mb-5 flex items-center gap-3">
+                <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-brand-navy">
+                  Our Engineering Process
+                </span>
+                <span className="h-px w-10 bg-slate-400" />
+              </div>
+              <h2 className="text-3xl font-black leading-[1.08] tracking-tight text-brand-navy font-heading sm:text-4xl">
+                From Your Requirements to the{' '}
+                <span className="text-[#3978d4]">Right Solution.</span>
+              </h2>
+              <p className="mt-5 text-sm leading-relaxed text-slate-600">
+                Our engineering process begins with understanding your application, evaluating site requirements, and identifying the right engineering approach. Through detailed design, structural analysis, quality-focused manufacturing, and expert installation, we deliver systems tailored to your operational needs. Our commitment to extended lifecycle reliability keeps your equipment performing.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection animation="fade-up">
+            <div className="grid grid-cols-1 gap-x-8 gap-y-7 sm:grid-cols-2">
+              {engineeringSteps.map(({ number, title, icon: Icon, color }) => {
+                const colors = {
+                  blue: {
+                    number: 'bg-[#4b83d7]',
+                    icon: 'bg-[#eef4ff] text-[#3978d4]'
+                  },
+                  green: {
+                    number: 'bg-[#3a9d68]',
+                    icon: 'bg-[#eef8f1] text-[#3a9d68]'
+                  },
+                  orange: {
+                    number: 'bg-[#f58220]',
+                    icon: 'bg-[#fff4e9] text-[#e87519]'
+                  },
+                  teal: {
+                    number: 'bg-[#1db4b7]',
+                    icon: 'bg-[#eafafa] text-[#159da0]'
+                  },
+                  rose: {
+                    number: 'bg-[#ee5d7c]',
+                    icon: 'bg-[#fff0f3] text-[#df4c6c]'
+                  }
+                }[color];
+
+                return (
+                  <div key={number} className="flex min-h-[72px] items-center gap-3 border-b border-slate-100 pb-4">
+                    <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl ${colors.icon}`}>
+                      <Icon className="h-9 w-9" strokeWidth={1.8} />
+                    </div>
+                    <div className="h-12 w-px shrink-0 bg-slate-200" />
+                    <div>
+                      <span className={`mb-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-[10px] font-bold text-white ${colors.number}`}>
+                        {number}
+                      </span>
+                      <h3 className="text-xs font-bold leading-snug text-brand-navy sm:text-[13px]">
+                        {title}
+                      </h3>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </AnimatedSection>
         </div>

@@ -1,14 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import { Search, PackageX } from 'lucide-react';
 import ProductCard from './ProductCard';
-import ProductDetailModal from './ProductDetailModal';
 import { products as allProducts, categories as allCategories, getCategories, getProducts } from '../data/products';
 import Button from './Button';
 
 export default function ProductGrid({ initialCategory = 'all', limit = null }) {
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeModalProduct, setActiveModalProduct] = useState(null);
 
   // Dynamically compute category counts from frontend data
   const categoriesWithCounts = useMemo(() => {
@@ -134,18 +132,9 @@ export default function ProductGrid({ initialCategory = 'all', limit = null }) {
             <ProductCard
               key={product.id}
               product={product}
-              onViewDetails={(item) => setActiveModalProduct(item)}
             />
           ))}
         </div>
-      )}
-
-      {/* Product Detail Modal */}
-      {activeModalProduct && (
-        <ProductDetailModal
-          product={activeModalProduct}
-          onClose={() => setActiveModalProduct(null)}
-        />
       )}
     </div>
   );

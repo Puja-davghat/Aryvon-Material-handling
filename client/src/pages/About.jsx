@@ -6,8 +6,6 @@ import {
 } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
 import IndustrialShapes from '../components/IndustrialShapes';
-import manufacturingImg from '../assets/aryvon-image-assets/industries/manufacturing.jpg';
-import warehousingImg from '../assets/aryvon-image-assets/industries/warehousing.jpg';
 
 const values = [
   {
@@ -142,15 +140,15 @@ export default function About() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="rounded-xl overflow-hidden aspect-square border border-slate-200 shadow-lg">
                     <img
-                      src={manufacturingImg}
-                      alt="ARYVON material handling — manufacturing facility"
+                      src="/assets/images/products/scissor-self-propelled.jpg"
+                      alt="Self-propelled scissor lift in an industrial facility"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="rounded-xl overflow-hidden aspect-square border border-slate-200 shadow-lg mt-6">
+                  <div className="rounded-xl overflow-hidden aspect-square border border-slate-200 shadow-lg">
                     <img
-                      src={warehousingImg}
-                      alt="ARYVON material handling — warehousing operations"
+                      src="/assets/images/products/scissor-floor-mounted.jpg"
+                      alt="Floor-mounted scissor lift in a manufacturing facility"
                       className="w-full h-full object-cover"
                     />
                   </div>

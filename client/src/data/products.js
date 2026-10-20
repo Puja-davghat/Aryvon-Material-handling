@@ -14,6 +14,7 @@ export const categories = [
     description: 'Industrial goods lifts engineered for reliable vertical movement of pallets, materials, and goods between floor levels — with enclosed safety cages and structural steel masts.',
     image: '/assets/images/products/vrc-goods-lift.jpg',
     fallback: '/assets/images/hero/hero-vrc-warehouse.jpg',
+    productSlug: 'vertical-reciprocating-conveyor',
     subcategories: null
   },
   {
@@ -25,6 +26,7 @@ export const categories = [
     description: 'Heavy-duty hydraulic scissor lifts for precise material positioning at working height — available as self-propelled mobile units or stationary floor-mounted platforms.',
     image: '/assets/images/products/scissor-self-propelled.jpg',
     fallback: '/assets/images/products/scissor-floor-mounted.jpg',
+    promoImage: '/assets/images/products/scissor-lift-promo.svg',
     subcategories: [
       {
         id: '2a',
@@ -50,21 +52,22 @@ export const categories = [
     tagline: 'Reliable Lifting. Precise Movement.',
     description: 'Electric Overhead Travelling cranes engineered for heavy lifting across manufacturing bays, fabrication shops, and logistics handling areas.',
     image: '/assets/images/products/eot-single-girder.jpg',
-    fallback: '/assets/images/products/eot-double-girder.jpg',
+    fallback: '/assets/images/products/eot-double-girder-real.png',
+    promoImage: '/assets/images/products/eot-crane-promo.svg',
     subcategories: [
       {
         id: '3a',
         name: 'Single Girder Crane',
-        slug: 'single-girder-crane',
+        slug: 'single-girder-eot-crane',
         description: 'Single bridge girder EOT crane with underslung electric hoist and motorized trolley — economical choice for light to medium duty lifting across manufacturing and warehousing bays.',
         image: '/assets/images/products/eot-single-girder.jpg'
       },
       {
         id: '3b',
         name: 'Double Girder Crane',
-        slug: 'double-girder-crane',
+        slug: 'double-girder-eot-crane',
         description: 'Twin bridge girder EOT crane with top-running crab trolley and hoist — designed for heavy-duty industrial lifting with a maintenance walkway on the girder for service access.',
-        image: '/assets/images/products/eot-double-girder.jpg'
+        image: '/assets/images/products/eot-double-girder-real.png'
       }
     ]
   },
@@ -75,22 +78,22 @@ export const categories = [
     slug: 'conveyor',
     tagline: 'Keep Your Operations Moving.',
     description: 'Robust industrial conveyor systems for continuous, automated movement of goods, components, and materials across production lines and distribution facilities.',
-    image: '/assets/images/products/roller-conveyor-line.png',
-    fallback: '/assets/images/products/roller-conveyor.jpg',
+    image: '/assets/images/products/roller-conveyor-real.png',
+    fallback: '/assets/images/products/roller-conveyor-line.png',
     subcategories: [
       {
         id: '4a',
         name: 'Roller Conveyor',
         slug: 'roller-conveyor',
         description: 'Industrial roller bed conveyor with heavy-gauge steel frame — available as powered (motorized drive roller) and gravity-feed configurations for box, tote, and pallet movement.',
-        image: '/assets/images/products/roller-conveyor-line.png'
+        image: '/assets/images/products/roller-conveyor-real.png'
       },
       {
         id: '4b',
         name: 'Chain Conveyor',
         slug: 'chain-conveyor',
         description: 'Heavy-duty chain-driven conveyor with clearly visible industrial chain tracks and a sturdy steel supporting frame — ideal for conveying heavy pallets, dies, and assemblies.',
-        image: '/assets/images/products/chain-conveyor.jpg'
+        image: '/assets/images/products/chain-conveyor-real.png'
       }
     ]
   }
@@ -186,7 +189,7 @@ export const products = [
     category_name: 'EOT Crane',
     tagline: 'Reliable Lifting. Precise Movement.',
     description: 'Twin bridge girder Electric Overhead Travelling crane with top-running crab trolley and hoist. Engineered for heavy-duty industrial lifting with service walkway on the girder for maintenance access.',
-    image_url: '/assets/images/products/eot-double-girder.jpg',
+    image_url: '/assets/images/products/eot-double-girder-real.png',
     fallback_image: '/assets/images/products/eot-single-girder.jpg',
     is_active: true,
     specifications: {
@@ -206,8 +209,8 @@ export const products = [
     category_name: 'Conveyor',
     tagline: 'Keep Your Operations Moving.',
     description: 'Industrial roller bed conveyor with heavy-gauge painted steel frame. Available in powered motorized drive roller (MDR) and gravity-feed configurations for continuous movement of boxes, totes, and pallets along production and dispatch lines.',
-    image_url: '/assets/images/products/roller-conveyor-line.png',
-    fallback_image: '/assets/images/products/roller-conveyor.jpg',
+    image_url: '/assets/images/products/roller-conveyor-real.png',
+    fallback_image: '/assets/images/products/roller-conveyor-line.png',
     is_active: true,
     specifications: {
       'Type': 'Industrial Roller Conveyor (Powered / Gravity)',
@@ -226,8 +229,7 @@ export const products = [
     category_name: 'Conveyor',
     tagline: 'Keep Your Operations Moving.',
     description: 'Heavy-duty chain-driven conveyor system with clearly visible industrial chain tracks running in a sturdy steel supporting frame. Designed for reliable movement of heavy pallets, dies, engine assemblies, and bulk manufacturing loads.',
-    image_url: '/assets/images/products/chain-conveyor.jpg',
-    fallback_image: '/assets/images/products/roller-conveyor-line.png',
+    image_url: '/assets/images/products/chain-conveyor-real.png',
     is_active: true,
     specifications: {
       'Type': 'Chain Drive Industrial Conveyor',
