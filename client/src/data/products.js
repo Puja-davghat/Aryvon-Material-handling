@@ -100,19 +100,19 @@ export const categories = [
     leadTime: '2 - 4 Weeks',
     images: [
       {
+        url: '/assets/images/products/pr5.jpeg',
+        title: 'Floor-Mounted Hydraulic Scissor Lift Table',
+        caption: 'Heavy-duty industrial steel platform with dual hydraulic cylinders and ergonomic workstation positioning'
+      },
+      {
+        url: '/assets/images/products/pr6.jpeg',
+        title: 'Mezzanine Cargo Scissor Lift',
+        caption: 'High-travel dual pantograph hydraulic lift carrying palletized goods to mezzanine level'
+      },
+      {
         url: '/assets/images/products/scissor-self-propelled.jpg',
         title: 'Self-Propelled Electric Scissor Lift',
         caption: 'Mobile wheeled drive chassis with extendable elevated work platform and safety guardrails'
-      },
-      {
-        url: '/assets/images/products/scissor-floor-mounted.jpg',
-        title: 'Stationary Floor-Mounted Hydraulic Scissor Lift',
-        caption: 'Heavy-gauge flat steel platform table with dual hydraulic cylinders floor-bolted for assembly lines'
-      },
-      {
-        url: '/assets/images/products/scissor-self-propelled.jpg',
-        title: 'Hydraulic Pantograph Mechanism',
-        caption: 'Solid high-tensile steel scissor arms with precision pivot bushings and emergency lowering'
       }
     ],
     features: [
@@ -154,7 +154,7 @@ export const categories = [
         name: 'Floor-Mounted Scissor Lift',
         slug: 'floor-mounted-scissor-lift',
         description: 'Stationary hydraulic scissor lift table bolted to the factory floor — designed for ergonomic material loading, pallet positioning, and height adjustment at fixed workstations.',
-        image: '/assets/images/products/scissor-floor-mounted.jpg',
+        image: '/assets/images/products/pr5.jpeg',
         capacity: '500 kg – 3,000 kg',
         height: 'Raised height 1,200 mm – 4,000 mm'
       }
@@ -244,25 +244,30 @@ export const categories = [
     path: '/products/conveyor',
     tagline: 'Keep Your Operations Moving.',
     description: 'Robust industrial conveyor systems for continuous, automated movement of goods, components, and materials across production lines and distribution facilities.',
-    image: '/assets/images/products/roller-conveyor-real.png',
-    fallback: '/assets/images/products/roller-conveyor-line.png',
+    image: '/assets/images/products/pr1.jpeg',
+    fallback: '/assets/images/products/pr3.jpeg',
     priceRange: 'Custom Quote (Per Running Meter / Modular Configuration)',
     leadTime: '2 - 4 Weeks',
     images: [
       {
-        url: '/assets/images/products/roller-conveyor-real.png',
-        title: 'Powered Roller Bed Conveyor (Client Reference)',
-        caption: 'Heavy-gauge steel frame with precision motorized drive rollers, yellow chain drive guards, and box handling'
+        url: '/assets/images/products/pr1.jpeg',
+        title: 'Motorized Powered Roller Conveyor',
+        caption: 'Precision steel roller bed designed for continuous carton, box, and tote transport across packaging lines'
       },
       {
-        url: '/assets/images/products/chain-conveyor-real.png',
-        title: 'Heavy-Duty Industrial Chain Conveyor (Client Reference)',
-        caption: 'Blue structural steel frame with dual roller chain tracks and electric gear motor for heavy pallet loads'
+        url: '/assets/images/products/pr2.jpeg',
+        title: 'Heavy-Duty Pallet Chain Conveyor',
+        caption: 'Dual-strand industrial roller chain tracks with high-torque gear motor drive for loaded pallets'
       },
       {
-        url: '/assets/images/products/roller-conveyor-line.png',
-        title: 'Modular Roller Conveyor Transfer System',
-        caption: 'Multi-directional carton accumulation and transfer conveyor for automated distribution lines'
+        url: '/assets/images/products/pr3.jpeg',
+        title: 'Industrial Roller Assembly & Dispatch Line',
+        caption: 'Active multi-station production and packaging conveyor line in modern warehouse facility'
+      },
+      {
+        url: '/assets/images/products/pr4.jpeg',
+        title: 'Warehouse Pallet Transfer Chain Conveyor',
+        caption: 'Heavy-gauge continuous pallet transport engineered for automated factory distribution'
       }
     ],
     features: [
@@ -296,7 +301,7 @@ export const categories = [
         name: 'Roller Conveyor',
         slug: 'roller-conveyor',
         description: 'Industrial roller bed conveyor with heavy-gauge steel frame — available as powered (motorized drive roller) and gravity-feed configurations for box, tote, and pallet movement.',
-        image: '/assets/images/products/roller-conveyor-real.png',
+        image: '/assets/images/products/pr1.jpeg',
         capacity: 'Boxes, totes & pallets',
         speed: '5 – 30 m/min adjustable'
       },
@@ -305,7 +310,7 @@ export const categories = [
         name: 'Chain Conveyor',
         slug: 'chain-conveyor',
         description: 'Heavy-duty chain-driven conveyor with clearly visible industrial chain tracks and a sturdy steel supporting frame — ideal for conveying heavy pallets, dies, and assemblies.',
-        image: '/assets/images/products/chain-conveyor-real.png',
+        image: '/assets/images/products/pr2.jpeg',
         capacity: 'Pallets up to 2,500 kg',
         type: 'Multi-strand chain drive'
       }
@@ -368,8 +373,8 @@ export const products = [
     category_name: 'Scissor Lift',
     tagline: 'Lift Your Materials To The Perfect Height.',
     description: 'Stationary hydraulic scissor lift table bolted to the factory floor — designed for ergonomic material loading, pallet positioning, and height adjustment at fixed workstations.',
-    image_url: '/assets/images/products/scissor-floor-mounted.jpg',
-    fallback_image: '/assets/images/products/scissor-self-propelled.jpg',
+    image_url: '/assets/images/products/pr5.jpeg',
+    fallback_image: '/assets/images/products/pr6.jpeg',
     price_range: 'Starting from ₹2,75,000',
     is_active: true,
     specifications: {
@@ -434,8 +439,8 @@ export const products = [
     category_name: 'Conveyor',
     tagline: 'Keep Your Operations Moving.',
     description: 'Industrial roller bed conveyor with heavy-gauge steel frame — available as powered (motorized drive roller) and gravity-feed configurations for box, tote, and pallet movement.',
-    image_url: '/assets/images/products/roller-conveyor-real.png',
-    fallback_image: '/assets/images/products/roller-conveyor-line.png',
+    image_url: '/assets/images/products/pr1.jpeg',
+    fallback_image: '/assets/images/products/pr3.jpeg',
     price_range: 'Custom Quote / Per Meter Configuration',
     is_active: true,
     specifications: {
@@ -456,7 +461,8 @@ export const products = [
     category_name: 'Conveyor',
     tagline: 'Keep Your Operations Moving.',
     description: 'Heavy-duty chain-driven conveyor with clearly visible industrial chain tracks and a sturdy steel supporting frame — ideal for conveying heavy pallets, dies, and assemblies.',
-    image_url: '/assets/images/products/chain-conveyor-real.png',
+    image_url: '/assets/images/products/pr2.jpeg',
+    fallback_image: '/assets/images/products/pr4.jpeg',
     price_range: 'Custom Quote / Per Meter Configuration',
     is_active: true,
     specifications: {
