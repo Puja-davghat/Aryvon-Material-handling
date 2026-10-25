@@ -16,9 +16,18 @@ export default function Contact() {
             <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block">
               Direct Inquiries
             </span>
-            <h1 className="text-3xl sm:text-5xl font-black font-heading tracking-tight leading-tight">
-              Contact ARYVON
-            </h1>
+            <div className="flex flex-wrap items-center gap-3">
+              <h1 className="text-3xl sm:text-5xl font-black font-heading tracking-tight leading-tight text-white">
+                Contact
+              </h1>
+              <div className="bg-white/95 px-3 py-1 rounded-lg shadow inline-flex items-center">
+                <img
+                  src="/assets/logo/aryvon-logo.png"
+                  alt="ARYVON"
+                  className="h-8 sm:h-10 w-auto object-contain"
+                />
+              </div>
+            </div>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
               Have a material handling requirement or need technical assistance? Contact our team directly through our verified phone line or submit your equipment requirements through the enquiry form below.  </p>
           </div>

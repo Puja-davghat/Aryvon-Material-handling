@@ -78,6 +78,7 @@ const industries = [
     description:
       'Logistics hubs and freight terminals require efficient loading, unloading, and cross-docking. Scissor lifts, VRCs, and conveyors facilitate rapid material movement between vehicle and warehouse — improving turnaround times and operational safety.',
     equipment: [
+      'Single & Double Girder EOT Crane — for heavy freight loading, container handling, and overhead cargo transfer',
       'VRC — for goods transfer between loading dock level and elevated warehouse floors',
       'Floor-Mounted Scissor Lift — for trailer height bridging at loading bays',
       'Roller Conveyor — for continuous cargo movement from inbound to outbound'
@@ -95,9 +96,18 @@ export default function Industries() {
           <IndustrialShapes />
           <div className="absolute inset-0 industrial-grid opacity-20 pointer-events-none" />
           <div className="relative z-10 max-w-3xl space-y-4">
-            <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block">
-              Sector Capabilities
-            </span>
+            <div className="flex items-center gap-3">
+              <div className="bg-white/95 px-2.5 py-1 rounded shadow inline-flex items-center">
+                <img
+                  src="/assets/logo/aryvon-logo.png"
+                  alt="ARYVON"
+                  className="h-5 w-auto object-contain"
+                />
+              </div>
+              <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block">
+                Sector Capabilities
+              </span>
+            </div>
             <h1 className="text-3xl sm:text-5xl font-black font-heading tracking-tight leading-tight">
               Industries We Serve
             </h1>

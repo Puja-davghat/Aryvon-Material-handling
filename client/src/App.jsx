@@ -8,6 +8,7 @@ import Products from './pages/Products';
 import Industries from './pages/Industries';
 import Contact from './pages/Contact';
 import ProductDetail from './pages/ProductDetail';
+import DedicatedProductPage from './pages/DedicatedProductPage';
 import NotFound from './pages/NotFound';
 
 function ScrollToTop() {
@@ -35,8 +36,19 @@ export default function App() {
         <Routes location={location}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          
+          {/* Main Products Catalogue Hub */}
           <Route path="/products" element={<Products />} />
+          
+          {/* 4 Dedicated Individual Product Pages */}
+          <Route path="/products/vrc" element={<DedicatedProductPage forcedSlug="vrc" />} />
+          <Route path="/products/scissor-lift" element={<DedicatedProductPage forcedSlug="scissor-lift" />} />
+          <Route path="/products/eot-crane" element={<DedicatedProductPage forcedSlug="eot-crane" />} />
+          <Route path="/products/conveyor" element={<DedicatedProductPage forcedSlug="conveyor" />} />
+
+          {/* Subcategory / Individual Product Detail Route */}
           <Route path="/products/:slug" element={<ProductDetail />} />
+          
           <Route path="/industries" element={<Industries />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />

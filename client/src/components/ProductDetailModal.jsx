@@ -54,7 +54,7 @@ export default function ProductDetailModal({ product, onClose }) {
                     e.target.dataset.triedFallback = 'true';
                     e.target.src = product.fallback_image;
                   } else {
-                    e.target.src = '/assets/images/hero/hero-warehouse.jpg';
+                    e.target.src = '/assets/images/hero/hero-vrc-warehouse.jpg';
                   }
                 }}
               />
@@ -115,14 +115,25 @@ export default function ProductDetailModal({ product, onClose }) {
           </button>
           <div className="flex items-center gap-3 w-full sm:w-auto order-1 sm:order-2">
             <Button
+              onClick={() => {
+                onClose();
+                navigate(product.category_slug ? `/products/${product.category_slug}` : `/products/${product.slug}`);
+              }}
+              variant="navy"
+              size="md"
+              className="w-full sm:w-auto text-xs"
+            >
+              Open Dedicated Page
+            </Button>
+            <Button
               onClick={handleInquire}
               variant="primary"
               size="md"
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto text-xs"
               icon={ArrowRight}
               iconPosition="right"
             >
-              Inquire About This Equipment
+              Inquire Now
             </Button>
           </div>
         </div>

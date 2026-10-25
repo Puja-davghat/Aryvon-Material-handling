@@ -34,26 +34,26 @@ const products = [
   {
     name: 'VRC',
     full: 'Vertical Reciprocating Conveyor',
-    tagline: 'Move your goods between floors with ease.',
-    href: '/products#vrc'
+    tagline: 'Powering vertical movement. Built for industrial demands.',
+    href: '/products/vrc'
   },
   {
     name: 'Scissor Lift',
     full: 'Self-Propelled & Floor-Mounted',
     tagline: 'Lift Your Materials To The Perfect Height.',
-    href: '/products#scissor-lift'
+    href: '/products/scissor-lift'
   },
   {
     name: 'EOT Crane',
     full: 'Single Girder & Double Girder',
     tagline: 'Reliable Lifting. Precise Movement.',
-    href: '/products#eot-crane'
+    href: '/products/eot-crane'
   },
   {
     name: 'Conveyor',
     full: 'Roller & Chain Conveyor',
     tagline: 'Keep Your Operations Moving.',
-    href: '/products#conveyor'
+    href: '/products/conveyor'
   }
 ];
 
@@ -70,9 +70,18 @@ export default function About() {
             <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block">
               Our Company
             </span>
-            <h1 className="text-3xl sm:text-5xl font-black font-heading tracking-tight leading-tight">
-              About ARYVON
-            </h1>
+            <div className="flex flex-wrap items-center gap-3">
+              <h1 className="text-3xl sm:text-5xl font-black font-heading tracking-tight leading-tight text-white">
+                About
+              </h1>
+              <div className="bg-white/95 px-3 py-1 rounded-lg shadow inline-flex items-center">
+                <img
+                  src="/assets/logo/aryvon-logo.png"
+                  alt="ARYVON"
+                  className="h-8 sm:h-10 w-auto object-contain"
+                />
+              </div>
+            </div>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
               Dedicated material handling solutions for industrial operations — focused on safety, reliability, and practical engineering.
             </p>
@@ -254,9 +263,19 @@ export default function About() {
       {/* CTA */}
       <AnimatedSection animation="fade-up" className="py-16 sm:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <h3 className="text-2xl sm:text-4xl font-black font-heading text-brand-navy">
-            Ready to Work With ARYVON?
-          </h3>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <h3 className="text-2xl sm:text-4xl font-black font-heading text-brand-navy">
+              Ready to Work With
+            </h3>
+            <div className="bg-white px-3 py-1 rounded-lg border border-slate-200 shadow-sm inline-flex items-center">
+              <img
+                src="/assets/logo/aryvon-logo.png"
+                alt="ARYVON"
+                className="h-7 sm:h-8 w-auto object-contain"
+              />
+            </div>
+            <span className="text-2xl sm:text-4xl font-black text-brand-navy font-heading">?</span>
+          </div>
           <p className="text-slate-600 text-base leading-relaxed">
             Submit your facility and operational requirements — our team will respond with a tailored material handling recommendation.
           </p>

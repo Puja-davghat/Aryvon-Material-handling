@@ -28,11 +28,12 @@ export default function Navbar() {
     { name: 'Contact', path: '/contact' }
   ];
 
+  // 4 Dedicated Product Pages
   const productCategories = [
-    { name: 'VRC', sub: 'Vertical Reciprocating Conveyor', href: '/products#vrc' },
-    { name: 'Scissor Lift', sub: 'Self-Propelled & Floor-Mounted', href: '/products#scissor-lift' },
-    { name: 'EOT Crane', sub: 'Single Girder & Double Girder', href: '/products#eot-crane' },
-    { name: 'Conveyor', sub: 'Roller & Chain Conveyor', href: '/products#conveyor' }
+    { name: 'VRC', sub: 'Vertical Reciprocating Conveyor', href: '/products/vrc' },
+    { name: 'Scissor Lift', sub: 'Self-Propelled & Floor-Mounted', href: '/products/scissor-lift' },
+    { name: 'EOT Crane', sub: 'Single Girder & Double Girder', href: '/products/eot-crane' },
+    { name: 'Conveyor', sub: 'Roller & Chain Conveyor', href: '/products/conveyor' }
   ];
 
   return (
@@ -62,22 +63,15 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
 
-            {/* Logo & Brand */}
-            <Link to="/" className="flex items-center gap-3.5 group flex-shrink-0">
-              <img
-                src="/assets/logo/aryvon-logo.png"
-                alt="ARYVON Logo"
-                className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                }}
-              />
-              <div className="flex flex-col">
-                <div className="text-2xl sm:text-3xl font-black tracking-widest font-heading leading-none">
-                  <span className="text-[#0B2545]">ARY</span>
-                  <span className="text-[#F97316]">VON</span>
-                </div>
-                <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.25em] text-[#0B2545]/70 uppercase mt-1">
+            {/* Logo & Brand — using exact logo image, no plain text ARYVON */}
+            <Link to="/" className="flex items-center gap-3 group flex-shrink-0" aria-label="ARYVON Material Handling Solutions">
+              <div className="flex flex-col justify-center">
+                <img
+                  src="/assets/logo/aryvon-logo.png"
+                  alt="ARYVON"
+                  className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                />
+                <span className="text-[8px] sm:text-[9px] font-bold tracking-[0.25em] text-[#0B2545]/80 uppercase mt-0.5 pl-0.5">
                   Material Handling Solutions
                 </span>
               </div>
@@ -92,7 +86,7 @@ export default function Navbar() {
                       to={link.path}
                       className={({ isActive }) =>
                         `px-3.5 py-2 text-sm font-semibold tracking-wide transition-all duration-200 rounded-md inline-flex items-center gap-1 ${
-                          isActive
+                          isActive || location.pathname.startsWith('/products')
                             ? 'text-[#F97316] font-bold border-b-2 border-[#F97316] bg-orange-50/60'
                             : 'text-[#0B2545] hover:text-[#F97316] hover:bg-orange-50/50'
                         }`
@@ -102,27 +96,28 @@ export default function Navbar() {
                       <ChevronDown className="w-3.5 h-3.5 text-[#F97316] group-hover:rotate-180 transition-transform duration-200" />
                     </NavLink>
 
-                    {/* Products Dropdown */}
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0">
+                    {/* Products Dropdown pointing to 4 dedicated pages */}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0">
                       <div className="p-2 space-y-1">
                         {productCategories.map(cat => (
-                          <a
+                          <Link
                             key={cat.name}
-                            href={cat.href}
-                            onClick={(e) => { e.preventDefault(); navigate(cat.href.split('#')[0]); setTimeout(() => { document.getElementById(cat.href.split('#')[1])?.scrollIntoView({ behavior: 'smooth' }); }, 100); }}
+                            to={cat.href}
                             className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-orange-50 group/item transition-colors"
                           >
                             <span className="w-2 h-2 rounded-full bg-[#F97316] flex-shrink-0" />
                             <div>
-                              <p className="text-sm font-bold text-[#0B2545] group-hover/item:text-[#F97316] transition-colors">{cat.name}</p>
+                              <p className="text-sm font-bold text-[#0B2545] group-hover/item:text-[#F97316] transition-colors">
+                                {cat.name}
+                              </p>
                               <p className="text-xs text-slate-500">{cat.sub}</p>
                             </div>
-                          </a>
+                          </Link>
                         ))}
                       </div>
-                      <div className="border-t border-slate-100 px-4 py-3 bg-slate-50">
+                      <div className="border-t border-slate-100 px-4 py-3 bg-slate-50 flex items-center justify-between">
                         <Link to="/products" className="text-xs font-bold text-[#F97316] hover:text-orange-700 uppercase tracking-wider">
-                          View All Products →
+                          View Complete Catalogue →
                         </Link>
                       </div>
                     </div>
@@ -189,19 +184,22 @@ export default function Navbar() {
               </NavLink>
             ))}
 
-            {/* Mobile product quick links */}
+            {/* Mobile 4 Dedicated Product Pages */}
             <div className="pt-2 border-t border-slate-100">
-              <p className="text-xs font-bold text-[#0B2545]/60 uppercase tracking-widest px-4 mb-2">Products</p>
+              <p className="text-xs font-bold text-[#0B2545]/60 uppercase tracking-widest px-4 mb-2">Dedicated Product Pages</p>
               {productCategories.map(cat => (
-                <a
+                <Link
                   key={cat.name}
-                  href={cat.href}
-                  onClick={(e) => { e.preventDefault(); navigate(cat.href.split('#')[0]); setIsOpen(false); }}
-                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#0B2545] hover:text-[#F97316] hover:bg-orange-50/50 rounded-md transition-colors"
+                  to={cat.href}
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-between px-4 py-2.5 text-sm font-medium text-[#0B2545] hover:text-[#F97316] hover:bg-orange-50/50 rounded-md transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#F97316]" />
-                  {cat.name}
-                </a>
+                  <div className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#F97316]" />
+                    <span className="font-semibold">{cat.name}</span>
+                  </div>
+                  <span className="text-[11px] text-slate-500">{cat.sub.split('&')[0]}</span>
+                </Link>
               ))}
             </div>
 

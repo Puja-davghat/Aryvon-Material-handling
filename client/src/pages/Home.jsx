@@ -74,10 +74,10 @@ function ProductCategoryCard({ category, index }) {
         )}
 
         <button
-          onClick={() => navigate(`/products#${category.slug}`)}
-          className="inline-flex items-center gap-2 text-sm font-bold text-brand-navy hover:text-brand-orange transition-colors group/btn"
+          onClick={() => navigate(category.path || `/products/${category.slug}`)}
+          className="inline-flex items-center gap-2 text-sm font-bold text-brand-navy hover:text-brand-orange transition-colors group/btn pt-2 border-t border-slate-100"
         >
-          <span>View Details</span>
+          <span>Open Dedicated Page</span>
           <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform text-brand-orange" />
         </button>
       </div>
@@ -226,10 +226,16 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="max-w-4xl space-y-8">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-brand-navy/80 border border-brand-orange/50 text-brand-paleOrange text-xs font-bold tracking-widest uppercase backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-brand-orange animate-ping" />
-              Industrial Material Handling Solutions
+            {/* Badge featuring ARYVON Logo */}
+            <div className="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-brand-navy/90 border border-brand-orange/50 text-brand-paleOrange text-xs font-bold tracking-widest uppercase backdrop-blur-sm">
+              <div className="bg-white/95 px-2 py-0.5 rounded shadow inline-flex items-center">
+                <img
+                  src="/assets/logo/aryvon-logo.png"
+                  alt="ARYVON"
+                  className="h-4 sm:h-5 w-auto object-contain"
+                />
+              </div>
+              <span className="hidden sm:inline">Material Handling Solutions</span>
             </div>
 
             {/* Main headline */}
@@ -328,9 +334,19 @@ export default function Home() {
               <span className="text-xs font-bold uppercase tracking-widest text-brand-orange block">
                 Our Strengths
               </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-brand-navy font-heading">
-                Why Choose ARYVON?
-              </h2>
+              <div className="flex flex-wrap items-center justify-center gap-2.5">
+                <h2 className="text-3xl sm:text-4xl font-black text-brand-navy font-heading">
+                  Why Choose
+                </h2>
+                <div className="bg-white px-3 py-1 rounded-lg border border-slate-200 shadow-sm inline-flex items-center">
+                  <img
+                    src="/assets/logo/aryvon-logo.png"
+                    alt="ARYVON"
+                    className="h-7 sm:h-8 w-auto object-contain"
+                  />
+                </div>
+                <span className="text-3xl sm:text-4xl font-black text-brand-navy font-heading">?</span>
+              </div>
               <p className="text-slate-600 text-base leading-relaxed">
                 We match your operation with practical, proven material handling equipment designed for demanding industrial environments.
               </p>
@@ -445,9 +461,18 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection animation="fade-up">
               <div className="space-y-6">
-                <span className="text-xs font-bold uppercase tracking-widest text-brand-orange border-b border-brand-orange pb-1 inline-block">
-                  About ARYVON
-                </span>
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
+                    About
+                  </span>
+                  <div className="bg-white/95 px-2.5 py-1 rounded shadow inline-flex items-center">
+                    <img
+                      src="/assets/logo/aryvon-logo.png"
+                      alt="ARYVON"
+                      className="h-5 w-auto object-contain"
+                    />
+                  </div>
+                </div>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-heading leading-tight">
                   Dedicated Material Handling Solutions for Every Industrial Need
                 </h2>
@@ -476,7 +501,7 @@ export default function Home() {
                     to="/about"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors group"
                   >
-                    About ARYVON <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <span>About Us</span> <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <a
                     href="tel:8329358214"

@@ -1,44 +1,72 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, CheckCircle2, ChevronRight, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CheckCircle2, ChevronRight, ShieldCheck, Phone } from 'lucide-react';
 import IndustrialShapes from '../components/IndustrialShapes';
-import { getProductBySlug, products as allProducts } from '../data/products';
+import { getProductBySlug, getCategoryBySlug, products as allProducts } from '../data/products';
+import DedicatedProductPage from './DedicatedProductPage';
 import NotFound from './NotFound';
 
 export default function ProductDetail() {
   const { slug } = useParams();
+
+  // If the slug matches a main product category, show the dedicated category page
+  const categoryMatch = getCategoryBySlug(slug);
+  if (categoryMatch && ['vrc', 'scissor-lift', 'eot-crane', 'conveyor', 'vertical-reciprocating-conveyor'].includes(slug)) {
+    return <DedicatedProductPage forcedSlug={categoryMatch.slug} />;
+  }
+
   const product = getProductBySlug(slug);
 
   if (!product || !product.is_active) {
     return <NotFound />;
   }
 
+  const category = getCategoryBySlug(product.category_slug || product.category_name);
   const specifications = Object.entries(product.specifications ?? {});
   const productVariations = allProducts.filter(
     (variation) => variation.is_active && variation.category_id === product.category_id
   );
 
   return (
-    <div className="space-y-0 py-10 sm:py-16">
+    <div className="space-y-0 py-10 sm:py-16 bg-slate-50">
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center gap-2 text-sm text-slate-500">
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center gap-2 text-xs sm:text-sm text-slate-500 font-medium">
           <Link to="/" className="hover:text-brand-orange">Home</Link>
-          <ChevronRight className="h-4 w-4" />
+          <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
           <Link to="/products" className="hover:text-brand-orange">Products</Link>
-          <ChevronRight className="h-4 w-4" />
-          <span className="font-semibold text-brand-navy">{product.name}</span>
+          {category && (
+            <>
+              <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
+              <Link to={category.path} className="hover:text-brand-orange font-semibold">
+                {category.fullName}
+              </Link>
+            </>
+          )}
+          <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
+          <span className="font-bold text-brand-navy">{product.name}</span>
         </nav>
 
         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
+          {/* Header Banner */}
           <div className="relative overflow-hidden border-b-4 border-brand-orange bg-brand-deep px-6 py-8 text-white sm:px-10 sm:py-10">
             <IndustrialShapes />
             <div className="absolute inset-0 industrial-grid opacity-10 pointer-events-none" />
             <div className="relative z-10 max-w-3xl space-y-3">
-              <span className="inline-flex items-center rounded-full border border-brand-orange/40 bg-brand-navy px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-paleOrange">
-                {product.category_name}
-              </span>
+              <div className="flex items-center gap-3">
+                <div className="bg-white/95 px-2.5 py-1 rounded shadow inline-flex items-center">
+                  <img
+                    src="/assets/logo/aryvon-logo.png"
+                    alt="ARYVON"
+                    className="h-5 w-auto object-contain"
+                  />
+                </div>
+                <span className="inline-flex items-center rounded-full border border-brand-orange/40 bg-brand-navy px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-paleOrange">
+                  {product.category_name}
+                </span>
+              </div>
               <h1 className="text-3xl font-black leading-tight font-heading sm:text-5xl">{product.name}</h1>
-              <p className="text-base font-semibold text-brand-paleOrange">{product.tagline}</p>
+              <p className="text-base font-semibold text-brand-paleOrange">&ldquo;{product.tagline}&rdquo;</p>
               <p className="max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">{product.description}</p>
             </div>
           </div>
@@ -58,10 +86,26 @@ export default function ProductDetail() {
                   }}
                 />
               </div>
+
+              {product.price_range && (
+                <div className="flex items-center justify-between rounded-xl border border-orange-200 bg-orange-50/80 p-4">
+                  <div>
+                    <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Estimated Price Guide</p>
+                    <p className="text-lg sm:text-xl font-black text-brand-orange">{product.price_range}</p>
+                  </div>
+                  <Link
+                    to={`/contact?productId=${product.id}&productName=${encodeURIComponent(product.name)}`}
+                    className="px-4 py-2 bg-brand-orange hover:bg-brand-orangeHover text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-colors"
+                  >
+                    Get Exact Quote
+                  </Link>
+                </div>
+              )}
+
               <div className="flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" />
                 <p className="text-sm leading-relaxed text-emerald-900">
-                  Configured for dependable performance in demanding industrial environments.
+                  Heavy-duty industrial standard build, configured specifically for your facility load requirements and operating conditions.
                 </p>
               </div>
             </div>
@@ -95,31 +139,51 @@ export default function ProductDetail() {
                 )}
               </div>
 
-              <div className="rounded-xl border border-brand-iceBlue bg-brand-lightBlue p-5">
+              <div className="rounded-xl border border-brand-iceBlue bg-brand-lightBlue p-5 space-y-3">
                 <h2 className="text-lg font-bold text-brand-navy">Need this equipment for your facility?</h2>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                  Tell us about your application and our team can help with configuration and a quotation.
+                <p className="text-sm leading-relaxed text-slate-600">
+                  Tell us about your application and our technical engineering team will assist with load calculations and a competitive quotation.
                 </p>
-                <Link
-                  to={`/contact?productId=${product.id}&productName=${encodeURIComponent(product.name)}`}
-                  className="mt-4 inline-flex items-center gap-2 rounded-lg bg-brand-orange px-5 py-3 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-brand-orangeHover"
-                >
-                  Request a Quote <ArrowRight className="h-4 w-4" />
-                </Link>
+                <div className="flex flex-wrap items-center gap-3 pt-2">
+                  <Link
+                    to={`/contact?productId=${product.id}&productName=${encodeURIComponent(product.name)}`}
+                    className="inline-flex items-center gap-2 rounded-lg bg-brand-orange px-5 py-3 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-brand-orangeHover shadow-md"
+                  >
+                    Request a Quote <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <a
+                    href="tel:8329358214"
+                    className="inline-flex items-center gap-2 rounded-lg border-2 border-brand-navy px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-brand-navy hover:bg-brand-navy hover:text-white transition-colors"
+                  >
+                    <Phone className="h-4 w-4 text-brand-orange" /> Call 83293 58214
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
+        {/* Other Variations in same category */}
         {productVariations.length > 1 && (
           <section className="mt-10" aria-labelledby="product-variations-heading">
-            <div className="mb-5">
-              <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
-                Explore Options
-              </span>
-              <h2 id="product-variations-heading" className="mt-1 text-2xl font-black text-brand-navy font-heading">
-                {product.category_name} Types
-              </h2>
+            <div className="mb-5 flex items-center justify-between">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
+                  Explore Options
+                </span>
+                <h2 id="product-variations-heading" className="mt-1 text-2xl font-black text-brand-navy font-heading">
+                  Other {product.category_name} Types
+                </h2>
+              </div>
+              {category && (
+                <Link
+                  to={category.path}
+                  className="text-xs font-bold text-brand-orange hover:text-orange-700 uppercase tracking-wider flex items-center gap-1"
+                >
+                  <span>Open Dedicated {category.name} Page</span>
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
+              )}
             </div>
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {productVariations.map((variation) => {
@@ -168,10 +232,15 @@ export default function ProductDetail() {
           </section>
         )}
 
-        <div className="mt-6">
+        <div className="mt-8 flex items-center gap-4">
           <Link to="/products" className="inline-flex items-center gap-2 text-sm font-bold text-brand-navy hover:text-brand-orange">
-            <ArrowLeft className="h-4 w-4" /> Back to Products
+            <ArrowLeft className="h-4 w-4" /> Back to All Products
           </Link>
+          {category && (
+            <Link to={category.path} className="inline-flex items-center gap-2 text-sm font-bold text-brand-orange hover:text-orange-700">
+              Go to Dedicated {category.name} Page <ArrowRight className="h-4 w-4" />
+            </Link>
+          )}
         </div>
       </section>
     </div>

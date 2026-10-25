@@ -28,7 +28,7 @@ export default function ProductCard({ product }) {
                 e.target.dataset.triedFallback = 'true';
                 e.target.src = product.fallback_image;
               } else {
-                e.target.src = '/assets/images/hero/hero-warehouse.jpg';
+                e.target.src = '/assets/images/hero/hero-vrc-warehouse.jpg';
               }
             }}
           />

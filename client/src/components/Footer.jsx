@@ -4,18 +4,18 @@ import { Phone, Mail, MapPin, ArrowRight, ShieldCheck, Wrench, Clock } from 'luc
 
 export default function Footer() {
   const productCategories = [
-    { name: 'VRC', sub: 'Vertical Reciprocating Conveyor', href: '/products#vrc' },
-    { name: 'Scissor Lift', sub: 'Self-Propelled & Floor-Mounted', href: '/products#scissor-lift' },
-    { name: 'EOT Crane', sub: 'Single Girder & Double Girder', href: '/products#eot-crane' },
-    { name: 'Conveyor', sub: 'Roller & Chain Conveyor', href: '/products#conveyor' }
+    { name: 'VRC', sub: 'Vertical Reciprocating Conveyor', href: '/products/vrc' },
+    { name: 'Scissor Lift', sub: 'Self-Propelled & Floor-Mounted', href: '/products/scissor-lift' },
+    { name: 'EOT Crane', sub: 'Single Girder & Double Girder', href: '/products/eot-crane' },
+    { name: 'Conveyor', sub: 'Roller & Chain Conveyor', href: '/products/conveyor' }
   ];
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Products', href: '/products' },
+    { name: 'Products Catalogue', href: '/products' },
     { name: 'Industries We Serve', href: '/industries' },
     { name: 'About Us', href: '/about' },
-    { name: 'Contact', href: '/contact' }
+    { name: 'Contact Us', href: '/contact' }
   ];
 
   return (
@@ -32,37 +32,33 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
-          {/* Column 1: Company Profile */}
+          {/* Column 1: Company Profile with exact Logo Image */}
           <div className="space-y-4">
-            <Link to="/" className="inline-flex items-center gap-3">
-              <img
-                src="/assets/logo/aryvon-logo.png"
-                alt="ARYVON Material Handling Solutions Logo"
-                className="h-12 w-auto object-contain"
-                onError={(e) => { e.target.style.display = 'none'; }}
-              />
-              <div className="flex flex-col">
-                <span className="text-2xl font-black tracking-widest font-heading text-white">
-                  ARY<span className="text-brand-orange">VON</span>
-                </span>
-                <span className="text-[9px] font-bold tracking-[0.2em] text-brand-paleOrange uppercase">
-                  Material Handling Solutions
-                </span>
+            <Link to="/" className="inline-flex flex-col gap-1.5 group">
+              <div className="bg-white/95 px-3 py-1.5 rounded-lg shadow-sm inline-block w-fit">
+                <img
+                  src="/assets/logo/aryvon-logo.png"
+                  alt="ARYVON Material Handling Solutions Logo"
+                  className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
+              <span className="text-[10px] font-bold tracking-[0.25em] text-brand-paleOrange uppercase pl-0.5">
+                Material Handling Solutions
+              </span>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed">
-              ARYVON provides engineered material handling solutions — VRCs, Scissor Lifts, EOT Cranes, and Conveyors — tailored to industrial operational requirements.
+              ARYVON provides engineered material handling solutions — Vertical Reciprocating Conveyors (VRC), Scissor Lifts, EOT Cranes, and Conveyors — tailored to industrial operational requirements.
             </p>
-            <div className="pt-2 flex items-center gap-3 text-xs text-brand-paleOrange">
+            <div className="pt-2 flex items-center gap-2.5 text-xs text-brand-paleOrange">
               <ShieldCheck className="w-4 h-4 text-brand-orange flex-shrink-0" />
               <span>Heavy-Duty Industrial Standards &amp; Reliable Engineering</span>
             </div>
           </div>
 
-          {/* Column 2: Our Products */}
+          {/* Column 2: 4 Dedicated Products */}
           <div className="space-y-4">
             <h3 className="text-white font-bold text-base tracking-wider uppercase border-l-4 border-brand-orange pl-3">
-              Our Products
+              Dedicated Products
             </h3>
             <ul className="space-y-3 text-sm">
               {productCategories.map(cat => (
@@ -85,7 +81,7 @@ export default function Footer() {
           {/* Column 3: Navigation */}
           <div className="space-y-4">
             <h3 className="text-white font-bold text-base tracking-wider uppercase border-l-4 border-brand-orange pl-3">
-              Navigation
+              Quick Links
             </h3>
             <ul className="space-y-2.5 text-sm">
               {navLinks.map(link => (
@@ -145,14 +141,14 @@ export default function Footer() {
               </div>
 
               <p className="text-xs text-slate-500 mt-1">
-                Direct enquiries routed to the ARYVON technical team.
+                Direct enquiries routed to the ARYVON technical engineering team.
               </p>
             </div>
 
             {/* CTA */}
             <Link
               to="/contact"
-              className="block w-full text-center px-5 py-3 bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors"
+              className="block w-full text-center px-5 py-3 bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors shadow-md"
             >
               Request a Quote
             </Link>
