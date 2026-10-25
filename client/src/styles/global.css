@@ -360,3 +360,76 @@ img.lazy-fade.loaded {
 .animate-fade-in-smooth {
   animation: fadeInSmooth 0.8s ease forwards;
 }
+
+/* ── Continuous 3D Design Movement & Interactive Animations ── */
+@keyframes float3D {
+  0%, 100% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) translateZ(0px);
+  }
+  25% {
+    transform: perspective(1000px) rotateX(1.8deg) rotateY(-2.5deg) translateY(-7px) translateZ(10px);
+  }
+  50% {
+    transform: perspective(1000px) rotateX(-2deg) rotateY(2deg) translateY(-12px) translateZ(16px);
+  }
+  75% {
+    transform: perspective(1000px) rotateX(-1deg) rotateY(-1.8deg) translateY(-5px) translateZ(8px);
+  }
+}
+
+@keyframes float3DSubtle {
+  0%, 100% {
+    transform: perspective(800px) rotateX(0deg) translateY(0px);
+  }
+  50% {
+    transform: perspective(800px) rotateX(2deg) translateY(-8px);
+  }
+}
+
+@keyframes glowPulse3D {
+  0%, 100% {
+    filter: drop-shadow(0 10px 20px rgba(252, 108, 4, 0.15));
+  }
+  50% {
+    filter: drop-shadow(0 20px 30px rgba(252, 108, 4, 0.35));
+  }
+}
+
+@keyframes scissorLiftTravel {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.02);
+  }
+}
+
+.animate-3d-float {
+  animation: float3D 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.animate-3d-float-delayed {
+  animation: float3D 6.5s ease-in-out 1.5s infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.animate-3d-card {
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.animate-3d-card:hover {
+  transform: perspective(1000px) rotateX(2.5deg) rotateY(-2.5deg) translateY(-10px) translateZ(14px);
+  box-shadow: 0 25px 50px -12px rgba(4, 44, 92, 0.25), 0 0 25px rgba(252, 108, 4, 0.2);
+}
+
+.animate-scissor-travel {
+  animation: scissorLiftTravel 5s ease-in-out infinite;
+}
+
+.perspective-container {
+  perspective: 1200px;
+}

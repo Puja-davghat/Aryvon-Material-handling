@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Phone, ChevronRight, Eye, ShieldCheck, Layers, ExternalLink } from 'lucide-react';
 import Button from '../components/Button';
 import IndustrialShapes from '../components/IndustrialShapes';
@@ -11,7 +11,7 @@ function ProductCard({ item, categoryName, categorySlug }) {
   const detailLink = `/products/${item.slug}`;
 
   return (
-    <div className="group bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-orange/50 transition-all duration-300 flex flex-col justify-between">
+    <div className="group bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:border-brand-orange/50 animate-3d-card transition-all duration-300 flex flex-col justify-between">
       {/* Image */}
       <div>
         <div className="relative aspect-video overflow-hidden bg-slate-100">
@@ -82,6 +82,7 @@ function ProductCard({ item, categoryName, categorySlug }) {
 
 // Category section showcasing one of the 4 dedicated products
 function CategorySection({ category }) {
+  const navigate = useNavigate();
   return (
     <section id={category.slug} className="scroll-mt-32">
       {/* Category header */}
@@ -95,9 +96,6 @@ function CategorySection({ category }) {
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-navy rounded-full text-brand-paleOrange text-xs font-bold uppercase tracking-widest border border-brand-orange/30">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-ping" />
                   Product Category #{category.id}
-                </span>
-                <span className="text-xs text-slate-300 font-semibold">
-                  {category.priceRange}
                 </span>
               </div>
               <h2 className="text-2xl sm:text-4xl font-black font-heading text-white">{category.fullName}</h2>
@@ -116,7 +114,7 @@ function CategorySection({ category }) {
               </Link>
               <span className="text-xs text-slate-300 flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-brand-orange" />
-                Includes 3+ designs, specs &amp; pricing
+                Includes 3+ designs, specs &amp; custom quotation
               </span>
             </div>
           </div>
@@ -125,7 +123,7 @@ function CategorySection({ category }) {
         {/* Subcategory grid or single item view */}
         <div className="p-6 sm:p-8 bg-slate-50/50">
           {category.subcategories ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 perspective-container">
               {category.subcategories.map(sub => (
                 <ProductCard
                   key={sub.id}
@@ -136,8 +134,19 @@ function CategorySection({ category }) {
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="group rounded-xl overflow-hidden border border-slate-200 bg-white hover:shadow-lg transition-all duration-300">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 perspective-container">
+              <div
+                onClick={() => navigate(category.path)}
+                role="link"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navigate(category.path);
+                  }
+                }}
+                className="group rounded-xl overflow-hidden border border-slate-200 bg-white hover:shadow-2xl hover:border-brand-orange/50 animate-3d-card transition-all duration-300 cursor-pointer"
+              >
                 <div className="relative aspect-video overflow-hidden">
                   <img
                     src={category.image}
@@ -181,10 +190,6 @@ function CategorySection({ category }) {
                     ARYVON {category.fullName} systems are customized to your factory floor dimensions, load requirements (up to 5,000 kg), and travel height (up to 18m).
                   </p>
                   <div className="pt-2 space-y-2">
-                    <div className="flex items-center gap-2 text-xs text-slate-700">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
-                      Starting price guide: <strong className="text-brand-navy">{category.priceRange}</strong>
-                    </div>
                     <div className="flex items-center gap-2 text-xs text-slate-700">
                       <span className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
                       Lead time: <strong className="text-brand-navy">{category.leadTime}</strong>
@@ -241,7 +246,7 @@ export default function Products() {
               Four Core Product Lines
             </h1>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Browse ARYVON's four precision-engineered industrial material handling categories. Each product line features its own dedicated page with multiple designs, detailed specifications, pricing guidance, and customized quotations.
+              Browse ARYVON's four precision-engineered industrial material handling categories. Each product line features its own dedicated page with multiple designs, detailed specifications, and customized quotations.
             </p>
 
             {/* Direct links to all 4 dedicated pages */}

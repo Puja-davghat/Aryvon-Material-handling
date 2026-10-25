@@ -147,18 +147,18 @@ export default function About() {
             <AnimatedSection animation="fade-up">
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="rounded-xl overflow-hidden aspect-square border border-slate-200 shadow-lg">
+                  <div className="rounded-xl overflow-hidden aspect-square border border-slate-200 shadow-lg group hover:shadow-2xl transition-all duration-300">
                     <img
-                      src="/assets/images/products/scissor-self-propelled.jpg"
-                      alt="Self-propelled scissor lift in an industrial facility"
-                      className="w-full h-full object-cover"
+                      src="/assets/images/products/Self propelled Scissor lift.jpeg"
+                      alt="Self-propelled scissor lift — ARYVON Material Handling"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <div className="rounded-xl overflow-hidden aspect-square border border-slate-200 shadow-lg">
+                  <div className="rounded-xl overflow-hidden aspect-square border border-slate-200 shadow-lg group hover:shadow-2xl transition-all duration-300">
                     <img
-                      src="/assets/images/products/scissor-floor-mounted.jpg"
-                      alt="Floor-mounted scissor lift in a manufacturing facility"
-                      className="w-full h-full object-cover"
+                      src="/assets/images/products/vrc-goods-lift.jpg"
+                      alt="Vertical Reciprocating Conveyor (VRC) Goods Lift — ARYVON"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                 </div>

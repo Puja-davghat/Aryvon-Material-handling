@@ -87,20 +87,18 @@ export default function ProductDetail() {
                 />
               </div>
 
-              {product.price_range && (
-                <div className="flex items-center justify-between rounded-xl border border-orange-200 bg-orange-50/80 p-4">
-                  <div>
-                    <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Estimated Price Guide</p>
-                    <p className="text-lg sm:text-xl font-black text-brand-orange">{product.price_range}</p>
-                  </div>
-                  <Link
-                    to={`/contact?productId=${product.id}&productName=${encodeURIComponent(product.name)}`}
-                    className="px-4 py-2 bg-brand-orange hover:bg-brand-orangeHover text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-colors"
-                  >
-                    Get Exact Quote
-                  </Link>
+              <div className="flex items-center justify-between rounded-xl border border-orange-200 bg-orange-50/80 p-4">
+                <div>
+                  <p className="text-xs font-bold text-slate-700 uppercase tracking-wider">Custom Built To Specifications</p>
+                  <p className="text-sm font-semibold text-brand-orange">Engineered to payload &amp; layout requirements</p>
                 </div>
-              )}
+                <Link
+                  to={`/contact?productId=${product.id}&productName=${encodeURIComponent(product.name)}`}
+                  className="px-4 py-2 bg-brand-orange hover:bg-brand-orangeHover text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-colors"
+                >
+                  Get Exact Quote
+                </Link>
+              </div>
 
               <div className="flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" />

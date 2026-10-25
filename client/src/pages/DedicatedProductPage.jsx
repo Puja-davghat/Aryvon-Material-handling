@@ -202,21 +202,15 @@ export default function DedicatedProductPage({ forcedSlug }) {
           {/* Right Column: Pricing Guide, Fast Quote & Core Specs (32%) */}
           <div className="lg:col-span-5 space-y-6">
 
-            {/* Pricing Guide Card */}
+            {/* Custom Engineering & Quotation Card */}
             <div className="bg-gradient-to-br from-brand-navy to-brand-deep text-white p-6 sm:p-8 rounded-2xl shadow-xl border-t-4 border-brand-orange relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-10">
                 <Wrench className="w-28 h-28" />
               </div>
               <div className="relative z-10 space-y-4">
                 <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block">
-                  Industrial Pricing &amp; Quotation
+                  Custom Engineering &amp; Quotation
                 </span>
-                <div className="space-y-1">
-                  <p className="text-xs text-slate-300 uppercase font-semibold">Estimated Price Guide</p>
-                  <p className="text-2xl sm:text-3xl font-black text-brand-orange">
-                    {category.priceRange}
-                  </p>
-                </div>
                 <p className="text-xs text-slate-300 leading-relaxed">
                   Every ARYVON {category.fullName} is custom manufactured to your plant&apos;s specific payload capacity, lift height, and floor configuration. Standard lead time: <strong className="text-white">{category.leadTime}</strong>.
                 </p>
@@ -318,11 +312,11 @@ export default function DedicatedProductPage({ forcedSlug }) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 perspective-container">
               {category.subcategories.map((sub) => (
                 <div
                   key={sub.id}
-                  className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-orange/50 transition-all duration-300 flex flex-col justify-between"
+                  className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:border-brand-orange/50 animate-3d-card transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
                     <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
