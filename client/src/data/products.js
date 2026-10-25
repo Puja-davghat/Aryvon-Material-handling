@@ -207,7 +207,7 @@ export const categories = [
       'Hoist Type': 'Electric wire rope hoist with rotary limit switch and fail-safe electromagnetic brake',
       'Control Mode': 'Wireless Radio Remote + Independent Pushbutton Pendant backup',
       'Power Supply': '415V AC, 3 Phase, 50 Hz with Shrouded DSL busbar system'
-    ],
+    },
     applications: [
       'Heavy fabrication and structural steel workshops',
       'Steel mills, coil handling, and metal processing facilities',
@@ -282,7 +282,7 @@ export const categories = [
       'Conveyor Speed': 'Variable 5 to 30 meters/min with VFD speed control',
       'Drive Unit': 'Inline helical geared motor with high-efficiency IE3 rating',
       'Control Sensors': 'Integrated photoelectric retro-reflective sensors for zero pressure accumulation (ZPA)'
-    ],
+    },
     applications: [
       'Automated e-commerce sortation, packaging, and dispatch lines',
       'Manufacturing assembly lines and component feeder systems',
