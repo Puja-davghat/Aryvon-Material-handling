@@ -7,7 +7,9 @@ import {
   HardHat, ShieldCheck
 } from 'lucide-react';
 import Button from '../components/Button';
+import HeroSlider from '../components/HeroSlider';
 import AnimatedSection from '../components/AnimatedSection';
+import CountUp from '../components/CountUp';
 import EngineeringProcessSection from '../components/EngineeringProcessSection';
 import { categories } from '../data/products';
 
@@ -125,8 +127,7 @@ const industries = [
   {
     icon: Warehouse,
     name: 'Warehousing',
-    desc: 'Optimize vertical storage and material flow across high-bay warehousing and distribution operations.',
-    img: '/assets/images/industries/warehousing.jpg'
+    desc: 'Optimize vertical storage and material flow across high-bay warehousing and distribution operations.'
   },
   {
     icon: Factory,
@@ -141,8 +142,7 @@ const industries = [
   {
     icon: Truck,
     name: 'Logistics',
-    desc: 'Loading bays, freight handling, and dock operations need robust, dependable material handling.',
-    img: '/assets/images/industries/logistics.jpg'
+    desc: 'Loading bays, freight handling, and dock operations need robust, dependable material handling.'
   },
   {
     icon: Wrench,
@@ -159,30 +159,22 @@ export default function Home() {
           HERO SECTION
          ========================================================================= */}
       <section className="relative min-h-[92vh] flex items-center bg-brand-deep text-white overflow-hidden">
-        {/* Hero background image */}
-        <div className="absolute inset-0">
-          <img
-            src="/assets/images/hero/hero-vrc-warehouse.jpg"
-            alt="ARYVON industrial warehouse with VRC vertical reciprocating conveyor"
-            className="w-full h-full object-cover object-center opacity-40"
-            onError={(e) => {
-              e.target.style.display = 'none';
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-deep via-brand-deep/85 to-brand-deep/50" />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/60 via-transparent to-transparent" />
-        </div>
+        {/* Hero background sliding product images */}
+        <HeroSlider />
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-deep via-brand-deep/85 to-brand-deep/50 z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/60 via-transparent to-transparent z-[1]" />
 
         {/* Industrial grid overlay */}
-        <div className="absolute inset-0 industrial-grid opacity-10 pointer-events-none" />
+        <div className="absolute inset-0 rv-grid-drift opacity-10 pointer-events-none" />
 
         <p className="absolute top-12 left-1/2 z-10 -translate-x-1/2 px-4 text-center text-lg sm:text-xl text-slate-300 font-bold tracking-wide whitespace-nowrap">
           Smart Solutions That Move
         </p>
 
         {/* Ambient glows */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-orange/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-blueAccent/20 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-orange/10 rounded-full blur-[120px] pointer-events-none rv-glow-pulse" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-blueAccent/20 rounded-full blur-[100px] pointer-events-none rv-glow-pulse" style={{ animationDelay: '4s' }} />
 
         {/* Decorative gear */}
         <div className="absolute top-10 right-12 opacity-5 pointer-events-none hidden xl:block">
@@ -240,7 +232,9 @@ export default function Home() {
                 { label: 'Direct Enquiry Line', value: '83293 58214' }
               ].map(stat => (
                 <div key={stat.label} className="text-center sm:text-left">
-                  <p className="text-brand-orange text-xl sm:text-2xl font-black">{stat.value}</p>
+                  <p className="text-brand-orange text-xl sm:text-2xl font-black">
+                    <CountUp value={stat.value} />
+                  </p>
                   <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider mt-0.5">{stat.label}</p>
                 </div>
               ))}
@@ -257,7 +251,7 @@ export default function Home() {
          ========================================================================= */}
       <section className="py-20 sm:py-28 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="fade-up">
+          <AnimatedSection animation="blur-up">
             <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
               <span className="text-xs font-bold uppercase tracking-widest text-brand-orange block">
                 Our Product Range
@@ -271,7 +265,7 @@ export default function Home() {
             </div>
           </AnimatedSection>
 
-          <AnimatedSection animation="fade-up">
+          <AnimatedSection animation="fade-up" stagger>
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 xl:gap-8 perspective-container">
               {categories.map((cat, i) => (
                 <ProductCategoryCard key={cat.id} category={cat} index={i} />
@@ -298,7 +292,7 @@ export default function Home() {
          ========================================================================= */}
       <section className="py-20 sm:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="fade-up">
+          <AnimatedSection animation="blur-up">
             <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
               <span className="text-xs font-bold uppercase tracking-widest text-brand-orange block">
                 Our Strengths
@@ -322,12 +316,12 @@ export default function Home() {
             </div>
           </AnimatedSection>
 
-          <AnimatedSection animation="fade-up">
+          <AnimatedSection animation="fade-up" stagger>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {whyChoose.map((item, i) => (
                 <div
                   key={item.title}
-                  className="group text-center p-8 rounded-2xl border border-slate-200 bg-white hover:border-brand-orange/40 hover:shadow-xl transition-all duration-300"
+                  className="group text-center p-8 rounded-2xl border border-slate-200 bg-white hover:border-brand-orange/40 hover:shadow-xl transition-all duration-300 rv-card-hover"
                 >
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-lightBlue text-brand-orange mb-5 group-hover:bg-brand-orange group-hover:text-white transition-all duration-300">
                     <item.icon className="w-8 h-8" />
@@ -354,12 +348,12 @@ export default function Home() {
           COMPANY INTRODUCTION
          ========================================================================= */}
       <section className="py-20 sm:py-28 bg-brand-deep text-white relative overflow-hidden">
-        <div className="absolute inset-0 industrial-grid opacity-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 w-96 h-96 bg-brand-orange/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute inset-0 rv-grid-drift opacity-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 w-96 h-96 bg-brand-orange/10 rounded-full blur-[120px] pointer-events-none rv-glow-pulse" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <AnimatedSection animation="fade-up">
+            <AnimatedSection animation="fade-right">
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
                   <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
@@ -399,13 +393,13 @@ export default function Home() {
                 <div className="pt-2 flex flex-wrap gap-4">
                   <Link
                     to="/about"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors group"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors group rv-btn-hover"
                   >
                     <span>About Us</span> <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <a
                     href="tel:8329358214"
-                    className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white/30 hover:border-white text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors"
+                    className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white/30 hover:border-white text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors rv-btn-hover"
                   >
                     <Phone className="w-4 h-4" />
                     83293 58214
@@ -414,7 +408,7 @@ export default function Home() {
               </div>
             </AnimatedSection>
 
-            <AnimatedSection animation="fade-up">
+            <AnimatedSection animation="fade-left">
               <div className="relative">
                 <div className="rounded-2xl overflow-hidden border-2 border-brand-orange/30 shadow-2xl">
                   <img
@@ -443,7 +437,7 @@ export default function Home() {
          ========================================================================= */}
       <section className="py-20 sm:py-28 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="fade-up">
+          <AnimatedSection animation="blur-up">
             <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
               <span className="text-xs font-bold uppercase tracking-widest text-brand-orange block">
                 Sector Expertise
@@ -457,32 +451,23 @@ export default function Home() {
             </div>
           </AnimatedSection>
 
-          <AnimatedSection animation="fade-up">
+          <AnimatedSection animation="fade-up" stagger>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-              {industries.map((ind) => (
+              {industries.map((ind, i) => (
                 <Link
                   to="/industries"
                   key={ind.name}
-                  className="group relative rounded-2xl overflow-hidden aspect-[3/4] sm:aspect-auto sm:h-72 bg-brand-navy border border-slate-200 hover:border-brand-orange/50 hover:shadow-xl transition-all duration-300"
+                  className={`group relative rounded-2xl overflow-hidden aspect-[3/4] sm:aspect-auto sm:h-72 bg-brand-navy border border-slate-700/60 hover:border-brand-orange/60 hover:shadow-xl transition-all duration-300 rv-card-hover ${
+                    i % 2 === 0 ? 'rv-float-slow' : 'rv-float-slow-delayed'
+                  }`}
                 >
-                  {ind.img ? (
-                    <img
-                      src={ind.img}
-                      alt={`ARYVON serving ${ind.name} industry`}
-                      className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-500"
-                      onError={(e) => {
-                        e.target.style.opacity = '0';
-                      }}
-                    />
-                  ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-brand-navy via-brand-deep to-slate-900 group-hover:scale-105 transition-all duration-500">
-                      <div className="absolute inset-0 industrial-grid opacity-20" />
-                    </div>
-                  )}
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-navy via-brand-deep to-slate-900 group-hover:scale-105 transition-all duration-500">
+                    <div className="absolute inset-0 industrial-grid opacity-20" />
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-deep via-brand-navy/60 to-transparent" />
 
                   <div className="relative z-10 h-full flex flex-col justify-end p-5">
-                    <div className="p-2.5 bg-brand-orange/20 backdrop-blur-sm rounded-lg w-fit mb-3 border border-brand-orange/30">
+                    <div className="p-2.5 bg-brand-orange/20 backdrop-blur-sm rounded-lg w-fit mb-3 border border-brand-orange/30 group-hover:scale-110 transition-transform">
                       <ind.icon className="w-5 h-5 text-brand-orange" />
                     </div>
                     <h3 className="text-white font-bold text-base group-hover:text-brand-orange transition-colors">
@@ -515,38 +500,42 @@ export default function Home() {
           FINAL CTA
          ========================================================================= */}
       <section className="py-20 sm:py-28 bg-brand-navy text-white relative overflow-hidden border-t-4 border-brand-orange">
-        <div className="absolute inset-0 industrial-grid opacity-10 pointer-events-none" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-orange/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute inset-0 rv-grid-drift opacity-10 pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-orange/10 rounded-full blur-[120px] pointer-events-none rv-glow-pulse" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-          <div className="space-y-4">
-            <span className="text-xs font-bold uppercase tracking-widest text-brand-orange block">
-              Get In Touch
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-black font-heading text-white leading-tight">
-              Let's Build Your Solution
-            </h2>
-            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-              Get in touch with our team for customized material handling solutions tailored to your needs.
-            </p>
-          </div>
+          <AnimatedSection animation="blur-up">
+            <div className="space-y-4">
+              <span className="text-xs font-bold uppercase tracking-widest text-brand-orange block">
+                Get In Touch
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-black font-heading text-white leading-tight">
+                Let's Build Your Solution
+              </h2>
+              <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                Get in touch with our team for customized material handling solutions tailored to your needs.
+              </p>
+            </div>
+          </AnimatedSection>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-3 px-10 py-5 bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm uppercase tracking-widest rounded-lg shadow-xl shadow-brand-orange/30 transition-all duration-300 hover:scale-[1.02] group"
-            >
-              Contact Us
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a
-              href="tel:8329358214"
-              className="inline-flex items-center gap-3 px-10 py-5 border-2 border-white/40 hover:border-white text-white font-bold text-sm uppercase tracking-widest rounded-lg transition-all duration-300 hover:bg-white/10 group"
-            >
-              <Phone className="w-5 h-5 text-brand-orange" />
-              Call 83293 58214
-            </a>
-          </div>
+          <AnimatedSection animation="fade-up">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm uppercase tracking-widest rounded-lg shadow-xl shadow-brand-orange/30 transition-all duration-300 hover:scale-[1.02] group rv-btn-hover"
+              >
+                Contact Us
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <a
+                href="tel:8329358214"
+                className="inline-flex items-center gap-3 px-10 py-5 border-2 border-white/40 hover:border-white text-white font-bold text-sm uppercase tracking-widest rounded-lg transition-all duration-300 hover:bg-white/10 group rv-btn-hover"
+              >
+                <Phone className="w-5 h-5 text-brand-orange" />
+                Call 83293 58214
+              </a>
+            </div>
+          </AnimatedSection>
         </div>
 
         <div className="hazard-stripe absolute bottom-0 left-0 right-0" />

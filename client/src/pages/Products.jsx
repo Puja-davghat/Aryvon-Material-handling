@@ -270,7 +270,7 @@ export default function Products() {
       {/* 4 Products Sections */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-12">
         {categories.map(cat => (
-          <AnimatedSection key={cat.id} animation="fade-up">
+          <AnimatedSection key={cat.id} animation="fade-up" stagger>
             <CategorySection category={cat} />
           </AnimatedSection>
         ))}

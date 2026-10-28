@@ -20,6 +20,9 @@ export default function Footer() {
 
   return (
     <footer className="bg-brand-deep text-slate-300 pt-16 border-t-4 border-brand-orange relative overflow-hidden">
+      {/* Subtle drifting technical grid */}
+      <div className="absolute inset-0 rv-grid-drift opacity-5 pointer-events-none" />
+
       {/* Decorative gear */}
       <div className="absolute right-0 bottom-0 opacity-5 pointer-events-none transform translate-x-1/3 translate-y-1/3">
         <svg className="w-96 h-96 animate-spin-slow text-white" viewBox="0 0 100 100" fill="currentColor">
@@ -42,14 +45,14 @@ export default function Footer() {
                   className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
-              <span className="text-[10px] font-bold tracking-[0.25em] text-brand-paleOrange uppercase pl-0.5">
+              <span className="text-[10px] font-bold tracking-[0.25em] text-brand-paleOrange uppercase pl-0.5 rv-text-movable">
                 Material Handling Solutions
               </span>
             </Link>
-            <p className="text-sm text-slate-400 leading-relaxed">
+            <p className="text-sm text-slate-400 leading-relaxed rv-text-movable">
               ARYVON provides engineered material handling solutions — Vertical Reciprocating Conveyors (VRC), Scissor Lifts, EOT Cranes, and Conveyors — tailored to industrial operational requirements.
             </p>
-            <div className="pt-2 flex items-center gap-2.5 text-xs text-brand-paleOrange">
+            <div className="pt-2 flex items-center gap-2.5 text-xs text-brand-paleOrange rv-text-movable-delayed">
               <ShieldCheck className="w-4 h-4 text-brand-orange flex-shrink-0" />
               <span>Heavy-Duty Industrial Standards &amp; Reliable Engineering</span>
             </div>
@@ -57,7 +60,7 @@ export default function Footer() {
 
           {/* Column 2: 4 Dedicated Products */}
           <div className="space-y-4">
-            <h3 className="text-white font-bold text-base tracking-wider uppercase border-l-4 border-brand-orange pl-3">
+            <h3 className="text-white font-bold text-base tracking-wider uppercase border-l-4 border-brand-orange pl-3 rv-text-movable">
               Dedicated Products
             </h3>
             <ul className="space-y-3 text-sm">
@@ -80,7 +83,7 @@ export default function Footer() {
 
           {/* Column 3: Navigation */}
           <div className="space-y-4">
-            <h3 className="text-white font-bold text-base tracking-wider uppercase border-l-4 border-brand-orange pl-3">
+            <h3 className="text-white font-bold text-base tracking-wider uppercase border-l-4 border-brand-orange pl-3 rv-text-movable">
               Quick Links
             </h3>
             <ul className="space-y-2.5 text-sm">
@@ -100,7 +103,7 @@ export default function Footer() {
 
           {/* Column 4: Contact */}
           <div className="space-y-4">
-            <h3 className="text-white font-bold text-base tracking-wider uppercase border-l-4 border-brand-orange pl-3">
+            <h3 className="text-white font-bold text-base tracking-wider uppercase border-l-4 border-brand-orange pl-3 rv-text-movable">
               Contact Us
             </h3>
             <div className="bg-brand-navy/60 p-4 rounded-xl border border-slate-700/60 space-y-4">
@@ -115,7 +118,7 @@ export default function Footer() {
                   </span>
                   <a
                     href="tel:8329358214"
-                    className="text-xl font-extrabold text-white hover:text-brand-orange transition-colors tracking-wide"
+                    className="text-xl font-extrabold text-white hover:text-brand-orange transition-colors tracking-wide rv-text-movable-delayed"
                   >
                     83293 58214
                   </a>
@@ -157,21 +160,21 @@ export default function Footer() {
 
         {/* Assurance badges */}
         <div className="mt-12 pt-8 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
-          <div className="flex items-center justify-center sm:justify-start gap-3">
+          <div className="flex items-center justify-center sm:justify-start gap-3 rv-text-movable">
             <Wrench className="w-6 h-6 text-brand-orange flex-shrink-0" />
             <div>
               <p className="font-bold text-white text-sm">Industrial Grade Durability</p>
               <p className="text-xs text-slate-400">Engineered for demanding continuous operations</p>
             </div>
           </div>
-          <div className="flex items-center justify-center sm:justify-start gap-3">
+          <div className="flex items-center justify-center sm:justify-start gap-3 rv-text-movable-delayed">
             <ShieldCheck className="w-6 h-6 text-brand-orange flex-shrink-0" />
             <div>
               <p className="font-bold text-white text-sm">Operator Safety Focused</p>
               <p className="text-xs text-slate-400">Compliant with standard industrial safety protocols</p>
             </div>
           </div>
-          <div className="flex items-center justify-center sm:justify-start gap-3">
+          <div className="flex items-center justify-center sm:justify-start gap-3 rv-text-movable">
             <Clock className="w-6 h-6 text-brand-orange flex-shrink-0" />
             <div>
               <p className="font-bold text-white text-sm">Prompt Technical Support</p>
@@ -182,8 +185,8 @@ export default function Footer() {
 
         {/* Bottom copyright */}
         <div className="mt-8 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
-          <p>&copy; {new Date().getFullYear()} ARYVON &mdash; Material Handling Solutions. All rights reserved.</p>
-          <p className="text-slate-400">
+          <p className="rv-text-movable">&copy; {new Date().getFullYear()} ARYVON &mdash; Material Handling Solutions. All rights reserved.</p>
+          <p className="text-slate-400 rv-text-movable-delayed">
             VRC &bull; Scissor Lifts &bull; EOT Cranes &bull; Conveyors
           </p>
         </div>

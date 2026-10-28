@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, CheckCircle2, ChevronRight, ShieldCheck, Phone } from 'lucide-react';
 import IndustrialShapes from '../components/IndustrialShapes';
+import AnimatedSection from '../components/AnimatedSection';
 import { getProductBySlug, getCategoryBySlug, products as allProducts } from '../data/products';
 import DedicatedProductPage from './DedicatedProductPage';
 import NotFound from './NotFound';
@@ -47,7 +48,7 @@ export default function ProductDetail() {
           <span className="font-bold text-brand-navy">{product.name}</span>
         </nav>
 
-        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
+        <AnimatedSection animation="fade-up" className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
           {/* Header Banner */}
           <div className="relative overflow-hidden border-b-4 border-brand-orange bg-brand-deep px-6 py-8 text-white sm:px-10 sm:py-10">
             <IndustrialShapes />
@@ -121,9 +122,8 @@ export default function ProductDetail() {
                     {specifications.map(([label, value], index) => (
                       <div
                         key={label}
-                        className={`grid grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] gap-3 px-4 py-3 text-sm ${
-                          index % 2 === 0 ? 'bg-slate-50' : 'bg-white'
-                        }`}
+                        className={`grid grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] gap-3 px-4 py-3 text-sm ${index % 2 === 0 ? 'bg-slate-50' : 'bg-white'
+                          }`}
                       >
                         <dt className="font-semibold text-slate-700">{label}</dt>
                         <dd className="text-slate-900">{value}</dd>
@@ -159,7 +159,7 @@ export default function ProductDetail() {
               </div>
             </div>
           </div>
-        </div>
+        </AnimatedSection>
 
         {/* Other Variations in same category */}
         {productVariations.length > 1 && (
@@ -183,7 +183,7 @@ export default function ProductDetail() {
                 </Link>
               )}
             </div>
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <AnimatedSection animation="fade-up" stagger className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {productVariations.map((variation) => {
                 const isCurrentProduct = variation.slug === product.slug;
 
@@ -226,7 +226,7 @@ export default function ProductDetail() {
                   </Link>
                 );
               })}
-            </div>
+            </AnimatedSection>
           </section>
         )}
 

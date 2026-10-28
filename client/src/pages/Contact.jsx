@@ -35,7 +35,7 @@ export default function Contact() {
       </section>
 
       {/* Main Grid: Contact Cards (Left) and Enquiry Form (Right) */}
-      <AnimatedSection animation="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <AnimatedSection animation="fade-up" stagger className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* Left Column: Official Contact Channels */}
           <div className="lg:col-span-5 space-y-6">

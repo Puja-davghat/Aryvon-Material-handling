@@ -5,10 +5,6 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
-import manufacturingImg from '../assets/aryvon-image-assets/industries/manufacturing.jpg';
-import warehousingImg from '../assets/aryvon-image-assets/industries/warehousing.jpg';
-import ecommerceImg from '../assets/aryvon-image-assets/industries/ecommerce.jpg';
-import logisticsImg from '../assets/aryvon-image-assets/industries/logistics.jpg';
 import IndustrialShapes from '../components/IndustrialShapes';
 import AnimatedSection from '../components/AnimatedSection';
 
@@ -18,7 +14,6 @@ const industries = [
     icon: Warehouse,
     title: 'Warehousing & Distribution',
     subtitle: 'Storage & Goods Movement',
-    image: warehousingImg,
     description:
       'Modern high-bay warehouses demand reliable vertical movement of goods between floors, precise pallet positioning, and efficient horizontal transport across storage aisles. ARYVON\'s VRCs, scissor lifts, and conveyor systems are engineered to optimize these flows.',
     equipment: [
@@ -72,7 +67,6 @@ const industries = [
     icon: Truck,
     title: 'Logistics & Freight',
     subtitle: 'Dock & Transit Operations',
-    image: logisticsImg,
     description:
       'Logistics hubs and freight terminals require efficient loading, unloading, and cross-docking. Scissor lifts, VRCs, and conveyors facilitate rapid material movement between vehicle and warehouse — improving turnaround times and operational safety.',
     equipment: [
@@ -92,7 +86,7 @@ export default function Industries() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-brand-deep rounded-2xl p-8 sm:p-14 text-white relative overflow-hidden border-b-4 border-brand-orange shadow-xl">
           <IndustrialShapes />
-          <div className="absolute inset-0 industrial-grid opacity-20 pointer-events-none" />
+          <div className="absolute inset-0 rv-grid-drift opacity-20 pointer-events-none" />
           <div className="relative z-10 max-w-3xl space-y-4">
             <div className="flex items-center gap-3">
               <div className="bg-white/95 px-2.5 py-1 rounded shadow inline-flex items-center">
@@ -135,130 +129,66 @@ export default function Industries() {
           <AnimatedSection
             key={ind.id}
             id={ind.id}
-            animation="fade-up"
+            animation={index % 2 === 0 ? "fade-right" : "fade-left"}
             className="scroll-mt-28"
           >
-            <div className={`bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg ${
-              ind.image
-                ? `grid grid-cols-1 lg:grid-cols-12 gap-0 ${
-                    index % 2 === 0 ? '' : 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1'
-                  }`
-                : 'p-8 sm:p-10 space-y-6'
+            <div className={`bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg p-8 sm:p-10 space-y-6 rv-card-hover ${
+              index % 2 === 0 ? 'rv-float-slow' : 'rv-float-slow-delayed'
             }`}>
-              {ind.image ? (
-                <>
-                  {/* Image */}
-                  <div className="lg:col-span-5 relative overflow-hidden">
-                    <img
-                      src={ind.image}
-                      alt={`ARYVON material handling for ${ind.title}`}
-                      className="w-full h-full object-cover min-h-64 lg:min-h-full"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-brand-deep/60 via-transparent to-transparent lg:block hidden" />
-                    <div className="absolute top-5 left-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-orange text-white text-xs font-bold uppercase tracking-widest shadow-lg">
-                      <ind.icon className="w-3.5 h-3.5" />
-                      {ind.subtitle}
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="lg:col-span-7 p-8 sm:p-10 space-y-6">
-                    <div className="space-y-3">
-                      <span className="text-xs font-bold uppercase tracking-widest text-brand-orange block">
-                        {ind.subtitle}
-                      </span>
-                      <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
-                        {ind.title}
-                      </h2>
-                      <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                        {ind.description}
-                      </p>
-                    </div>
-
-                    {/* Equipment list */}
-                    <div className="space-y-3">
-                      <h4 className="font-bold text-sm text-brand-navy uppercase tracking-wider">
-                        Applicable ARYVON Equipment:
-                      </h4>
-                      <ul className="space-y-2.5">
-                        {ind.equipment.map((eq, i) => (
-                          <li key={i} className="flex items-start gap-3 text-sm text-slate-700">
-                            <CheckCircle2 className="w-4 h-4 text-brand-orange flex-shrink-0 mt-0.5" />
-                            <span>{eq}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="pt-2 flex flex-wrap gap-4">
-                      <Link
-                        to="/products"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors group"
-                      >
-                        View Products <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                      <Link
-                        to="/contact"
-                        className="inline-flex items-center gap-2 px-6 py-3 border border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors group"
-                      >
-                        Get a Quote <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                /* Full-width clean card without image */
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-lightBlue border border-brand-iceBlue text-brand-navy text-xs font-bold uppercase tracking-widest">
-                      <ind.icon className="w-4 h-4 text-brand-orange" />
-                      {ind.subtitle}
-                    </div>
-                    <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
-                      Sector 0{index + 1}
-                    </span>
-                  </div>
-
-                  <div className="space-y-3">
-                    <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
-                      {ind.title}
-                    </h2>
-                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                      {ind.description}
-                    </p>
-                  </div>
-
-                  {/* Equipment list */}
-                  <div className="space-y-3">
-                    <h4 className="font-bold text-sm text-brand-navy uppercase tracking-wider">
-                      Applicable ARYVON Equipment:
-                    </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {ind.equipment.map((eq, i) => (
-                        <div key={i} className="flex items-start gap-3 text-sm text-slate-700 bg-slate-50 p-3.5 rounded-xl border border-slate-100">
-                          <CheckCircle2 className="w-4 h-4 text-brand-orange flex-shrink-0 mt-0.5" />
-                          <span>{eq}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="pt-2 flex flex-wrap gap-4">
-                    <Link
-                      to="/products"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors group"
-                    >
-                      View Products <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                    <Link
-                      to="/contact"
-                      className="inline-flex items-center gap-2 px-6 py-3 border border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors group"
-                    >
-                      Get a Quote <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
+              {/* Header badge & sector index */}
+              <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-lightBlue border border-brand-iceBlue text-brand-navy text-xs font-bold uppercase tracking-widest">
+                  <ind.icon className="w-4 h-4 text-brand-orange" />
+                  {ind.subtitle}
                 </div>
-              )}
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                  Sector 0{index + 1}
+                </span>
+              </div>
+
+              {/* Title & description */}
+              <div className="space-y-3">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
+                  {ind.title}
+                </h2>
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                  {ind.description}
+                </p>
+              </div>
+
+              {/* Equipment list */}
+              <div className="space-y-3">
+                <h4 className="font-bold text-sm text-brand-navy uppercase tracking-wider">
+                  Applicable ARYVON Equipment:
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {ind.equipment.map((eq, i) => (
+                    <div
+                      key={i}
+                      className="flex items-start gap-3 text-sm text-slate-700 bg-slate-50 hover:bg-white p-3.5 rounded-xl border border-slate-100 hover:border-brand-orange/30 hover:shadow-sm transition-all"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-brand-orange flex-shrink-0 mt-0.5" />
+                      <span>{eq}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Action buttons */}
+              <div className="pt-2 flex flex-wrap gap-4">
+                <Link
+                  to="/products"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors group"
+                >
+                  View Products <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 px-6 py-3 border border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors group"
+                >
+                  Get a Quote <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             </div>
           </AnimatedSection>
         ))}

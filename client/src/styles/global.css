@@ -377,6 +377,15 @@ img.lazy-fade.loaded {
   }
 }
 
+@keyframes heroSlide {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-75%); }
+}
+
+.animate-hero-slide {
+  animation: heroSlide 20s linear infinite;
+}
+
 @keyframes float3DSubtle {
   0%, 100% {
     transform: perspective(800px) rotateX(0deg) translateY(0px);
@@ -433,3 +442,313 @@ img.lazy-fade.loaded {
 .perspective-container {
   perspective: 1200px;
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   REPLAYABLE SCROLL ANIMATION SYSTEM  (rv-anim)
+   Elements fade IN on enter, fade OUT on leave, replays in both directions.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* Smooth anchor scrolling */
+html { scroll-behavior: smooth; }
+
+/* ── Base state: hidden ── */
+.rv-anim {
+  opacity: 0.15;
+  transition:
+    opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+/* Variant starting positions */
+.rv-fade-up            { transform: translateY(30px); }
+.rv-fade-down          { transform: translateY(-30px); }
+.rv-fade-left          { transform: translateX(36px); }
+.rv-fade-right         { transform: translateX(-36px); }
+.rv-fade-in            { transform: none; }
+.rv-scale-up           { transform: scale(0.96); }
+.rv-blur-up            { transform: translateY(30px); filter: blur(6px); }
+
+/* ── In-view: visible ── */
+.rv-anim.rv-in-view {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+  filter: blur(0);
+}
+
+/* ── Staggered children (cards, grid items, section text) ── */
+/* 1st card fades in slowly (1.2s), then 2nd, then 3rd, with 0.4s gap between each */
+.rv-stagger.rv-in-view > *,
+.rv-stagger.rv-in-view > div[class*="grid"] > *,
+.rv-stagger.rv-in-view > div[class*="flex"] > *,
+.rv-stagger-text.rv-in-view > * {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: rvStaggerIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* When the grid leaves the viewport, the cards fade out softly (opacity ~0.15) */
+.rv-stagger:not(.rv-in-view) > *,
+.rv-stagger:not(.rv-in-view) > div[class*="grid"] > *,
+.rv-stagger:not(.rv-in-view) > div[class*="flex"] > *,
+.rv-stagger-text:not(.rv-in-view) > * {
+  opacity: 0.15;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: none;
+}
+
+.rv-stagger.rv-in-view > *:nth-child(1),
+.rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(1),
+.rv-stagger-text.rv-in-view > *:nth-child(1) { animation-delay: 0.0s; }
+
+.rv-stagger.rv-in-view > *:nth-child(2),
+.rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(2),
+.rv-stagger-text.rv-in-view > *:nth-child(2) { animation-delay: 0.4s; }
+
+.rv-stagger.rv-in-view > *:nth-child(3),
+.rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(3),
+.rv-stagger-text.rv-in-view > *:nth-child(3) { animation-delay: 0.8s; }
+
+.rv-stagger.rv-in-view > *:nth-child(4),
+.rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(4),
+.rv-stagger-text.rv-in-view > *:nth-child(4) { animation-delay: 1.2s; }
+
+.rv-stagger.rv-in-view > *:nth-child(5),
+.rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(5),
+.rv-stagger-text.rv-in-view > *:nth-child(5) { animation-delay: 1.6s; }
+
+.rv-stagger.rv-in-view > *:nth-child(6),
+.rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(6),
+.rv-stagger-text.rv-in-view > *:nth-child(6) { animation-delay: 2.0s; }
+
+.rv-stagger.rv-in-view > *:nth-child(7),
+.rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(7),
+.rv-stagger-text.rv-in-view > *:nth-child(7) { animation-delay: 2.4s; }
+
+.rv-stagger.rv-in-view > *:nth-child(8),
+.rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(8),
+.rv-stagger-text.rv-in-view > *:nth-child(8) { animation-delay: 2.8s; }
+
+.rv-stagger.rv-in-view > *:nth-child(9),
+.rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(9),
+.rv-stagger-text.rv-in-view > *:nth-child(9) { animation-delay: 3.2s; }
+
+.rv-stagger.rv-in-view > *:nth-child(10),
+.rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(10),
+.rv-stagger-text.rv-in-view > *:nth-child(10) { animation-delay: 3.6s; }
+
+.rv-stagger.rv-in-view > *:nth-child(11),
+.rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(11),
+.rv-stagger-text.rv-in-view > *:nth-child(11) { animation-delay: 4.0s; }
+
+.rv-stagger.rv-in-view > *:nth-child(12),
+.rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(12),
+.rv-stagger-text.rv-in-view > *:nth-child(12) { animation-delay: 4.4s; }
+
+@keyframes rvStaggerIn {
+  from {
+    opacity: 0.15;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Continuous slow fade in/out up and down float */
+@keyframes rvFloatSlow {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.94;
+  }
+  50% {
+    transform: translateY(-8px);
+    opacity: 1;
+  }
+}
+
+.rv-float-slow {
+  animation: rvFloatSlow 6s ease-in-out infinite;
+}
+
+.rv-float-slow-delayed {
+  animation: rvFloatSlow 6.5s ease-in-out 1.5s infinite;
+}
+
+/* Continuous gentle fade and movable float for header & footer text */
+@keyframes rvTextFloatContinuous {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.90;
+  }
+  50% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+@keyframes rvTextFloatContinuousDelayed {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.88;
+  }
+  50% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+.rv-text-movable {
+  display: inline-block;
+  animation: rvTextFloatContinuous 5s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.rv-text-movable-delayed {
+  display: inline-block;
+  animation: rvTextFloatContinuousDelayed 5.5s ease-in-out 1.2s infinite;
+  will-change: transform, opacity;
+}
+
+/* ── Card hover lift + soft shadow ── */
+.rv-card-hover {
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.rv-card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 40px -12px rgba(4, 44, 92, 0.18),
+    0 0 20px rgba(252, 108, 4, 0.10);
+}
+
+/* ── Nav link animated underline ── */
+.rv-nav-link {
+  position: relative;
+}
+.rv-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--orange);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1), left 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.rv-nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* ── Button smooth hover ── */
+.rv-btn-hover {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+.rv-btn-hover:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(252, 108, 4, 0.25);
+}
+
+/* ── Mobile menu slide + fade ── */
+.rv-mobile-menu-enter {
+  animation: rvMobileSlide 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes rvMobileSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Ambient: drifting technical grid ── */
+.rv-grid-drift {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+  animation: rvGridDrift 12s linear infinite;
+}
+@keyframes rvGridDrift {
+  from { background-position: 0 0; }
+  to   { background-position: 56px 56px; }
+}
+
+/* ── Ambient: soft glow pulse ── */
+.rv-glow-pulse {
+  animation: rvGlowPulse 8s ease-in-out infinite;
+}
+@keyframes rvGlowPulse {
+  0%, 100% { opacity: 0.10; transform: scale(1); }
+  50%      { opacity: 0.22; transform: scale(1.08); }
+}
+
+/* ── Ambient: subtle parallax helper (applied via JS transform) ── */
+.rv-parallax {
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+/* ── Subtle CSS perspective depth on non-product backgrounds ── */
+.rv-depth-bg {
+  transform: perspective(1200px) rotateX(0.5deg);
+  transform-origin: center bottom;
+}
+
+/* ── Mobile optimizations (< 768px) ── */
+@media (max-width: 767px) {
+  .rv-stagger.rv-in-view > *:nth-child(1),
+  .rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(1),
+  .rv-stagger-text.rv-in-view > *:nth-child(1) { animation-delay: 0.00s; }
+  .rv-stagger.rv-in-view > *:nth-child(2),
+  .rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(2),
+  .rv-stagger-text.rv-in-view > *:nth-child(2) { animation-delay: 0.25s; }
+  .rv-stagger.rv-in-view > *:nth-child(3),
+  .rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(3),
+  .rv-stagger-text.rv-in-view > *:nth-child(3) { animation-delay: 0.50s; }
+  .rv-stagger.rv-in-view > *:nth-child(4),
+  .rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(4),
+  .rv-stagger-text.rv-in-view > *:nth-child(4) { animation-delay: 0.75s; }
+  .rv-stagger.rv-in-view > *:nth-child(5),
+  .rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(5),
+  .rv-stagger-text.rv-in-view > *:nth-child(5) { animation-delay: 1.00s; }
+  .rv-stagger.rv-in-view > *:nth-child(6),
+  .rv-stagger.rv-in-view > div[class*="grid"] > *:nth-child(6),
+  .rv-stagger-text.rv-in-view > *:nth-child(6) { animation-delay: 1.25s; }
+
+  /* Disable parallax and 3D tilt on mobile */
+  .rv-parallax { transform: none !important; }
+  .rv-depth-bg { transform: none !important; }
+  .animate-3d-card:hover { transform: none; }
+}
+
+/* ── Reduced motion: show everything, no animation ── */
+@media (prefers-reduced-motion: reduce) {
+  .rv-anim,
+  .rv-anim.rv-in-view,
+  .rv-stagger > *,
+  .rv-stagger.rv-in-view > *,
+  .rv-stagger > div[class*="grid"] > *,
+  .rv-stagger.rv-in-view > div[class*="grid"] > *,
+  .rv-stagger-text > *,
+  .rv-stagger-text.rv-in-view > *,
+  .rv-float-slow,
+  .rv-float-slow-delayed,
+  .rv-text-movable,
+  .rv-text-movable-delayed {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+

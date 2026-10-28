@@ -1,76 +1,71 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 
 /**
- * AnimatedSection - Scroll-triggered section wrapper
- * Supports:
- * - 'fade-up' (default)
- * - 'fade-down'
- * - 'fade-in'
- * - 'slide-left'
- * - 'slide-right'
- * - 'scale-up'
+ * AnimatedSection - Replayable scroll-triggered section wrapper.
+ * Elements fade IN when entering viewport and fade OUT when leaving.
+ * Replays in both scroll directions without page refresh.
+ *
+ * Supports: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' |
+ *           'fade-in' | 'scale-up' | 'blur-up'
+ *
+ * stagger: if true, direct children get staggered delays (0.25s each, 0.15s on mobile).
  */
 export default function AnimatedSection({
   children,
   animation = 'fade-up',
   delay = 0,
-  threshold = 0.12,
+  threshold = 0.2,
   className = '',
-  as: Component = 'section',
+  stagger = false,
+  as: Component = 'div',
   ...rest
 }) {
-  const [isVisible, setIsVisible] = useState(false);
+  const [inView, setInView] = useState(false);
   const elementRef = useRef(null);
+  const location = useLocation();
 
-  useEffect(() => {
+  const setupObserver = useCallback(() => {
+    const el = elementRef.current;
+    if (!el) return;
+
+    // Check if prefers-reduced-motion
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      setInView(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          // Keep visible once scrolled into view for natural feel
-          if (elementRef.current) observer.unobserve(elementRef.current);
-        }
+        setInView(entry.isIntersecting);
       },
       {
         threshold,
-        rootMargin: '0px 0px -40px 0px'
+        rootMargin: '-5% 0px -5% 0px'
       }
     );
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
-
-    return () => {
-      if (elementRef.current) observer.unobserve(elementRef.current);
-    };
+    observer.observe(el);
+    return () => observer.disconnect();
   }, [threshold]);
 
-  const getAnimationClass = () => {
-    switch (animation) {
-      case 'fade-down':
-        return isVisible ? 'animate-slide-down-in opacity-100' : 'opacity-0 -translate-y-8';
-      case 'fade-in':
-        return isVisible ? 'animate-fade-in-smooth opacity-100' : 'opacity-0';
-      case 'slide-left':
-        return isVisible ? 'animate-slide-left-in opacity-100' : 'opacity-0 translate-x-8';
-      case 'slide-right':
-        return isVisible ? 'animate-slide-right-in opacity-100' : 'opacity-0 -translate-x-8';
-      case 'scale-up':
-        return isVisible ? 'animate-scale-in opacity-100' : 'opacity-0 scale-95';
-      case 'fade-up':
-      default:
-        return isVisible ? 'animate-slide-up-in opacity-100' : 'opacity-0 translate-y-8';
-    }
-  };
+  // Setup observer on mount and re-setup on route changes
+  useEffect(() => {
+    const cleanup = setupObserver();
+    return cleanup;
+  }, [setupObserver, location.pathname]);
+
+  // Map animation type to CSS class
+  const animClass = `rv-anim rv-${animation}`;
+  const viewClass = inView ? 'rv-in-view' : '';
+  const staggerClass = stagger ? 'rv-stagger' : '';
 
   return (
     <Component
       ref={elementRef}
-      className={`transition-all duration-700 ease-out will-change-[transform,opacity] ${getAnimationClass()} ${className}`}
-      style={{
-        transitionDelay: `${delay}ms`
-      }}
+      className={`${animClass} ${viewClass} ${staggerClass} ${className}`}
+      style={{ transitionDelay: delay ? `${delay}ms` : undefined }}
       {...rest}
     >
       {children}

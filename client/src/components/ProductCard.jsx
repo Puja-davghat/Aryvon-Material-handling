@@ -15,7 +15,7 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <div className="group bg-white rounded-xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-brand-orange/40 transition-all duration-300 flex flex-col h-full">
+    <div className="rv-card-hover group bg-white rounded-xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-brand-orange/40 transition-all duration-300 flex flex-col h-full">
       {/* Product Image Box */}
       <div className="relative aspect-[16/10] bg-slate-100 overflow-hidden">
         <Link to={`/products/${product.slug}`} className="absolute inset-0 cursor-pointer">

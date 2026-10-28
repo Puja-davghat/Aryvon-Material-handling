@@ -42,12 +42,12 @@ export default function Navbar() {
       <div className="bg-brand-deep text-white text-xs border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <span className="inline-flex items-center text-slate-300">
+            <span className="inline-flex items-center text-slate-300 rv-text-movable">
               <span className="inline-block w-2 h-2 rounded-full bg-brand-orange mr-2 animate-ping" />
               Advanced Material Handling Solutions — VRC · Scissor Lifts · EOT Cranes · Conveyors
             </span>
           </div>
-          <a href="tel:8329358214" className="hidden sm:flex items-center gap-1.5 text-brand-paleOrange hover:text-white transition-colors font-semibold">
+          <a href="tel:8329358214" className="hidden sm:flex items-center gap-1.5 text-brand-paleOrange hover:text-white transition-colors font-semibold rv-text-movable-delayed">
             <Phone className="w-3 h-3" />
             83293 58214
           </a>
@@ -71,7 +71,7 @@ export default function Navbar() {
                   alt="ARYVON"
                   className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 />
-                <span className="text-[8px] sm:text-[9px] font-bold tracking-[0.25em] text-[#0B2545]/80 uppercase mt-0.5 pl-0.5">
+                <span className="text-[8px] sm:text-[9px] font-bold tracking-[0.25em] text-[#0B2545]/80 uppercase mt-0.5 pl-0.5 rv-text-movable">
                   Material Handling Solutions
                 </span>
               </div>
@@ -85,7 +85,7 @@ export default function Navbar() {
                     <NavLink
                       to={link.path}
                       className={({ isActive }) =>
-                        `px-3.5 py-2 text-sm font-semibold tracking-wide transition-all duration-200 rounded-md inline-flex items-center gap-1 ${
+                        `rv-nav-link px-3.5 py-2 text-sm font-semibold tracking-wide transition-all duration-200 rounded-md inline-flex items-center gap-1 ${
                           isActive || location.pathname.startsWith('/products')
                             ? 'text-[#F97316] font-bold border-b-2 border-[#F97316] bg-orange-50/60'
                             : 'text-[#0B2545] hover:text-[#F97316] hover:bg-orange-50/50'
@@ -127,7 +127,7 @@ export default function Navbar() {
                     key={link.path}
                     to={link.path}
                     className={({ isActive }) =>
-                      `px-3.5 py-2 text-sm font-semibold tracking-wide transition-all duration-200 rounded-md ${
+                      `rv-nav-link px-3.5 py-2 text-sm font-semibold tracking-wide transition-all duration-200 rounded-md ${
                         isActive
                           ? 'text-[#F97316] font-bold border-b-2 border-[#F97316] bg-orange-50/60'
                           : 'text-[#0B2545] hover:text-[#F97316] hover:bg-orange-50/50'
@@ -142,7 +142,7 @@ export default function Navbar() {
               {/* Request a Quote CTA */}
               <button
                 onClick={() => navigate('/contact')}
-                className="ml-3 px-5 py-2.5 bg-[#F97316] hover:bg-orange-600 active:scale-95 text-white text-sm font-bold uppercase tracking-wider rounded-lg transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-orange-500/25"
+                className="rv-btn-hover ml-3 px-5 py-2.5 bg-[#F97316] hover:bg-orange-600 active:scale-95 text-white text-sm font-bold uppercase tracking-wider rounded-lg transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-orange-500/25"
               >
                 Request a Quote
               </button>
@@ -167,7 +167,7 @@ export default function Navbar() {
 
         {/* Mobile Drawer */}
         {isOpen && (
-          <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-2 shadow-2xl">
+          <div className="rv-mobile-menu-enter lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-2 shadow-2xl">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}

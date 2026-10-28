@@ -58,7 +58,7 @@ export default function DedicatedProductPage({ forcedSlug }) {
 
         {/* Hero Section Banner */}
         <section className="bg-brand-deep rounded-2xl overflow-hidden border-b-4 border-brand-orange shadow-2xl relative text-white mb-10">
-          <div className="absolute inset-0 industrial-grid opacity-15 pointer-events-none" />
+          <div className="absolute inset-0 rv-grid-drift opacity-15 pointer-events-none" />
           <IndustrialShapes />
           <div className="relative z-10 p-6 sm:p-12 lg:p-14 max-w-4xl space-y-5">
             {/* Top brand badge featuring actual logo */}
@@ -312,11 +312,11 @@ export default function DedicatedProductPage({ forcedSlug }) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 perspective-container">
+            <AnimatedSection animation="fade-up" stagger className="grid grid-cols-1 md:grid-cols-2 gap-6 perspective-container">
               {category.subcategories.map((sub) => (
                 <div
                   key={sub.id}
-                  className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:border-brand-orange/50 animate-3d-card transition-all duration-300 flex flex-col justify-between"
+                  className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:border-brand-orange/50 animate-3d-card transition-all duration-300 flex flex-col justify-between rv-card-hover"
                 >
                   <div>
                     <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
@@ -382,12 +382,12 @@ export default function DedicatedProductPage({ forcedSlug }) {
                   </div>
                 </div>
               ))}
-            </div>
+            </AnimatedSection>
           </section>
         )}
 
         {/* Suitable Industrial Applications */}
-        <section className="bg-white p-6 sm:p-10 rounded-2xl border border-slate-200 shadow-sm mb-14">
+        <AnimatedSection animation="fade-up" stagger as="section" className="bg-white p-6 sm:p-10 rounded-2xl border border-slate-200 shadow-sm mb-14">
           <div className="max-w-3xl mb-6 space-y-1">
             <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
               Operational Suitability
@@ -408,10 +408,10 @@ export default function DedicatedProductPage({ forcedSlug }) {
               </div>
             ))}
           </div>
-        </section>
+        </AnimatedSection>
 
         {/* Explore Other 3 Products Navigation */}
-        <section className="bg-slate-100/80 p-6 sm:p-8 rounded-2xl border border-slate-200 mb-10">
+        <AnimatedSection animation="fade-up" stagger as="section" className="bg-slate-100/80 p-6 sm:p-8 rounded-2xl border border-slate-200 mb-10">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
               <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
@@ -461,7 +461,7 @@ export default function DedicatedProductPage({ forcedSlug }) {
               </Link>
             ))}
           </div>
-        </section>
+        </AnimatedSection>
 
       </div>
     </div>

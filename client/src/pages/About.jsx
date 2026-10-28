@@ -93,7 +93,7 @@ export default function About() {
       <section className="py-16 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <AnimatedSection animation="fade-up">
+            <AnimatedSection animation="fade-right">
               <div className="space-y-6">
                 <span className="text-xs font-bold uppercase tracking-widest text-brand-orange border-b border-brand-orange pb-1 inline-block">
                   Who We Are
@@ -130,13 +130,13 @@ export default function About() {
                 <div className="pt-4 flex flex-wrap gap-4">
                   <Link
                     to="/products"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors group"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors group rv-btn-hover"
                   >
                     View Our Products <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-2 px-6 py-3 border border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors group"
+                    className="inline-flex items-center gap-2 px-6 py-3 border border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors group rv-btn-hover"
                   >
                     Get In Touch <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
@@ -144,7 +144,7 @@ export default function About() {
               </div>
             </AnimatedSection>
 
-            <AnimatedSection animation="fade-up">
+            <AnimatedSection animation="fade-left">
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="rounded-xl overflow-hidden aspect-square border border-slate-200 shadow-lg group hover:shadow-2xl transition-all duration-300">
@@ -180,7 +180,7 @@ export default function About() {
       {/* Our Values */}
       <section className="py-16 sm:py-24 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="fade-up">
+          <AnimatedSection animation="blur-up">
             <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
               <span className="text-xs font-bold uppercase tracking-widest text-brand-orange block">
                 Our Principles
@@ -194,12 +194,12 @@ export default function About() {
             </div>
           </AnimatedSection>
 
-          <AnimatedSection animation="fade-up">
+          <AnimatedSection animation="fade-up" stagger>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {values.map((val) => (
                 <div
                   key={val.title}
-                  className="group bg-white p-8 rounded-2xl border border-slate-200 hover:border-brand-orange/40 hover:shadow-xl transition-all duration-300 text-center"
+                  className="group bg-white p-8 rounded-2xl border border-slate-200 hover:border-brand-orange/40 hover:shadow-xl transition-all duration-300 text-center rv-card-hover"
                 >
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-lightBlue text-brand-orange mb-5 group-hover:bg-brand-orange group-hover:text-white transition-all duration-300">
                     <val.icon className="w-8 h-8" />
@@ -219,10 +219,10 @@ export default function About() {
 
       {/* Product Focus */}
       <section className="py-16 sm:py-24 bg-brand-deep text-white relative overflow-hidden">
-        <div className="absolute inset-0 industrial-grid opacity-10 pointer-events-none" />
+        <div className="absolute inset-0 rv-grid-drift opacity-10 pointer-events-none" />
         <IndustrialShapes />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="fade-up">
+          <AnimatedSection animation="blur-up">
             <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
               <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block">
                 Our Product Focus
@@ -236,13 +236,13 @@ export default function About() {
             </div>
           </AnimatedSection>
 
-          <AnimatedSection animation="fade-up">
+          <AnimatedSection animation="fade-up" stagger>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {products.map(prod => (
                 <Link
                   to={prod.href}
                   key={prod.name}
-                  className="group p-6 rounded-2xl border border-white/10 bg-brand-navy/40 hover:border-brand-orange hover:bg-brand-navy transition-all duration-300"
+                  className="group p-6 rounded-2xl border border-white/10 bg-brand-navy/40 hover:border-brand-orange hover:bg-brand-navy transition-all duration-300 rv-card-hover"
                 >
                   <div className="w-10 h-1 bg-brand-orange rounded-full mb-4" />
                   <h3 className="text-xl font-black text-white font-heading mb-1 group-hover:text-brand-orange transition-colors">

@@ -308,7 +308,7 @@ export default function EngineeringProcessSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Heading & Description (No marked slogan) */}
-          <AnimatedSection animation="fade-up" className="lg:col-span-5 max-w-xl">
+          <AnimatedSection animation="fade-right" className="lg:col-span-5 max-w-xl">
             <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <span className="text-xs font-black uppercase tracking-[0.2em] text-brand-navy">
@@ -329,7 +329,7 @@ export default function EngineeringProcessSection() {
           </AnimatedSection>
 
           {/* Right Column: 2-Column Grid of 6 Steps with 3D Illustrations */}
-          <AnimatedSection animation="fade-up" className="lg:col-span-7">
+          <AnimatedSection animation="fade-left" stagger className="lg:col-span-7">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10 sm:gap-y-12">
               {stepsData.map((step) => {
                 const Illustration = step.illustration;
