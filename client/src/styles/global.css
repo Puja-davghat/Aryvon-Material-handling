@@ -549,13 +549,83 @@ html { scroll-behavior: smooth; }
 
 @keyframes rvStaggerIn {
   from {
-    opacity: 0.15;
+    opacity: 0;
     transform: translateY(30px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ── Product Cards: Slow fade-up one by one ───────────────── */
+@keyframes rvCardSlowFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rv-card-stagger-item {
+  opacity: 0;
+  transform: translateY(36px);
+  will-change: opacity, transform;
+}
+
+.rv-cards-in-view .rv-card-stagger-item,
+.rv-in-view .rv-card-stagger-item,
+.rv-stagger.rv-in-view .rv-card-stagger-item {
+  animation: rvCardSlowFadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Grids with .rv-card-grid automatically stagger direct children slowly */
+.rv-card-grid.rv-in-view > * {
+  opacity: 0;
+  transform: translateY(36px);
+  animation: rvCardSlowFadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.rv-card-grid.rv-in-view > *:nth-child(1) { animation-delay: 0.0s; }
+.rv-card-grid.rv-in-view > *:nth-child(2) { animation-delay: 0.35s; }
+.rv-card-grid.rv-in-view > *:nth-child(3) { animation-delay: 0.70s; }
+.rv-card-grid.rv-in-view > *:nth-child(4) { animation-delay: 1.05s; }
+.rv-card-grid.rv-in-view > *:nth-child(5) { animation-delay: 1.40s; }
+.rv-card-grid.rv-in-view > *:nth-child(6) { animation-delay: 1.75s; }
+.rv-card-grid.rv-in-view > *:nth-child(7) { animation-delay: 2.10s; }
+.rv-card-grid.rv-in-view > *:nth-child(8) { animation-delay: 2.45s; }
+
+.rv-card-grid:not(.rv-in-view) > * {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  animation: none;
+}
+
+/* ── Footer: Word-by-word fade down display ────────────────── */
+@keyframes rvWordFadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rv-word-fade-down {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(-16px);
+  will-change: opacity, transform;
+}
+
+.rv-word-fade-down.is-active {
+  animation: rvWordFadeDown 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 /* Continuous slow fade in/out up and down float */
@@ -610,6 +680,39 @@ html { scroll-behavior: smooth; }
 .rv-text-movable-delayed {
   display: inline-block;
   animation: rvTextFloatContinuousDelayed 5.5s ease-in-out 1.2s infinite;
+  will-change: transform, opacity;
+}
+
+/* ── All pages hero, header, and footer slow fade up and in/out ── */
+@keyframes rvSlowFadeInOutUp {
+  0%, 100% {
+    opacity: 0.88;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes rvSlowFadeInOutUpDelayed {
+  0%, 100% {
+    opacity: 0.86;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-6px);
+  }
+}
+
+.rv-hero-text-fade {
+  animation: rvSlowFadeInOutUp 7s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.rv-hero-text-fade-delayed {
+  animation: rvSlowFadeInOutUpDelayed 7.5s ease-in-out 1.5s infinite;
   will-change: transform, opacity;
 }
 
@@ -743,7 +846,12 @@ html { scroll-behavior: smooth; }
   .rv-float-slow,
   .rv-float-slow-delayed,
   .rv-text-movable,
-  .rv-text-movable-delayed {
+  .rv-text-movable-delayed,
+  .rv-hero-text-fade,
+  .rv-hero-text-fade-delayed,
+  .rv-card-stagger-item,
+  .rv-card-grid > *,
+  .rv-word-fade-down {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;

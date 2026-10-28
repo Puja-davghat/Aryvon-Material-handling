@@ -62,13 +62,13 @@ export default function ProductDetail() {
                     className="h-5 w-auto object-contain"
                   />
                 </div>
-                <span className="inline-flex items-center rounded-full border border-brand-orange/40 bg-brand-navy px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-paleOrange">
+                <span className="inline-flex items-center rounded-full border border-brand-orange/40 bg-brand-navy px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-paleOrange rv-hero-text-fade">
                   {product.category_name}
                 </span>
               </div>
-              <h1 className="text-3xl font-black leading-tight font-heading sm:text-5xl">{product.name}</h1>
-              <p className="text-base font-semibold text-brand-paleOrange">&ldquo;{product.tagline}&rdquo;</p>
-              <p className="max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">{product.description}</p>
+              <h1 className="text-3xl font-black leading-tight font-heading sm:text-5xl rv-hero-text-fade">{product.name}</h1>
+              <p className="text-base font-semibold text-brand-paleOrange rv-hero-text-fade-delayed">&ldquo;{product.tagline}&rdquo;</p>
+              <p className="max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base rv-hero-text-fade-delayed">{product.description}</p>
             </div>
           </div>
 
@@ -97,7 +97,7 @@ export default function ProductDetail() {
                   to={`/contact?productId=${product.id}&productName=${encodeURIComponent(product.name)}`}
                   className="px-4 py-2 bg-brand-orange hover:bg-brand-orangeHover text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-colors"
                 >
-                  Get Exact Quote
+                  Inquire Now
                 </Link>
               </div>
 
@@ -147,7 +147,7 @@ export default function ProductDetail() {
                     to={`/contact?productId=${product.id}&productName=${encodeURIComponent(product.name)}`}
                     className="inline-flex items-center gap-2 rounded-lg bg-brand-orange px-5 py-3 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-brand-orangeHover shadow-md"
                   >
-                    Request a Quote <ArrowRight className="h-4 w-4" />
+                    Contact For Specifications <ArrowRight className="h-4 w-4" />
                   </Link>
                   <a
                     href="tel:8329358214"
@@ -183,16 +183,17 @@ export default function ProductDetail() {
                 </Link>
               )}
             </div>
-            <AnimatedSection animation="fade-up" stagger className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {productVariations.map((variation) => {
+            <AnimatedSection animation="fade-up" stagger threshold={0.1} className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 rv-card-grid">
+              {productVariations.map((variation, idx) => {
                 const isCurrentProduct = variation.slug === product.slug;
 
                 return (
                   <Link
                     key={variation.id}
                     to={`/products/${variation.slug}`}
+                    style={{ animationDelay: `${idx * 0.3}s` }}
                     aria-current={isCurrentProduct ? 'page' : undefined}
-                    className={`group overflow-hidden rounded-xl border bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg ${
+                    className={`rv-card-stagger-item group overflow-hidden rounded-xl border bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg ${
                       isCurrentProduct
                         ? 'border-brand-orange ring-1 ring-brand-orange/30'
                         : 'border-slate-200 hover:border-brand-orange/50'

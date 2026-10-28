@@ -138,14 +138,6 @@ export default function Navbar() {
                   </NavLink>
                 )
               )}
-
-              {/* Request a Quote CTA */}
-              <button
-                onClick={() => navigate('/contact')}
-                className="rv-btn-hover ml-3 px-5 py-2.5 bg-[#F97316] hover:bg-orange-600 active:scale-95 text-white text-sm font-bold uppercase tracking-wider rounded-lg transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-orange-500/25"
-              >
-                Request a Quote
-              </button>
             </div>
 
             {/* Mobile hamburger */}
@@ -202,14 +194,6 @@ export default function Navbar() {
                 </Link>
               ))}
             </div>
-
-            <button
-              onClick={() => { navigate('/contact'); setIsOpen(false); }}
-              className="w-full mt-3 inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-lg bg-[#F97316] text-white text-base font-bold uppercase tracking-wider shadow-md hover:bg-orange-600 transition-all"
-            >
-              <Phone className="w-5 h-5" />
-              Request a Quote
-            </button>
           </div>
         )}
       </nav>

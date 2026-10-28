@@ -70,21 +70,21 @@ export default function DedicatedProductPage({ forcedSlug }) {
                   className="h-6 w-auto object-contain"
                 />
               </div>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-navy/90 border border-brand-orange/40 text-brand-paleOrange text-xs font-bold uppercase tracking-widest">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-navy/90 border border-brand-orange/40 text-brand-paleOrange text-xs font-bold uppercase tracking-widest rv-hero-text-fade">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-ping" />
                 Dedicated Product Page
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-black font-heading leading-tight tracking-tight text-white">
+            <h1 className="text-3xl sm:text-5xl font-black font-heading leading-tight tracking-tight text-white rv-hero-text-fade">
               {category.fullName}
             </h1>
 
-            <p className="text-lg sm:text-xl font-bold text-brand-paleOrange">
+            <p className="text-lg sm:text-xl font-bold text-brand-paleOrange rv-hero-text-fade">
               &ldquo;{category.tagline}&rdquo;
             </p>
 
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-3xl">
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-3xl rv-hero-text-fade-delayed">
               {category.description}
             </p>
 
@@ -94,7 +94,7 @@ export default function DedicatedProductPage({ forcedSlug }) {
                 onClick={() => handleQuoteClick()}
                 className="px-6 py-3.5 bg-brand-orange hover:bg-brand-orangeHover active:scale-95 text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-lg shadow-lg shadow-brand-orange/30 transition-all duration-200 flex items-center gap-2 group"
               >
-                <span>Request Custom Quote</span>
+                <span>Contact Engineering Team</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
 
@@ -312,11 +312,12 @@ export default function DedicatedProductPage({ forcedSlug }) {
               </p>
             </div>
 
-            <AnimatedSection animation="fade-up" stagger className="grid grid-cols-1 md:grid-cols-2 gap-6 perspective-container">
-              {category.subcategories.map((sub) => (
+            <AnimatedSection animation="fade-up" stagger threshold={0.1} className="grid grid-cols-1 md:grid-cols-2 gap-6 perspective-container rv-card-grid">
+              {category.subcategories.map((sub, idx) => (
                 <div
                   key={sub.id}
-                  className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:border-brand-orange/50 animate-3d-card transition-all duration-300 flex flex-col justify-between rv-card-hover"
+                  style={{ animationDelay: `${idx * 0.35}s` }}
+                  className="rv-card-stagger-item bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:border-brand-orange/50 animate-3d-card transition-all duration-300 flex flex-col justify-between rv-card-hover"
                 >
                   <div>
                     <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
@@ -430,12 +431,13 @@ export default function DedicatedProductPage({ forcedSlug }) {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {otherCategories.map((other) => (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 rv-card-grid">
+            {otherCategories.map((other, idx) => (
               <Link
                 key={other.id}
                 to={other.path}
-                className="group bg-white p-4 rounded-xl border border-slate-200 hover:border-brand-orange hover:shadow-lg transition-all flex items-center gap-4"
+                style={{ animationDelay: `${idx * 0.25}s` }}
+                className="rv-card-stagger-item group bg-white p-4 rounded-xl border border-slate-200 hover:border-brand-orange hover:shadow-lg transition-all flex items-center gap-4"
               >
                 <div className="w-16 h-16 rounded-lg overflow-hidden bg-slate-100 flex-shrink-0">
                   <img

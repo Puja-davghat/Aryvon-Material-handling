@@ -168,7 +168,7 @@ export default function Home() {
         {/* Industrial grid overlay */}
         <div className="absolute inset-0 rv-grid-drift opacity-10 pointer-events-none" />
 
-        <p className="absolute top-12 left-1/2 z-10 -translate-x-1/2 px-4 text-center text-lg sm:text-xl text-slate-300 font-bold tracking-wide whitespace-nowrap">
+        <p className="absolute top-12 left-1/2 z-10 -translate-x-1/2 px-4 text-center text-lg sm:text-xl text-slate-300 font-bold tracking-wide whitespace-nowrap rv-hero-text-fade">
           Smart Solutions That Move
         </p>
 
@@ -188,7 +188,7 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="max-w-4xl space-y-8">
             {/* Badge featuring ARYVON Logo */}
-            <div className="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-brand-navy/90 border border-brand-orange/50 text-brand-paleOrange text-xs font-bold tracking-widest uppercase backdrop-blur-sm">
+            <div className="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-brand-navy/90 border border-brand-orange/50 text-brand-paleOrange text-xs font-bold tracking-widest uppercase backdrop-blur-sm rv-hero-text-fade">
               <div className="bg-white/95 px-2 py-0.5 rounded shadow inline-flex items-center">
                 <img
                   src="/assets/logo/aryvon-logo.png"
@@ -200,13 +200,13 @@ export default function Home() {
             </div>
 
             {/* Main headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black font-heading tracking-tight leading-[1.05] text-white">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black font-heading tracking-tight leading-[1.05] text-white rv-hero-text-fade">
               Advanced Material Handling{' '}
               <span className="text-brand-orange">for a Stronger</span>{' '}
               Tomorrow
             </h1>
 
-            {/* CTA buttons */}
+            {/* CTA button */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
               <Link
                 to="/products"
@@ -215,17 +215,10 @@ export default function Home() {
                 Explore Our Products
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-transparent border-2 border-white/50 hover:border-white text-white font-bold text-sm uppercase tracking-widest rounded-lg transition-all duration-300 hover:bg-white/10 group"
-              >
-                Request a Quote
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform opacity-70 group-hover:opacity-100" />
-              </Link>
             </div>
 
             {/* Quick stats bar */}
-            <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-white/10">
+            <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-white/10 rv-hero-text-fade-delayed">
               {[
                 { label: 'Material Handling Focus', value: '100%' },
                 { label: 'Custom Configurations', value: 'Yes' },

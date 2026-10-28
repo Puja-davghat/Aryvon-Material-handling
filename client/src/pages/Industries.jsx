@@ -96,14 +96,14 @@ export default function Industries() {
                   className="h-5 w-auto object-contain"
                 />
               </div>
-              <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block">
+              <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block rv-hero-text-fade">
                 Sector Capabilities
               </span>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-black font-heading tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-5xl font-black font-heading tracking-tight leading-tight rv-hero-text-fade">
               Industries We Serve
             </h1>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed rv-hero-text-fade-delayed">
               ARYVON's material handling solutions are deployed across diverse industrial sectors. Wherever reliable movement, lifting, and positioning of goods is operationally critical, our equipment performs.
             </p>
 
@@ -186,7 +186,7 @@ export default function Industries() {
                   to="/contact"
                   className="inline-flex items-center gap-2 px-6 py-3 border border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors group"
                 >
-                  Get a Quote <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  Contact Us <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>
@@ -211,7 +211,7 @@ export default function Industries() {
                 to="/contact"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm uppercase tracking-widest rounded-lg transition-colors group"
               >
-                Request a Quote <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                Contact Engineering Team <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 to="/products"

@@ -13,11 +13,11 @@ export default function Contact() {
           <IndustrialShapes />
           <div className="absolute inset-0 industrial-grid opacity-20 pointer-events-none" />
           <div className="relative z-10 max-w-3xl space-y-4">
-            <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block">
+            <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block rv-hero-text-fade">
               Direct Inquiries
             </span>
             <div className="flex flex-wrap items-center gap-3">
-              <h1 className="text-3xl sm:text-5xl font-black font-heading tracking-tight leading-tight text-white">
+              <h1 className="text-3xl sm:text-5xl font-black font-heading tracking-tight leading-tight text-white rv-hero-text-fade">
                 Contact
               </h1>
               <div className="bg-white/95 px-3 py-1 rounded-lg shadow inline-flex items-center">
@@ -28,7 +28,7 @@ export default function Contact() {
                 />
               </div>
             </div>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed rv-hero-text-fade-delayed">
               Have a material handling requirement or need technical assistance? Contact our team directly through our verified phone line or submit your equipment requirements through the enquiry form below.  </p>
           </div>
         </div>

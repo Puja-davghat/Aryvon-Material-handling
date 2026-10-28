@@ -67,10 +67,10 @@ export default function About() {
           <IndustrialShapes />
           <div className="absolute inset-0 industrial-grid opacity-20 pointer-events-none" />
           <div className="relative z-10 max-w-3xl space-y-4">
-            <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block">
+            <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block rv-hero-text-fade">
               Our Company
             </span>
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3 rv-hero-text-fade">
               <h1 className="text-3xl sm:text-5xl font-black font-heading tracking-tight leading-tight text-white">
                 About
               </h1>
@@ -82,7 +82,7 @@ export default function About() {
                 />
               </div>
             </div>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed rv-hero-text-fade-delayed">
               Dedicated material handling solutions for industrial operations — focused on safety, reliability, and practical engineering.
             </p>
           </div>

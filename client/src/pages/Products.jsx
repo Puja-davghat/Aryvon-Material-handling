@@ -7,11 +7,14 @@ import AnimatedSection from '../components/AnimatedSection';
 import { categories } from '../data/products';
 
 // Individual product card (subcategory or main)
-function ProductCard({ item, categoryName, categorySlug }) {
+function ProductCard({ item, categoryName, categorySlug, index = 0 }) {
   const detailLink = `/products/${item.slug}`;
 
   return (
-    <div className="group bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:border-brand-orange/50 animate-3d-card transition-all duration-300 flex flex-col justify-between">
+    <div
+      style={{ animationDelay: `${index * 0.35}s` }}
+      className="rv-card-stagger-item group bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:border-brand-orange/50 animate-3d-card transition-all duration-300 flex flex-col justify-between"
+    >
       {/* Image */}
       <div>
         <div className="relative aspect-video overflow-hidden bg-slate-100">
@@ -120,22 +123,34 @@ function CategorySection({ category }) {
           </div>
         </div>
 
-        {/* Subcategory grid or single item view */}
+        {/* Subcategory grid or single item view with slow staggered fade up */}
         <div className="p-6 sm:p-8 bg-slate-50/50">
           {category.subcategories ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 perspective-container">
-              {category.subcategories.map(sub => (
+            <AnimatedSection
+              animation="fade-up"
+              stagger
+              threshold={0.1}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 perspective-container rv-card-grid"
+            >
+              {category.subcategories.map((sub, idx) => (
                 <ProductCard
                   key={sub.id}
                   item={sub}
                   categoryName={category.name}
                   categorySlug={category.slug}
+                  index={idx}
                 />
               ))}
-            </div>
+            </AnimatedSection>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 perspective-container">
+            <AnimatedSection
+              animation="fade-up"
+              stagger
+              threshold={0.1}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 perspective-container rv-card-grid"
+            >
               <div
+                style={{ animationDelay: '0s' }}
                 onClick={() => navigate(category.path)}
                 role="link"
                 tabIndex={0}
@@ -145,7 +160,7 @@ function CategorySection({ category }) {
                     navigate(category.path);
                   }
                 }}
-                className="group rounded-xl overflow-hidden border border-slate-200 bg-white hover:shadow-2xl hover:border-brand-orange/50 animate-3d-card transition-all duration-300 cursor-pointer"
+                className="rv-card-stagger-item group rounded-xl overflow-hidden border border-slate-200 bg-white hover:shadow-2xl hover:border-brand-orange/50 animate-3d-card transition-all duration-300 cursor-pointer"
               >
                 <div className="relative aspect-video overflow-hidden">
                   <img
@@ -178,7 +193,10 @@ function CategorySection({ category }) {
                 </div>
               </div>
 
-              <div className="flex flex-col justify-between p-6 sm:p-8 bg-gradient-to-br from-brand-lightBlue to-white rounded-xl border border-brand-iceBlue space-y-4">
+              <div
+                style={{ animationDelay: '0.35s' }}
+                className="rv-card-stagger-item flex flex-col justify-between p-6 sm:p-8 bg-gradient-to-br from-brand-lightBlue to-white rounded-xl border border-brand-iceBlue space-y-4"
+              >
                 <div className="space-y-3">
                   <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
                     Custom Engineered System
@@ -209,11 +227,11 @@ function CategorySection({ category }) {
                     to="/contact"
                     className="inline-flex items-center gap-2 px-5 py-3 border border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-colors"
                   >
-                    <span>Request Quote</span>
+                    <span>Contact Us</span>
                   </Link>
                 </div>
               </div>
-            </div>
+            </AnimatedSection>
           )}
         </div>
       </div>
@@ -238,24 +256,25 @@ export default function Products() {
                   className="h-5 w-auto object-contain"
                 />
               </div>
-              <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block">
+              <span className="text-xs font-bold uppercase tracking-widest text-brand-paleOrange block rv-hero-text-fade">
                 Product Catalogue
               </span>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-black font-heading tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-5xl font-black font-heading tracking-tight leading-tight rv-hero-text-fade">
               Four Core Product Lines
             </h1>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed rv-hero-text-fade-delayed">
               Browse ARYVON's four precision-engineered industrial material handling categories. Each product line features its own dedicated page with multiple designs, detailed specifications, and customized quotations.
             </p>
 
             {/* Direct links to all 4 dedicated pages */}
             <div className="flex flex-wrap gap-2.5 pt-2">
-              {categories.map(cat => (
+              {categories.map((cat, idx) => (
                 <Link
                   key={cat.id}
                   to={cat.path}
-                  className="px-3.5 py-2 text-xs font-bold bg-brand-navy/90 hover:bg-brand-orange text-white rounded-lg border border-white/20 hover:border-brand-orange transition-all uppercase tracking-wider inline-flex items-center gap-1.5 shadow"
+                  style={{ animationDelay: `${0.1 + idx * 0.12}s` }}
+                  className="rv-card-stagger-item px-3.5 py-2 text-xs font-bold bg-brand-navy/90 hover:bg-brand-orange text-white rounded-lg border border-white/20 hover:border-brand-orange transition-all uppercase tracking-wider inline-flex items-center gap-1.5 shadow"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
                   <span>{cat.fullName}</span>
@@ -270,9 +289,7 @@ export default function Products() {
       {/* 4 Products Sections */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-12">
         {categories.map(cat => (
-          <AnimatedSection key={cat.id} animation="fade-up" stagger>
-            <CategorySection category={cat} />
-          </AnimatedSection>
+          <CategorySection key={cat.id} category={cat} />
         ))}
       </div>
 
@@ -295,7 +312,7 @@ export default function Products() {
                 to="/contact"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors group shadow-lg shadow-brand-orange/30"
               >
-                Request a Quote <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                Contact Engineering Team <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
                 href="tel:8329358214"

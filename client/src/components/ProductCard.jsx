@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Eye, FileText, ArrowRight } from 'lucide-react';
 import Button from './Button';
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, index = 0 }) {
   const navigate = useNavigate();
 
   const handleInquire = () => {
@@ -15,7 +15,10 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <div className="rv-card-hover group bg-white rounded-xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-brand-orange/40 transition-all duration-300 flex flex-col h-full">
+    <div
+      style={{ animationDelay: `${index * 0.3}s` }}
+      className="rv-card-stagger-item rv-card-hover group bg-white rounded-xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-brand-orange/40 transition-all duration-300 flex flex-col h-full"
+    >
       {/* Product Image Box */}
       <div className="relative aspect-[16/10] bg-slate-100 overflow-hidden">
         <Link to={`/products/${product.slug}`} className="absolute inset-0 cursor-pointer">
