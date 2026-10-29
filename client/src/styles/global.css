@@ -738,6 +738,22 @@ html { scroll-behavior: smooth; }
   will-change: transform, opacity;
 }
 
+/* ── Industry cards: continuous looping word-by-word fade up/down ── */
+@keyframes rvWordLoop {
+  0%   { opacity: 0;    transform: translateY(10px);  filter: blur(3px); }
+  18%  { opacity: 1;    transform: translateY(0);      filter: blur(0);   }
+  75%  { opacity: 1;    transform: translateY(0);      filter: blur(0);   }
+  92%  { opacity: 0;    transform: translateY(-8px);   filter: blur(3px); }
+  100% { opacity: 0;    transform: translateY(-8px);   filter: blur(3px); }
+}
+
+.rv-word-loop {
+  display: inline-block;
+  opacity: 0;
+  will-change: opacity, transform, filter;
+  animation: rvWordLoop var(--wl-dur, 3.2s) cubic-bezier(0.22, 1, 0.36, 1) var(--wl-delay, 0s) infinite;
+}
+
 /* ── Card hover lift + soft shadow ── */
 .rv-card-hover {
   transition:
@@ -874,6 +890,7 @@ html { scroll-behavior: smooth; }
   .rv-card-stagger-item,
   .rv-card-grid > *,
   .rv-word-fade-down,
+  .rv-word-loop,
   .rv-char-fade-up {
     opacity: 1 !important;
     transform: none !important;

@@ -207,6 +207,32 @@ function CharFadeUp({ segments, baseDelay = 0.08, stagger = 0.032, duration = 0.
   );
 }
 
+/**
+ * WordFadeLoop — continuously fades each word in/out with a staggered looping animation.
+ * Each word cycles independently so the text always appears to be "breathing" word by word.
+ */
+function WordFadeLoop({ text, className = '', baseDuration = 3.2, stagger = 0.22 }) {
+  const words = String(text).trim().split(/\s+/);
+  return (
+    <span className={className} aria-label={text}>
+      {words.map((word, i) => (
+        <span
+          key={i}
+          aria-hidden="true"
+          className="rv-word-loop"
+          style={{
+            '--wl-dur': `${baseDuration}s`,
+            '--wl-delay': `${(i * stagger).toFixed(2)}s`,
+            marginRight: i < words.length - 1 ? '0.3em' : 0,
+          }}
+        >
+          {word}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 export default function Home() {
   return (
     <div className="space-y-0">
@@ -551,10 +577,18 @@ export default function Home() {
                       <ind.icon className="w-5 h-5 text-brand-orange group-hover:text-white transition-colors duration-300" />
                     </div>
                     <h3 className="text-white font-bold text-base group-hover:text-brand-orange transition-colors duration-300">
-                      {ind.name}
+                      <WordFadeLoop
+                        text={ind.name}
+                        baseDuration={3.0}
+                        stagger={0.28}
+                      />
                     </h3>
-                    <p className="text-slate-300 text-xs leading-relaxed mt-1 line-clamp-2 drop-shadow-sm">
-                      {ind.desc}
+                    <p className="text-slate-300 text-xs leading-relaxed mt-1 drop-shadow-sm">
+                      <WordFadeLoop
+                        text={ind.desc}
+                        baseDuration={3.4}
+                        stagger={0.18}
+                      />
                     </p>
                   </div>
                 </Link>
