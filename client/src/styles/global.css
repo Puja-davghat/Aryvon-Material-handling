@@ -628,6 +628,28 @@ html { scroll-behavior: smooth; }
   animation: rvWordFadeDown 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+/* ── Hero: Character-by-character fade up ──────────────────── */
+@keyframes rvCharFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.rv-char-fade-up {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(22px);
+  will-change: transform, opacity, filter;
+  animation: rvCharFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 /* Continuous slow fade in/out up and down float */
 @keyframes rvFloatSlow {
   0%, 100% {
@@ -851,7 +873,8 @@ html { scroll-behavior: smooth; }
   .rv-hero-text-fade-delayed,
   .rv-card-stagger-item,
   .rv-card-grid > *,
-  .rv-word-fade-down {
+  .rv-word-fade-down,
+  .rv-char-fade-up {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;

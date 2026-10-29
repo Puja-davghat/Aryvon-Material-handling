@@ -127,29 +127,85 @@ const industries = [
   {
     icon: Warehouse,
     name: 'Warehousing',
-    desc: 'Optimize vertical storage and material flow across high-bay warehousing and distribution operations.'
+    desc: 'Optimize vertical storage and material flow across high-bay warehousing and distribution operations.',
+    image: '/assets/images/industries/warehousing.jpg'
   },
   {
     icon: Factory,
     name: 'Manufacturing',
-    desc: 'Keep production lines moving with reliable lifting, conveying, and material handling systems.'
+    desc: 'Keep production lines moving with reliable lifting, conveying, and material handling systems.',
+    image: '/assets/images/industries/manufacturing.jpg'
   },
   {
     icon: Package,
     name: 'E-Commerce',
-    desc: 'High-speed fulfilment operations demand fast, efficient conveyor and lift systems — we deliver.'
+    desc: 'High-speed fulfilment operations demand fast, efficient conveyor and lift systems — we deliver.',
+    image: '/assets/images/industries/ecommerce.jpg'
   },
   {
     icon: Truck,
     name: 'Logistics',
-    desc: 'Loading bays, freight handling, and dock operations need robust, dependable material handling.'
+    desc: 'Loading bays, freight handling, and dock operations need robust, dependable material handling.',
+    image: '/assets/images/industries/logistics.jpg'
   },
   {
     icon: Wrench,
     name: 'Automotive',
-    desc: 'Heavy component transfer, assembly line conveyors, and overhead cranes for automotive plants.'
+    desc: 'Heavy component transfer, assembly line conveyors, and overhead cranes for automotive plants.',
+    image: '/assets/images/products/project-work.jpg'
   }
 ];
+
+/**
+ * CharFadeUp - Animates text character-by-character with a staggered fade-up transition.
+ * Keeps words in whitespace-nowrap wrappers so responsive line wrapping happens only
+ * between words, preventing broken words across lines on both mobile and desktop.
+ */
+function CharFadeUp({ segments, baseDelay = 0.08, stagger = 0.032, duration = 0.65 }) {
+  let globalCharIndex = 0;
+
+  return (
+    <>
+      {segments.map((segment, segIdx) => {
+        const words = segment.text.trim().split(/\s+/);
+        return (
+          <React.Fragment key={segIdx}>
+            {words.map((word, wordIdx) => {
+              const chars = word.split('');
+              const element = (
+                <span
+                  key={wordIdx}
+                  className={`inline-block whitespace-nowrap ${segment.className || ''}`}
+                  style={{ marginRight: '0.28em' }}
+                >
+                  {chars.map((char) => {
+                    const delay = (baseDelay + globalCharIndex * stagger).toFixed(3);
+                    globalCharIndex += 1;
+                    return (
+                      <span
+                        key={globalCharIndex}
+                        className="rv-char-fade-up"
+                        style={{
+                          animationDelay: `${delay}s`,
+                          animationDuration: `${duration}s`,
+                        }}
+                      >
+                        {char}
+                      </span>
+                    );
+                  })}
+                </span>
+              );
+              // increment for the inter-word space
+              globalCharIndex += 1;
+              return element;
+            })}
+          </React.Fragment>
+        );
+      })}
+    </>
+  );
+}
 
 export default function Home() {
   return (
@@ -168,9 +224,12 @@ export default function Home() {
         {/* Industrial grid overlay */}
         <div className="absolute inset-0 rv-grid-drift opacity-10 pointer-events-none" />
 
-        <p className="absolute top-12 left-1/2 z-10 -translate-x-1/2 px-4 text-center text-lg sm:text-xl text-slate-300 font-bold tracking-wide whitespace-nowrap rv-hero-text-fade">
-          Smart Solutions That Move
-        </p>
+        {/* Top Centered Tagline: perfectly centered on desktop and in mobile structure */}
+        <div className="absolute top-6 sm:top-10 md:top-12 inset-x-0 z-10 flex justify-center items-center px-4 pointer-events-none">
+          <p className="text-center text-sm sm:text-base md:text-xl text-slate-300 font-bold tracking-wider uppercase sm:tracking-wide rv-hero-text-fade">
+            Smart Solutions That Move
+          </p>
+        </div>
 
         {/* Ambient glows */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-orange/10 rounded-full blur-[120px] pointer-events-none rv-glow-pulse" />
@@ -187,8 +246,8 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="max-w-4xl space-y-8">
-            {/* Badge featuring ARYVON Logo */}
-            <div className="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-brand-navy/90 border border-brand-orange/50 text-brand-paleOrange text-xs font-bold tracking-widest uppercase backdrop-blur-sm rv-hero-text-fade">
+            {/* Badge featuring ARYVON Logo with character-by-character fade up */}
+            <div className="inline-flex items-center gap-2.5 sm:gap-3 px-3.5 py-1.5 rounded-full bg-brand-navy/90 border border-brand-orange/50 text-brand-paleOrange text-xs font-bold tracking-widest uppercase backdrop-blur-sm">
               <div className="bg-white/95 px-2 py-0.5 rounded shadow inline-flex items-center">
                 <img
                   src="/assets/logo/aryvon-logo.png"
@@ -196,14 +255,33 @@ export default function Home() {
                   className="h-4 sm:h-5 w-auto object-contain"
                 />
               </div>
-              <span className="hidden sm:inline">Material Handling Solutions</span>
+              <span className="inline text-[11px] sm:text-xs">
+                <CharFadeUp
+                  segments={[{ text: 'Material Handling Solutions', className: 'text-brand-paleOrange' }]}
+                  baseDelay={0.05}
+                  stagger={0.025}
+                  duration={0.5}
+                />
+              </span>
             </div>
 
-            {/* Main headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black font-heading tracking-tight leading-[1.05] text-white rv-hero-text-fade">
-              Advanced Material Handling{' '}
-              <span className="text-brand-orange">for a Stronger</span>{' '}
-              Tomorrow
+            {/* Main headline with character-by-character cascading fade up */}
+            <h1
+              className="text-4xl sm:text-5xl lg:text-7xl font-black font-heading tracking-tight leading-[1.05] text-white"
+              aria-label="Advanced Material Handling for a Stronger Tomorrow"
+            >
+              <span aria-hidden="true">
+                <CharFadeUp
+                  segments={[
+                    { text: 'Advanced Material Handling', className: 'text-white' },
+                    { text: 'for a Stronger', className: 'text-brand-orange' },
+                    { text: 'Tomorrow', className: 'text-white' },
+                  ]}
+                  baseDelay={0.1}
+                  stagger={0.032}
+                  duration={0.65}
+                />
+              </span>
             </h1>
 
             {/* CTA button */}
@@ -450,23 +528,32 @@ export default function Home() {
                 <Link
                   to="/industries"
                   key={ind.name}
-                  className={`group relative rounded-2xl overflow-hidden aspect-[3/4] sm:aspect-auto sm:h-72 bg-brand-navy border border-slate-700/60 hover:border-brand-orange/60 hover:shadow-xl transition-all duration-300 rv-card-hover ${
+                  className={`group relative rounded-2xl overflow-hidden aspect-[3/4] sm:aspect-auto sm:h-72 bg-brand-navy border border-slate-700/60 hover:border-brand-orange/60 hover:shadow-2xl transition-all duration-500 rv-card-hover ${
                     i % 2 === 0 ? 'rv-float-slow' : 'rv-float-slow-delayed'
                   }`}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand-navy via-brand-deep to-slate-900 group-hover:scale-105 transition-all duration-500">
-                    <div className="absolute inset-0 industrial-grid opacity-20" />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-deep via-brand-navy/60 to-transparent" />
+                  {/* Card background image: normally blurred, unblurs and scales gently on hover */}
+                  {ind.image && (
+                    <img
+                      src={ind.image}
+                      alt={ind.name}
+                      className="absolute inset-0 w-full h-full object-cover blur-[3px] scale-105 opacity-40 group-hover:blur-0 group-hover:scale-110 group-hover:opacity-75 transition-all duration-700 ease-out"
+                      loading="lazy"
+                    />
+                  )}
+
+                  {/* Dark gradient overlays to ensure text contrast and brand aesthetic */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-deep via-brand-deep/80 to-brand-navy/60 group-hover:via-brand-deep/55 transition-all duration-500" />
+                  <div className="absolute inset-0 industrial-grid opacity-15 pointer-events-none" />
 
                   <div className="relative z-10 h-full flex flex-col justify-end p-5">
-                    <div className="p-2.5 bg-brand-orange/20 backdrop-blur-sm rounded-lg w-fit mb-3 border border-brand-orange/30 group-hover:scale-110 transition-transform">
-                      <ind.icon className="w-5 h-5 text-brand-orange" />
+                    <div className="p-2.5 bg-brand-navy/80 backdrop-blur-md rounded-lg w-fit mb-3 border border-brand-orange/40 shadow group-hover:bg-brand-orange group-hover:border-brand-orange transition-all duration-300 group-hover:scale-110">
+                      <ind.icon className="w-5 h-5 text-brand-orange group-hover:text-white transition-colors duration-300" />
                     </div>
-                    <h3 className="text-white font-bold text-base group-hover:text-brand-orange transition-colors">
+                    <h3 className="text-white font-bold text-base group-hover:text-brand-orange transition-colors duration-300">
                       {ind.name}
                     </h3>
-                    <p className="text-slate-400 text-xs leading-relaxed mt-1 line-clamp-2">
+                    <p className="text-slate-300 text-xs leading-relaxed mt-1 line-clamp-2 drop-shadow-sm">
                       {ind.desc}
                     </p>
                   </div>
