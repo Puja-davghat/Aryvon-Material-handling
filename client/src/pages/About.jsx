@@ -34,7 +34,7 @@ const products = [
   {
     name: 'VRC',
     full: 'Vertical Reciprocating Conveyor',
-    tagline: 'Powering vertical movement. Built for industrial demands.',
+    tagline: 'Move your goods between floors with ease.',
     href: '/products/vrc'
   },
   {

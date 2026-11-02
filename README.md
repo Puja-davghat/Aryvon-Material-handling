@@ -11,17 +11,11 @@ Production-ready full-stack website for **ARYVON**, engineered for showcasing ma
   - React Router DOM 6 for client-side routing
   - Motion / Framer Motion for accessible animations
   - Lucide React for consistent industrial iconography
-- **Backend (`server/`)**:
-  - Node.js & Express.js REST API
-  - MySQL2 with parameterized queries & transaction support
-  - Helmet for HTTP security headers & Express Rate Limiting for spam protection
-  - Centralized error handling & server-side payload validation
-- **Database (`database/schema.sql`)**:
-  - MySQL database (`aryvon_db`)
-  - Tables: `product_categories`, `products`, `enquiries`, `enquiry_products`
-  - Resilient automated in-memory dataset fallback during development
-- **Email Service (`server/services/emailService.js`)**:
-  - Nodemailer SMTP integration sending notifications to business email
+- **Backend / Form Processing (`api/`)**:
+  - Pure PHP endpoint (`api/enquiry.php`) — Zero Database, no disk storage, completely static
+  - Generates Reference ID (`#ARY-` + 6 random digits) for each quotation inquiry
+  - PHPMailer SMTP integration (`api/config.php`) sending immediate confirmation to client & full specification copy to admin (`aryvonmhe@gmail.com`)
+  - Direct anti-spam honeypot filtering and CORS support
 
 ---
 
@@ -131,7 +125,7 @@ EMAIL_HOST=smtp.yourprovider.com
 EMAIL_PORT=587
 EMAIL_USER=notifications@yourdomain.com
 EMAIL_PASSWORD=your_smtp_app_password
-ENQUIRY_TO_EMAIL=aryvon_business@domain.com
+ENQUIRY_TO_EMAIL=aryvonmhe@gmail.com
 ```
 
 ### Step 4: Run the Application Locally

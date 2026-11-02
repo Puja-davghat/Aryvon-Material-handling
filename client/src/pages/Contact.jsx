@@ -54,11 +54,11 @@ export default function Contact() {
                     Verified Contact Phone
                   </span>
                   <a
-                    href="tel:8329358214"
+                    href="tel:8080238541"
                     className="text-2xl font-black text-brand-navy hover:text-brand-orange transition-colors tracking-wide block mt-1"
-                    title="Click to dial 83293 58214"
+                    title="Click to dial 80802 38541"
                   >
-                    83293 58214
+                    80802 38541
                   </a>
                   <p className="text-xs text-slate-500 mt-1">
                     Available for equipment inquiries, technical advice, and project evaluations.
@@ -73,13 +73,16 @@ export default function Contact() {
                 </div>
                 <div>
                   <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">
-                    Online Inquiries
+                    Direct Email Contact
                   </span>
-                  <p className="text-sm font-semibold text-slate-800 mt-1">
-                    Submissions are routed directly to the confirmed ARYVON business desk.
-                  </p>
+                  <a
+                    href="mailto:aryvonmhe@gmail.com"
+                    className="text-lg font-bold text-brand-navy hover:text-brand-orange transition-colors tracking-wide block mt-1"
+                  >
+                    aryvonmhe@gmail.com
+                  </a>
                   <p className="text-xs text-slate-500 mt-1">
-                    Please use the enquiry form for prompt technical proposals with full specifications.
+                    Send RFP documents, site drawings, and purchase requisitions directly.
                   </p>
                 </div>
               </div>

@@ -150,10 +150,10 @@ export default function ProductDetail() {
                     Contact For Specifications <ArrowRight className="h-4 w-4" />
                   </Link>
                   <a
-                    href="tel:8329358214"
+                    href="tel:8080238541"
                     className="inline-flex items-center gap-2 rounded-lg border-2 border-brand-navy px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-brand-navy hover:bg-brand-navy hover:text-white transition-colors"
                   >
-                    <Phone className="h-4 w-4 text-brand-orange" /> Call 83293 58214
+                    <Phone className="h-4 w-4 text-brand-orange" /> Call 80802 38541
                   </a>
                 </div>
               </div>

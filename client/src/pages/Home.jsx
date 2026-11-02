@@ -326,7 +326,7 @@ export default function Home() {
               {[
                 { label: 'Material Handling Focus', value: '100%' },
                 { label: 'Custom Configurations', value: 'Yes' },
-                { label: 'Direct Enquiry Line', value: '83293 58214' }
+                { label: 'Direct Enquiry Line', value: '80802 38541' }
               ].map(stat => (
                 <div key={stat.label} className="text-center sm:text-left">
                   <p className="text-brand-orange text-xl sm:text-2xl font-black">
@@ -436,6 +436,7 @@ export default function Home() {
         </div>
       </section>
 
+
       {/* =========================================================================
           ENGINEERING PROCESS (Exact 3D Design from Mockup)
          ========================================================================= */}
@@ -495,11 +496,11 @@ export default function Home() {
                     <span>About Us</span> <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <a
-                    href="tel:8329358214"
+                    href="tel:8080238541"
                     className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white/30 hover:border-white text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors rv-btn-hover"
                   >
                     <Phone className="w-4 h-4" />
-                    83293 58214
+                    80802 38541
                   </a>
                 </div>
               </div>
@@ -554,9 +555,8 @@ export default function Home() {
                 <Link
                   to="/industries"
                   key={ind.name}
-                  className={`group relative rounded-2xl overflow-hidden aspect-[3/4] sm:aspect-auto sm:h-72 bg-brand-navy border border-slate-700/60 hover:border-brand-orange/60 hover:shadow-2xl transition-all duration-500 rv-card-hover ${
-                    i % 2 === 0 ? 'rv-float-slow' : 'rv-float-slow-delayed'
-                  }`}
+                  className={`group relative rounded-2xl overflow-hidden aspect-[3/4] sm:aspect-auto sm:h-72 bg-brand-navy border border-slate-700/60 hover:border-brand-orange/60 hover:shadow-2xl transition-all duration-500 rv-card-hover ${i % 2 === 0 ? 'rv-float-slow' : 'rv-float-slow-delayed'
+                    }`}
                 >
                   {/* Card background image: normally blurred, unblurs and scales gently on hover */}
                   {ind.image && (
@@ -642,11 +642,11 @@ export default function Home() {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
-                href="tel:8329358214"
+                href="tel:8080238541"
                 className="inline-flex items-center gap-3 px-10 py-5 border-2 border-white/40 hover:border-white text-white font-bold text-sm uppercase tracking-widest rounded-lg transition-all duration-300 hover:bg-white/10 group rv-btn-hover"
               >
                 <Phone className="w-5 h-5 text-brand-orange" />
-                Call 83293 58214
+                Call 80802 38541
               </a>
             </div>
           </AnimatedSection>

@@ -15,8 +15,8 @@ export const categories = [
     fullName: 'Vertical Reciprocating Conveyor',
     slug: 'vrc',
     path: '/products/vrc',
-    tagline: 'Powering vertical movement. Built for industrial demands.',
-    description: 'Powering vertical movement. Built for industrial demands. Engineered for uncompromising performance. ARYVON VRC systems combine heavy-duty structural engineering, precise load handling, and integrated safety protection to move industrial materials between floors with confidence.',
+    tagline: 'Move your goods between floors with ease.',
+    description: 'Industrial goods lifts engineered for reliable vertical movement of pallets, materials, and goods between floor levels — with enclosed safety cages and structural steel masts.',
     image: '/assets/images/products/vrc-goods-lift.jpg',
     fallback: '/assets/images/hero/hero-vrc-warehouse.jpg',
     productSlug: 'vertical-reciprocating-conveyor',
@@ -124,7 +124,7 @@ export const categories = [
       'Heavy-duty pantograph scissor structure engineered with high-strength structural steel'
     ],
     specifications: {
-      'Load Capacity': '300 kg to 3,000 kg',
+      'Load Capacity': '300 kg to 12,000 kg',
       'Platform Height': 'Up to 14 meters (Self-Propelled) / 1.5m to 4m (Floor-Mounted)',
       'Platform Deck': 'Anti-skid chequered plate with perimeter safety toe-guards',
       'Power Source': '24V DC battery pack (Self-Propelled) / 415V 3-Phase AC power pack (Floor-Mounted)',
@@ -155,7 +155,7 @@ export const categories = [
         slug: 'floor-mounted-scissor-lift',
         description: 'Stationary hydraulic scissor lift table bolted to the factory floor — designed for ergonomic material loading, pallet positioning, and height adjustment at fixed workstations.',
         image: '/assets/images/products/pr5.jpeg',
-        capacity: '500 kg – 3,000 kg',
+        capacity: '500 kg – 12,000 kg',
         height: 'Raised height 1,200 mm – 4,000 mm'
       }
     ]
@@ -327,8 +327,8 @@ export const products = [
     category_id: 1,
     category_slug: 'vrc',
     category_name: 'VRC',
-    tagline: 'Powering vertical movement. Built for industrial demands.',
-    description: 'Powering vertical movement. Built for industrial demands. Engineered for uncompromising performance. ARYVON VRC systems combine heavy-duty structural engineering, precise load handling, and integrated safety protection to move industrial materials between floors with confidence.',
+    tagline: 'Move your goods between floors with ease.',
+    description: 'Industrial goods lifts engineered for reliable vertical movement of pallets, materials, and goods between floor levels — with enclosed safety cages and structural steel masts.',
     image_url: '/assets/images/products/vrc-goods-lift.jpg',
     fallback_image: '/assets/images/hero/hero-vrc-warehouse.jpg',
     price_range: 'Starting from ₹4,50,000 (Custom Quotation)',

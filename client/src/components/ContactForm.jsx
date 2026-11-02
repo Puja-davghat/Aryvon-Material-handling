@@ -35,6 +35,7 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
     fullName: '',
     companyName: '',
     phone: '',
+    email: '',
     productId: queryProductId,
     message: queryProductName
       ? `Dear ARYVON Team,\n\nWe would like to request product details and a technical proposal for: ${queryProductName}.\n\nPlease find our operating requirements below:`
@@ -72,6 +73,10 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
     const phoneRegex = /^[\d\s+\-().]{7,25}$/;
     if (!formData.phone.trim() || !phoneRegex.test(formData.phone.trim())) {
       errs.phone = 'A valid contact phone number is required.';
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
+      errs.email = 'A valid email address is required so we can send your confirmation.';
     }
     if (!formData.message.trim() || formData.message.trim().length < 5) {
       errs.message = 'Please specify your requirements or equipment questions.';
@@ -115,8 +120,8 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
     try {
       const payload = {
         ...formData,
+        productName: selectedProduct?.name || queryProductName || 'General Equipment Inquiry',
         subject: autoSubject,
-        email: `enquiry+${Date.now()}@aryvon.in`, // auto-placeholder so server passes email validation
       };
       const response = await submitEnquiry(payload);
       setSubmissionSuccess(response);
@@ -124,12 +129,13 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
         fullName: '',
         companyName: '',
         phone: '',
+        email: '',
         productId: '',
         message: '',
         website_hp: ''
       });
     } catch (err) {
-      setSubmissionError(err.message || 'Submission failed. Please check details or call 83293 58214 directly.');
+      setSubmissionError(err.message || 'Submission failed. Please check details or call 80802 38541 directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -151,29 +157,40 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
       </div>
 
       <div className="p-6 sm:p-8">
-        {/* Success Confirmation Alert */}
+        {/* Success Confirmation Alert matching exact requested message */}
         {submissionSuccess && (
-          <div className="mb-8 p-6 bg-emerald-50 border-2 border-emerald-500/40 rounded-xl space-y-3 animate-in zoom-in-95 duration-200">
-            <div className="flex items-center gap-3">
-              <CheckCircle2 className="w-8 h-8 text-emerald-600 flex-shrink-0" />
-              <div>
-                <h4 className="text-lg font-bold text-emerald-900">
+          <div className="mb-8 p-6 bg-emerald-50 border-2 border-emerald-500/50 rounded-xl space-y-4 animate-in zoom-in-95 duration-200 shadow-md">
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-8 h-8 text-emerald-600 flex-shrink-0 mt-0.5" />
+              <div className="space-y-1">
+                <h4 className="text-lg font-bold text-emerald-950 font-heading">
                   Enquiry Successfully Received!
                 </h4>
-                {submissionSuccess.referenceId && (
-                  <p className="text-xs font-semibold text-emerald-700">
-                    Reference ID: #{submissionSuccess.referenceId}
-                  </p>
-                )}
+                <p className="text-sm font-black text-emerald-800 tracking-wide font-mono bg-emerald-100/70 inline-block px-2.5 py-1 rounded border border-emerald-300/60">
+                  Reference ID: {submissionSuccess.referenceId?.startsWith('#') ? submissionSuccess.referenceId : '#' + submissionSuccess.referenceId}
+                </p>
               </div>
             </div>
-            <p className="text-sm text-emerald-800 leading-relaxed">
-              {submissionSuccess.message}
-            </p>
-            <div className="pt-2 flex items-center justify-between text-xs text-emerald-700 border-t border-emerald-200">
-              <span>Urgent equipment requirement? Call us directly:</span>
-              <a href="tel:8329358214" className="font-bold underline text-emerald-900">
-                83293 58214
+
+            <div className="text-sm text-emerald-950 leading-relaxed bg-white/90 p-4 rounded-lg border border-emerald-200 space-y-2">
+              <p>
+                <strong>Thank you for your enquiry.</strong> Your specifications have been recorded and forwarded to our application engineering team. An engineer will contact you promptly at <strong className="text-brand-navy underline">{submissionSuccess.customerPhone || formData.phone}</strong>.
+              </p>
+              {(submissionSuccess.customerEmail || formData.email) && (
+                <p className="text-xs text-emerald-800 font-medium">
+                  A confirmation email with your Reference ID has been sent to <strong className="text-brand-navy">{submissionSuccess.customerEmail || formData.email}</strong>.
+                </p>
+              )}
+            </div>
+
+            <div className="pt-2 flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm text-emerald-900 border-t border-emerald-200">
+              <span className="font-semibold">Urgent equipment requirement? Call us directly:</span>
+              <a
+                href="tel:8080238541"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-navy hover:bg-brand-orange text-white text-xs font-bold uppercase tracking-wider rounded-md transition-colors shadow-sm"
+              >
+                <PhoneCall className="w-3.5 h-3.5 text-brand-orange" />
+                <span>80802 38541</span>
               </a>
             </div>
           </div>
@@ -255,26 +272,49 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
             </div>
           </div>
 
-          {/* Row 2: Phone Number */}
-          <div>
-            <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-              Contact Phone Number <span className="text-brand-orange">*</span>
-            </label>
-            <input
-              id="phone"
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="e.g. +91 98765 43210"
-              className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
-                errors.phone
-                  ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
-                  : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
-              }`}
-              required
-            />
-            {errors.phone && <p className="text-xs text-red-600 mt-1">{errors.phone}</p>}
+          {/* Row 2: Phone Number & Optional Email */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                Contact Phone Number <span className="text-brand-orange">*</span>
+              </label>
+              <input
+                id="phone"
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="e.g. +91 98765 43210"
+                className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+                  errors.phone
+                    ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
+                    : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
+                }`}
+                required
+              />
+              {errors.phone && <p className="text-xs text-red-600 mt-1">{errors.phone}</p>}
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                Business Email <span className="text-brand-orange">*</span>
+              </label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="e.g. name@company.com"
+                className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+                  errors.email
+                    ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
+                    : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
+                }`}
+                required
+              />
+              {errors.email && <p className="text-xs text-red-600 mt-1">{errors.email}</p>}
+            </div>
           </div>
 
           {/* Row 3: Product of Interest (Optional / Prepopulated) */}
@@ -353,11 +393,11 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
             </Button>
 
             <a
-              href="tel:8329358214"
+              href="tel:8080238541"
               className="text-xs font-bold text-slate-600 hover:text-brand-orange transition-colors flex items-center gap-2"
             >
               <PhoneCall className="w-4 h-4 text-brand-orange" />
-              Prefer calling? <span className="underline">83293 58214</span>
+              Prefer calling? <span className="underline">80802 38541</span>
             </a>
           </div>
         </form>

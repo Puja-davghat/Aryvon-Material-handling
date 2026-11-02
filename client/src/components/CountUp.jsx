@@ -6,7 +6,7 @@ import React, { useState, useEffect, useRef } from 'react';
  * Requirements:
  * - Counts in fast, visible jumps of 10, 25, 30 style increments (e.g. 10, 25, 50, 75, 100).
  * - Steps every 40ms, total under 1.2s.
- * - Always lands exactly on the real final value (e.g. "100%", "83293 58214").
+ * - Always lands exactly on the real final value (e.g. "100%", "80802 38541").
  * - Replays every time on scroll in and out via IntersectionObserver.
  * - Shows final text immediately if reduced-motion is active or if JS fails.
  */
@@ -30,7 +30,7 @@ export default function CountUp({ value = '', className = '' }) {
 
     // Check if this is a supported numeric stat
     const isPercent = strValue.endsWith('%');
-    const isPhone = strValue === '83293 58214';
+    const isPhone = strValue === '80802 38541';
     const isPureNumber = !isNaN(Number(strValue)) && strValue !== '';
 
     if (!isPercent && !isPhone && !isPureNumber) {
@@ -51,8 +51,8 @@ export default function CountUp({ value = '', className = '' }) {
       }
 
       if (isPhone) {
-        // Target: 83293 58214 (total raw = 8329358214)
-        const targetNum = 8329358214;
+        // Target: 80802 38541 (total raw = 8080238541)
+        const targetNum = 8080238541;
         const current = Math.floor((targetNum * pct) / 100);
         const s = String(current).padStart(10, '0');
         return `${s.slice(0, 5)} ${s.slice(5)}`;

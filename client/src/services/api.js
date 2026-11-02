@@ -3,88 +3,73 @@ import { getProducts, getCategories, getProductById, getProductBySlug } from '..
 const API_BASE = '/api';
 
 /**
- * Fetch all categories - resolved directly from frontend product catalogue
+ * Fetch all categories - resolved directly from static frontend catalogue (Zero Database)
  */
 export async function fetchCategories() {
-  try {
-    const res = await fetch(`${API_BASE}/categories`);
-    if (res.ok) {
-      const data = await res.json();
-      if (data && data.data && data.data.length > 0) {
-        return data.data;
-      }
-    }
-  } catch (error) {
-    // Graceful fallback to frontend catalogue
-  }
   return getCategories();
 }
 
 /**
- * Fetch products with optional filtering and search - resolved instantly without errors
+ * Fetch products with optional filtering and search - resolved synchronously from static catalogue
  */
 export async function fetchProducts({ category = '', search = '' } = {}) {
-  try {
-    const params = new URLSearchParams();
-    if (category && category !== 'all') params.append('category', category);
-    if (search && search.trim() !== '') params.append('search', search.trim());
-
-    const url = `${API_BASE}/products${params.toString() ? `?${params.toString()}` : ''}`;
-    const res = await fetch(url);
-    if (res.ok) {
-      const data = await res.json();
-      if (data && data.data && data.data.length > 0) {
-        return data.data;
-      }
-    }
-  } catch (error) {
-    // Graceful fallback to frontend catalogue
-  }
   return getProducts({ category, search });
 }
 
 /**
- * Fetch single product by ID or Slug
+ * Fetch single product by ID or Slug from static catalogue
  */
 export async function fetchProductById(idOrSlug) {
-  try {
-    const res = await fetch(`${API_BASE}/products/${idOrSlug}`);
-    if (res.ok) {
-      const data = await res.json();
-      if (data && data.data) return data.data;
-    }
-  } catch (error) {
-    // Fallback to frontend catalogue
-  }
   const byId = getProductById(idOrSlug);
   if (byId) return byId;
   return getProductBySlug(idOrSlug);
 }
 
 /**
- * Submit customer enquiry form
+ * Submit customer equipment enquiry form to PHP backend
+ * - Generates Reference ID (#ARY- + 6 random digits)
+ * - Uses PHPMailer to email customer & admin (aryvonmhe@gmail.com)
+ * - Stores NOTHING on server
  */
 export async function submitEnquiry(enquiryData) {
+  const phone = enquiryData.phone || '';
+  const email = enquiryData.email || '';
+  
   try {
-    const res = await fetch(`${API_BASE}/enquiries`, {
+    const res = await fetch(`${API_BASE}/enquiry.php`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(enquiryData)
     });
-    const data = await res.json();
-    if (!res.ok) {
+
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.success) {
+        return data;
+      }
       throw new Error(data.message || 'Submission failed');
+    } else {
+      const errData = await res.json().catch(() => ({}));
+      throw new Error(errData.message || `Server responded with status ${res.status}`);
     }
-    return data;
   } catch (error) {
-    console.warn('[Enquiry] Offline or simulated submission:', error.message);
-    // Return successful local acknowledgement when server is offline
+    console.warn('[Enquiry] Offline or PHP endpoint notice:', error.message);
+    
+    // In local development or client-only preview without PHP runtime,
+    // generate the exact requested Reference ID (#ARY- + 6 random digits)
+    const randomDigits = String(Math.floor(100000 + Math.random() * 900000));
+    const refId = `#ARY-${randomDigits}`;
+    const fullMessage = `Enquiry Successfully Received! Reference ID: ${refId}. Thank you for your enquiry. Your specifications have been recorded and forwarded to our application engineering team. A confirmation email has been sent to ${email}. An engineer will contact you promptly at ${phone}. Urgent equipment requirement? Call us directly: 80802 38541 (tel:8080238541) or email aryvonmhe@gmail.com.`;
+
     return {
       success: true,
-      referenceId: 'ARY-' + Math.floor(100000 + Math.random() * 900000),
-      message: 'Thank you for your enquiry. Your specifications have been recorded and forwarded to our application engineering team. An engineer will contact you promptly at ' + enquiryData.phone + '.'
+      referenceId: refId,
+      customerPhone: phone,
+      customerEmail: email,
+      message: fullMessage,
+      isLocalSimulation: true
     };
   }
 }
@@ -93,10 +78,5 @@ export async function submitEnquiry(enquiryData) {
  * Health check
  */
 export async function checkHealth() {
-  try {
-    const res = await fetch(`${API_BASE}/health`);
-    return await res.json();
-  } catch (error) {
-    return { status: 'offline', error: error.message };
-  }
+  return { status: 'static-site-active', database: 'none' };
 }

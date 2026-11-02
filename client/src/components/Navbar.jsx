@@ -47,9 +47,9 @@ export default function Navbar() {
               Advanced Material Handling Solutions — VRC · Scissor Lifts · EOT Cranes · Conveyors
             </span>
           </div>
-          <a href="tel:8329358214" className="hidden sm:flex items-center gap-1.5 text-brand-paleOrange hover:text-white transition-colors font-semibold rv-text-movable-delayed">
+          <a href="tel:8080238541" className="hidden sm:flex items-center gap-1.5 text-brand-paleOrange hover:text-white transition-colors font-semibold rv-text-movable-delayed">
             <Phone className="w-3 h-3" />
-            83293 58214
+            80802 38541
           </a>
         </div>
       </div>

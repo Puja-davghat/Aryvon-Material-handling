@@ -99,7 +99,7 @@ export default function DedicatedProductPage({ forcedSlug }) {
               </button>
 
               <a
-                href="https://wa.me/918329358214?text=Hello%20ARYVON,%20I%20am%20interested%20in%20learning%20more%20about%20your%20Vertical%20Reciprocating%20Conveyors%20and%20Scissor%20Lifts."
+                href="https://wa.me/918080238541?text=Hello%20ARYVON,%20I%20am%20interested%20in%20learning%20more%20about%20your%20Vertical%20Reciprocating%20Conveyors%20and%20Scissor%20Lifts."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-5 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-lg shadow transition-all duration-200 flex items-center gap-2"
@@ -109,11 +109,11 @@ export default function DedicatedProductPage({ forcedSlug }) {
               </a>
 
               <a
-                href="tel:8329358214"
+                href="tel:8080238541"
                 className="px-5 py-3.5 bg-brand-navy/80 hover:bg-brand-navy border border-white/20 hover:border-brand-orange text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-lg transition-all flex items-center gap-2"
               >
                 <Phone className="w-4 h-4 text-brand-orange" />
-                <span>83293 58214</span>
+                <span>80802 38541</span>
               </a>
             </div>
           </div>
@@ -278,11 +278,11 @@ export default function DedicatedProductPage({ forcedSlug }) {
               </p>
               <div className="flex items-center gap-3 pt-1">
                 <a
-                  href="tel:8329358214"
+                  href="tel:8080238541"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-brand-navy hover:bg-brand-blueAccent text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-colors"
                 >
                   <Phone className="w-3.5 h-3.5 text-brand-orange" />
-                  Call 83293 58214
+                  Call 80802 38541
                 </a>
                 <button
                   onClick={() => handleQuoteClick()}
@@ -374,11 +374,11 @@ export default function DedicatedProductPage({ forcedSlug }) {
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                     <a
-                      href="tel:8329358214"
+                      href="tel:8080238541"
                       className="text-xs font-bold text-brand-navy hover:text-brand-orange transition-colors flex items-center gap-1"
                     >
                       <Phone className="w-3.5 h-3.5 text-brand-orange" />
-                      83293 58214
+                      80802 38541
                     </a>
                   </div>
                 </div>

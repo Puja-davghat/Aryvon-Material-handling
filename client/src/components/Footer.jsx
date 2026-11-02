@@ -234,11 +234,11 @@ export default function Footer() {
                     Enquiry Hotline
                   </WordFadeDown>
                   <a
-                    href="tel:8329358214"
+                    href="tel:8080238541"
                     className="text-xl font-extrabold text-white hover:text-brand-orange transition-colors tracking-wide block"
                   >
                     <WordFadeDown inView={inView} baseDelay={0.3} stagger={0.05}>
-                      83293 58214
+                      80802 38541
                     </WordFadeDown>
                   </a>
                 </div>
@@ -259,13 +259,13 @@ export default function Footer() {
                     stagger={0.04}
                     className="block text-xs uppercase font-bold text-brand-paleOrange tracking-wider"
                   >
-                    Online Enquiries
+                    Official Email
                   </WordFadeDown>
-                  <Link to="/contact" className="text-sm font-semibold text-white hover:text-brand-orange transition-colors block">
+                  <a href="mailto:aryvonmhe@gmail.com" className="text-sm font-semibold text-white hover:text-brand-orange transition-colors block">
                     <WordFadeDown inView={inView} baseDelay={0.4} stagger={0.04}>
-                      Submit via Contact Form
+                      aryvonmhe@gmail.com
                     </WordFadeDown>
-                  </Link>
+                  </a>
                 </div>
               </div>
 
