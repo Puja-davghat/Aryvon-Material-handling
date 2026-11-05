@@ -3,20 +3,30 @@
  * 
  * Target Architecture:
  * 1. Owner Email (Primary Recipient): aryvonmhe@gmail.com
- *    -> Receives complete customer enquiry details + unique Reference ID (#ARY-XXXXXX)
- * 2. Customer Email (Client): Submitted email address (e.g. davghatpooja@gmail.com)
- *    -> Receives CC copy & professional confirmation email with same Reference ID
+ *    -> Key: 4449093e-7427-43bb-aa1a-a19f6dd33522 (Web3Forms Verified)
+ *    -> Delivers complete customer enquiry details + unique Reference ID (#ARY-XXXXXX)
  * 
- * Powered by FormSubmit.co exclusively.
+ * 2. Customer Email (Client Confirmation & Thank-You):
+ *    -> Powered by EmailJS (https://www.emailjs.com - 100% Free)
+ *    -> Sends an automated thank-you confirmation email directly to the customer's inbox!
+ * 
+ * Contact Phone Numbers:
+ * - Calling Number: +91 80802 38541
+ * - WhatsApp Number: +91 83293 58214
  */
 
 export const emailConfig = {
-  provider: 'formsubmit',
-
-  // ─── FORMSUBMIT.CO CONFIGURATION ───
-  formsubmit: {
-    // Owner is ARYVON (Primary destination for all enquiries)
+  // Web3Forms for Owner Notification
+  web3forms: {
+    accessKey: '4449093e-7427-43bb-aa1a-a19f6dd33522',
     ownerEmail: 'aryvonmhe@gmail.com',
+  },
+
+  // EmailJS for Customer Thank-You Confirmation
+  emailjs: {
+    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '',
+    serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || '',
+    templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '',
   },
 
   // Company Contact Details

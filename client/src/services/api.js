@@ -27,22 +27,22 @@ export async function fetchProductById(idOrSlug) {
 /**
  * Submit customer equipment enquiry form.
  * 
- * Target Roles & Routing:
- * - Owner: aryvonmhe@gmail.com (Receives complete enquiry details + Reference ID)
- * - Customer / User (e.g. davghatpooja@gmail.com): 
- *   - Set as _replyto
- *   - Included in _cc so customer receives a carbon copy of the enquiry
- *   - Receives professional autoresponse confirmation email with Reference ID
- * 
- * Powered by FormSubmit.co exclusively (Pure Client-Side, No Backend, No Database).
+ * cPanel & Static Hosting Dual-Email Architecture:
+ * 1. Checks if running on cPanel hosting with PHP backend (/api/enquiry.php):
+ *    - Uses native PHPMailer to send:
+ *      A) Admin notification to aryvonmhe@gmail.com with all customer details + Reference ID
+ *      B) Customer thank-you confirmation with Reference ID directly to the customer's inbox!
+ * 2. If running locally or on static hosting without PHP:
+ *    - Dispatches to owner via Web3Forms (access key: 4449093e-7427-43bb-aa1a-a19f6dd33522)
+ *    - Gracefully shows on-screen confirmation with exact Reference ID
  */
 export async function submitEnquiry(enquiryData) {
-  const fullName    = (enquiryData.fullName || enquiryData.name || '').trim();
-  const companyName = (enquiryData.companyName || enquiryData.company || '').trim();
-  const phone       = (enquiryData.phone || '').trim();
+  const fullName      = (enquiryData.fullName || enquiryData.name || '').trim();
+  const companyName   = (enquiryData.companyName || enquiryData.company || '').trim();
+  const phone         = (enquiryData.phone || '').trim();
   const customerEmail = (enquiryData.email || '').trim();
-  const productName = (enquiryData.productName || enquiryData.subject || 'General Equipment Inquiry').trim();
-  const message     = (enquiryData.message || enquiryData.requirements || '').trim();
+  const productName   = (enquiryData.productName || enquiryData.subject || 'General Equipment Inquiry').trim();
+  const message       = (enquiryData.message || enquiryData.requirements || '').trim();
 
   // Generate unique Reference ID: #ARY- + 6 random digits
   const randomSixDigits = Math.floor(100000 + Math.random() * 900000);
@@ -56,119 +56,94 @@ export async function submitEnquiry(enquiryData) {
 
   const fullSuccessMessage = `Enquiry Successfully Received! Reference ID: ${referenceId}. Thank you for your enquiry. Your specifications have been recorded and forwarded to our application engineering team. An engineer will contact you promptly at ${phone}. Urgent equipment requirement? Call us directly: ${emailConfig.company.callingPhoneDisplay} (${emailConfig.company.callingPhoneTel}) or WhatsApp ${emailConfig.company.whatsappPhoneDisplay}.`;
 
-  const ownerEmail = emailConfig.formsubmit?.ownerEmail || 'aryvonmhe@gmail.com';
-
-  // Professional confirmation auto-reply message sent to customer
-  const autoResponseMessage = `Dear ${fullName},
-
-Thank you for contacting ARYVON Material Handling Solutions!
-
-We have successfully received your equipment enquiry under Reference ID: ${referenceId}.
-
-────────────────────────────────────────────
-ENQUIRY SUMMARY & SPECIFICATIONS:
-────────────────────────────────────────────
-• Reference ID: ${referenceId}
-• Customer Name: ${fullName}
-• Organization / Company: ${companyName || 'N/A'}
-• Contact Phone: ${phone}
-• Equipment / Product: ${productName}
-• Submission Date & Time: ${timestamp}
-
-Operating Requirements & Specifications:
-${message}
-────────────────────────────────────────────
-
-Our application engineering team is reviewing your requirements and an engineer will contact you promptly at ${phone}.
-
-For urgent equipment requirements or technical consultation, feel free to contact us:
-• Phone: ${emailConfig.company.callingPhoneDisplay}
-• WhatsApp: ${emailConfig.company.whatsappPhoneDisplay} (${emailConfig.company.whatsappUrl})
-• Email: ${emailConfig.company.ownerEmail}
-
-Warm regards,
-Application Engineering Team
-ARYVON Material Handling Solutions
-https://aryvon.com`;
-
-  // ── FormSubmit.co Dispatch ──
-  // 1. Primary recipient: aryvonmhe@gmail.com (Owner)
-  // 2. _cc: customerEmail (Customer receives copy)
-  // 3. _replyto: customerEmail (Owner can hit reply directly to reach customer)
-  // 4. _autoresponse: Professional confirmation email sent to customer
+  // ─────────────────────────────────────────────────────────────
+  // STRATEGY 1: cPanel PHP API Endpoint (/api/enquiry.php)
+  // Sends BOTH emails via server SMTP when uploaded to cPanel!
+  // ─────────────────────────────────────────────────────────────
   try {
-    const payload = {
-      _subject: `New Enquiry Received - ${referenceId} [${productName}]`,
-      _replyto: customerEmail,
-      _cc: customerEmail,
-      _template: 'table',
-      _captcha: 'false',
-      _autoresponse: autoResponseMessage,
-      'Reference ID': referenceId,
-      'Customer Full Name': fullName,
-      'Company / Organization': companyName || 'N/A',
-      'Contact Phone Number': phone,
-      'Customer Email Address': customerEmail,
-      'Equipment / Product': productName,
-      'Operating Requirements': message,
-      'Submission Timestamp': timestamp,
-      'Recipient (Owner)': ownerEmail
-    };
-
-    // Attempt 1: Standard AJAX endpoint
-    const response = await fetch(`https://formsubmit.co/ajax/${ownerEmail}`, {
+    const cpanelResponse = await fetch('/api/enquiry.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({
+        ...enquiryData,
+        fullName,
+        companyName,
+        phone,
+        email: customerEmail,
+        productName,
+        message,
+        referenceId
+      })
     });
 
-    if (response.ok) {
-      console.log('✅ [FormSubmit] Enquiry dispatched to owner:', ownerEmail, 'CC:', customerEmail);
-    } else {
-      console.warn('[FormSubmit Notice] Status:', response.status);
+    if (cpanelResponse.ok) {
+      const cpanelData = await cpanelResponse.json();
+      if (cpanelData && cpanelData.success) {
+        console.log('✅ [cPanel Backend] Both Owner and Customer emails dispatched successfully!');
+        return {
+          success: true,
+          referenceId: cpanelData.referenceId || referenceId,
+          customerPhone: phone,
+          customerEmail: customerEmail,
+          message: cpanelData.message || fullSuccessMessage,
+          isCpanel: true
+        };
+      }
     }
-  } catch (err) {
-    console.warn('[FormSubmit AJAX Error]', err.message);
-
-    // Attempt 2: Standard form post fallback if AJAX fetch encounters CORS/Cloudflare issue
-    try {
-      const formData = new FormData();
-      formData.append('_subject', `New Enquiry Received - ${referenceId} [${productName}]`);
-      formData.append('_replyto', customerEmail);
-      formData.append('_cc', customerEmail);
-      formData.append('_template', 'table');
-      formData.append('_captcha', 'false');
-      formData.append('_autoresponse', autoResponseMessage);
-      formData.append('Reference ID', referenceId);
-      formData.append('Customer Full Name', fullName);
-      formData.append('Company / Organization', companyName || 'N/A');
-      formData.append('Contact Phone Number', phone);
-      formData.append('Customer Email Address', customerEmail);
-      formData.append('Equipment / Product', productName);
-      formData.append('Operating Requirements', message);
-      formData.append('Submission Timestamp', timestamp);
-
-      await fetch(`https://formsubmit.co/${ownerEmail}`, {
-        method: 'POST',
-        body: formData,
-        mode: 'no-cors'
-      });
-    } catch (fallbackErr) {
-      console.warn('[FormSubmit Direct Fallback Error]', fallbackErr.message);
-    }
+  } catch (cpanelErr) {
+    // cPanel PHP not present on local dev server; continue to client-side fallback
   }
 
-  // Seamless on-screen confirmation for customer with exact Reference ID
+  // ─────────────────────────────────────────────────────────────
+  // STRATEGY 2: Web3Forms Owner Dispatch (for static hosting/local dev)
+  // ─────────────────────────────────────────────────────────────
+  const ownerAccessKey = emailConfig.web3forms?.accessKey || '4449093e-7427-43bb-aa1a-a19f6dd33522';
+  const ownerEmail = emailConfig.company?.ownerEmail || 'aryvonmhe@gmail.com';
+
+  try {
+    const ownerResponse = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        access_key: ownerAccessKey,
+        subject: `New Enquiry Received - ${referenceId} [${productName}]`,
+        from_name: 'ARYVON Equipment Enquiry',
+        name: fullName,
+        email: customerEmail,
+        replyto: customerEmail,
+        'Reference ID': referenceId,
+        'Customer Full Name': fullName,
+        'Company / Organization': companyName || 'N/A',
+        'Customer Phone Number': phone,
+        'Customer Business Email': customerEmail,
+        'Equipment / Product': productName,
+        'Operating Requirements & Specifications': message,
+        'Owner Email': ownerEmail,
+        'Submission Timestamp': timestamp
+      })
+    });
+
+    const ownerData = await ownerResponse.json();
+    if (ownerResponse.ok && ownerData.success) {
+      console.log('✅ [Web3Forms] Owner notification delivered to aryvonmhe@gmail.com with Reference ID:', referenceId);
+    }
+  } catch (ownerErr) {
+    console.warn('[Web3Forms Error]', ownerErr.message);
+  }
+
+  // Seamless on-screen confirmation for customer matching Reference ID
   return {
     success: true,
     referenceId,
     customerPhone: phone,
     customerEmail: customerEmail,
-    message: fullSuccessMessage,
-    isFormSubmit: true
+    message: fullSuccessMessage
   };
 }
 

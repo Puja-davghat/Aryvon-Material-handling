@@ -62,7 +62,7 @@ export default function Contact() {
                     className="text-2xl font-black text-brand-navy hover:text-brand-orange transition-colors tracking-wide block mt-1"
                     title="Click to dial +91 80802 38541"
                   >
-                    80802 38541
+                    +91 80802 38541
                   </a>
                   <p className="text-xs text-slate-500 mt-1">
                     Available for equipment inquiries, technical advice, and project evaluations.
@@ -86,7 +86,7 @@ export default function Contact() {
                     className="text-xl font-black text-emerald-700 hover:text-emerald-800 transition-colors tracking-wide block mt-0.5"
                     title="Open WhatsApp chat with +91 83293 58214"
                   >
-                    80802 38541
+                    +91 83293 58214
                   </a>
                   <p className="text-xs text-slate-500">
                     Instant consultation &amp; quotation chat with application engineers.

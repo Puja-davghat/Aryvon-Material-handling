@@ -113,7 +113,7 @@ export default function DedicatedProductPage({ forcedSlug }) {
                 className="px-5 py-3.5 bg-brand-navy/80 hover:bg-brand-navy border border-white/20 hover:border-brand-orange text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-lg transition-all flex items-center gap-2"
               >
                 <Phone className="w-4 h-4 text-brand-orange" />
-                <span>+91 +91 80802 38541</span>
+                <span>+91 80802 38541</span>
               </a>
             </div>
           </div>
@@ -282,7 +282,7 @@ export default function DedicatedProductPage({ forcedSlug }) {
                   className="inline-flex items-center gap-2 px-4 py-2 bg-brand-navy hover:bg-brand-blueAccent text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-colors"
                 >
                   <Phone className="w-3.5 h-3.5 text-brand-orange" />
-                  Call +91 +91 80802 38541
+                  Call +91 80802 38541
                 </a>
                 <button
                   onClick={() => handleQuoteClick()}

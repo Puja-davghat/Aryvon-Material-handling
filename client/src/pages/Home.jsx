@@ -326,7 +326,7 @@ export default function Home() {
               {[
                 { label: 'Material Handling Focus', value: '100%' },
                 { label: 'Custom Configurations', value: 'Yes' },
-                { label: 'Direct Enquiry Line', value: '+91 +91 80802 38541' }
+                { label: 'Direct Enquiry Line', value: '+91 80802 38541' }
               ].map(stat => (
                 <div key={stat.label} className="text-center sm:text-left">
                   <p className="text-brand-orange text-xl sm:text-2xl font-black">
@@ -646,7 +646,7 @@ export default function Home() {
                 className="inline-flex items-center gap-3 px-10 py-5 border-2 border-white/40 hover:border-white text-white font-bold text-sm uppercase tracking-widest rounded-lg transition-all duration-300 hover:bg-white/10 group rv-btn-hover"
               >
                 <Phone className="w-5 h-5 text-brand-orange" />
-                Call +91 +91 80802 38541
+                Call +91 80802 38541
               </a>
             </div>
           </AnimatedSection>
