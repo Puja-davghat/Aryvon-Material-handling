@@ -30,7 +30,7 @@ export default function CountUp({ value = '', className = '' }) {
 
     // Check if this is a supported numeric stat
     const isPercent = strValue.endsWith('%');
-    const isPhone = strValue === '80802 38541';
+    const isPhone = strValue === '+9180802 38541';
     const isPureNumber = !isNaN(Number(strValue)) && strValue !== '';
 
     if (!isPercent && !isPhone && !isPureNumber) {
@@ -52,10 +52,10 @@ export default function CountUp({ value = '', className = '' }) {
 
       if (isPhone) {
         // Target: 80802 38541 (total raw = 8080238541)
-        const targetNum = 8080238541;
+        const targetNum = +918080238541;
         const current = Math.floor((targetNum * pct) / 100);
         const s = String(current).padStart(10, '0');
-        return `${s.slice(0, 5)} ${s.slice(5)}`;
+        return strValue.startsWith('+91') ? `+91 ${s.slice(0, 5)} ${s.slice(5)}` : `${s.slice(0, 5)} ${s.slice(5)}`;
       }
 
       if (isPureNumber) {

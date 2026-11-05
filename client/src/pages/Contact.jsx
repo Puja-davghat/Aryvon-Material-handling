@@ -8,7 +8,7 @@ import WhatsAppIcon from '../components/WhatsAppIcon';
 export default function Contact() {
   // Clean mailto without massive body to ensure the OS launches the default mail client directly without forcing Microsoft Edge
   const mailtoUrl = 'mailto:aryvonmhe@gmail.com?subject=Material%20Handling%20Equipment%20Enquiry%20-%20ARYVON';
-  const whatsappUrl = 'https://wa.me/918080238541?text=Hello%20ARYVON%20Team%2C%20I%20would%20like%20to%20enquire%20about%20your%20material%20handling%20equipment.';
+  const whatsappUrl = 'https://wa.me/918329358214?text=Hello%20ARYVON%20Team%2C%20I%20would%20like%20to%20enquire%20about%20your%20material%20handling%20equipment.';
   return (
     <div className="space-y-12 sm:space-y-16 py-10 sm:py-16">
       {/* Page Header Banner */}
@@ -58,9 +58,9 @@ export default function Contact() {
                     Verified Contact Phone
                   </span>
                   <a
-                    href="tel:8080238541"
+                    href="tel:+918080238541"
                     className="text-2xl font-black text-brand-navy hover:text-brand-orange transition-colors tracking-wide block mt-1"
-                    title="Click to dial 80802 38541"
+                    title="Click to dial +91 80802 38541"
                   >
                     80802 38541
                   </a>
@@ -84,7 +84,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xl font-black text-emerald-700 hover:text-emerald-800 transition-colors tracking-wide block mt-0.5"
-                    title="Open WhatsApp chat with 80802 38541"
+                    title="Open WhatsApp chat with +91 83293 58214"
                   >
                     80802 38541
                   </a>

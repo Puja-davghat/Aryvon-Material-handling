@@ -136,7 +136,7 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
         website_hp: ''
       });
     } catch (err) {
-      setSubmissionError(err.message || 'Submission failed. Please check details or call 80802 38541 directly.');
+      setSubmissionError(err.message || 'Submission failed. Please check details or call +91 80802 38541 directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -188,7 +188,7 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
               <span className="font-semibold">Urgent equipment requirement?</span>
               <div className="flex items-center gap-2">
                 <a
-                  href="https://wa.me/918080238541?text=Hello%20ARYVON%20Team%2C%20I%20have%20submitted%20an%20equipment%20enquiry%20and%20would%20like%20to%20discuss%20it."
+                  href="https://wa.me/918329358214?text=Hello%20ARYVON%20Team%2C%20I%20have%20submitted%20an%20equipment%20enquiry%20and%20would%20like%20to%20discuss%20it."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider rounded-md transition-colors shadow-sm"
@@ -198,12 +198,12 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
                   <span>WhatsApp</span>
                 </a>
                 <a
-                  href="tel:8080238541"
+                  href="tel:+918080238541"
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-navy hover:bg-brand-orange text-white text-xs font-bold uppercase tracking-wider rounded-md transition-colors shadow-sm"
                   title="Call directly"
                 >
                   <PhoneCall className="w-3.5 h-3.5 text-brand-orange" />
-                  <span>80802 38541</span>
+                  <span>+91 8329358214 </span>
                 </a>
               </div>
             </div>
@@ -254,8 +254,8 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
                 onChange={handleChange}
                 placeholder="e.g. Rajesh Kumar"
                 className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${errors.fullName
-                    ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
-                    : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
+                  ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
+                  : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
                   }`}
                 required
               />
@@ -274,8 +274,8 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
                 onChange={handleChange}
                 placeholder="e.g. Acme Logistics Pvt Ltd"
                 className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${errors.companyName
-                    ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
-                    : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
+                  ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
+                  : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
                   }`}
                 required
               />
@@ -297,8 +297,8 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
                 onChange={handleChange}
                 placeholder="e.g. +91 98765 43210"
                 className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${errors.phone
-                    ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
-                    : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
+                  ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
+                  : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
                   }`}
                 required
               />
@@ -317,8 +317,8 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
                 onChange={handleChange}
                 placeholder="e.g. name@company.com"
                 className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${errors.email
-                    ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
-                    : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
+                  ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
+                  : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
                   }`}
                 required
               />
@@ -371,8 +371,8 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
               onChange={handleChange}
               placeholder="Please describe your operating environment, required lifting capacity, warehouse layout, or quantities needed..."
               className={`w-full px-4 py-3 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${errors.message
-                  ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
-                  : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
+                ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
+                : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
                 }`}
               required
             />
@@ -401,23 +401,23 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
 
             <div className="flex flex-wrap items-center gap-3">
               <a
-                href="https://wa.me/918080238541?text=Hello%20ARYVON%20Team%2C%20I%20would%20like%20to%20enquire%20about%20your%20material%20handling%20equipment."
+                href="https://wa.me/918329358214?text=Hello%20ARYVON%20Team%2C%20I%20would%20like%20to%20enquire%20about%20your%20material%20handling%20equipment."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs font-bold text-emerald-700 hover:text-emerald-800 transition-colors flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg border border-emerald-200"
                 title="Chat with us on WhatsApp"
               >
                 <WhatsAppIcon className="w-4 h-4 text-emerald-600" />
-                <span>WhatsApp: 80802 38541</span>
+                <span>WhatsApp: +91 83293 58214</span>
               </a>
 
               <a
-                href="tel:8080238541"
+                href="tel:+918080238541"
                 className="text-xs font-bold text-slate-600 hover:text-brand-orange transition-colors flex items-center gap-1.5"
                 title="Direct call"
               >
                 <PhoneCall className="w-3.5 h-3.5 text-brand-orange" />
-                <span>Call: 80802 38541</span>
+                <span>Call: +91 80802 38541</span>
               </a>
             </div>
           </div>

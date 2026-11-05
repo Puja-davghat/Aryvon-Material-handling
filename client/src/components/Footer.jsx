@@ -235,11 +235,11 @@ export default function Footer() {
                     Enquiry Hotline
                   </WordFadeDown>
                   <a
-                    href="tel:8080238541"
+                    href="tel:+918080238541"
                     className="text-xl font-extrabold text-white hover:text-brand-orange transition-colors tracking-wide block"
                   >
                     <WordFadeDown inView={inView} baseDelay={0.3} stagger={0.05}>
-                      80802 38541
+                      +91 80802 38541
                     </WordFadeDown>
                   </a>
                 </div>
@@ -263,13 +263,13 @@ export default function Footer() {
                     WhatsApp Chat
                   </WordFadeDown>
                   <a
-                    href="https://wa.me/918080238541?text=Hello%20ARYVON%20Team%2C%20I%20would%20like%20to%20enquire%20about%20your%20material%20handling%20equipment."
+                    href="https://wa.me/918329358214?text=Hello%20ARYVON%20Team%2C%20I%20would%20like%20to%20enquire%20about%20your%20material%20handling%20equipment."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm font-semibold text-white hover:text-emerald-400 transition-colors block"
                   >
                     <WordFadeDown inView={inView} baseDelay={0.36} stagger={0.04}>
-                      Chat: 80802 38541
+                      Chat: +91 83293 58214
                     </WordFadeDown>
                   </a>
                 </div>

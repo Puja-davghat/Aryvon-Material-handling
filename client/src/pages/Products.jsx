@@ -316,11 +316,11 @@ export default function Products() {
                 Contact Engineering Team <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
-                href="tel:8080238541"
+                href="tel:+918080238541"
                 className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white/40 hover:border-white text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors"
               >
                 <Phone className="w-4 h-4 text-brand-orange" />
-                80802 38541
+                +91 80802 38541
               </a>
             </div>
           </div>
