@@ -4,6 +4,7 @@ import { Send, CheckCircle2, AlertCircle, ShieldCheck, PhoneCall, ChevronDown } 
 import { submitEnquiry } from '../services/api';
 import { products as localProducts } from '../data/products';
 import Button from './Button';
+import WhatsAppIcon from './WhatsAppIcon';
 
 /* ─── Fade-in on scroll hook ─── */
 function useFadeIn() {
@@ -184,14 +185,27 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
             </div>
 
             <div className="pt-2 flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm text-emerald-900 border-t border-emerald-200">
-              <span className="font-semibold">Urgent equipment requirement? Call us directly:</span>
-              <a
-                href="tel:8080238541"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-navy hover:bg-brand-orange text-white text-xs font-bold uppercase tracking-wider rounded-md transition-colors shadow-sm"
-              >
-                <PhoneCall className="w-3.5 h-3.5 text-brand-orange" />
-                <span>80802 38541</span>
-              </a>
+              <span className="font-semibold">Urgent equipment requirement?</span>
+              <div className="flex items-center gap-2">
+                <a
+                  href="https://wa.me/918080238541?text=Hello%20ARYVON%20Team%2C%20I%20have%20submitted%20an%20equipment%20enquiry%20and%20would%20like%20to%20discuss%20it."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider rounded-md transition-colors shadow-sm"
+                  title="Chat with an engineer on WhatsApp"
+                >
+                  <WhatsAppIcon className="w-3.5 h-3.5 text-white" />
+                  <span>WhatsApp</span>
+                </a>
+                <a
+                  href="tel:8080238541"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-navy hover:bg-brand-orange text-white text-xs font-bold uppercase tracking-wider rounded-md transition-colors shadow-sm"
+                  title="Call directly"
+                >
+                  <PhoneCall className="w-3.5 h-3.5 text-brand-orange" />
+                  <span>80802 38541</span>
+                </a>
+              </div>
             </div>
           </div>
         )}
@@ -211,9 +225,8 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
           ref={formRef}
           onSubmit={handleSubmit}
           noValidate
-          className={`space-y-6 transition-all duration-700 delay-150 ${
-            formVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-          }`}
+          className={`space-y-6 transition-all duration-700 delay-150 ${formVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            }`}
         >
           {/* Honeypot field for anti-spam (invisible to humans) */}
           <div className="hidden" aria-hidden="true">
@@ -240,11 +253,10 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
                 value={formData.fullName}
                 onChange={handleChange}
                 placeholder="e.g. Rajesh Kumar"
-                className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
-                  errors.fullName
+                className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${errors.fullName
                     ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
                     : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
-                }`}
+                  }`}
                 required
               />
               {errors.fullName && <p className="text-xs text-red-600 mt-1">{errors.fullName}</p>}
@@ -261,11 +273,10 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
                 value={formData.companyName}
                 onChange={handleChange}
                 placeholder="e.g. Acme Logistics Pvt Ltd"
-                className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
-                  errors.companyName
+                className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${errors.companyName
                     ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
                     : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
-                }`}
+                  }`}
                 required
               />
               {errors.companyName && <p className="text-xs text-red-600 mt-1">{errors.companyName}</p>}
@@ -285,11 +296,10 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="e.g. +91 98765 43210"
-                className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
-                  errors.phone
+                className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${errors.phone
                     ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
                     : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
-                }`}
+                  }`}
                 required
               />
               {errors.phone && <p className="text-xs text-red-600 mt-1">{errors.phone}</p>}
@@ -306,11 +316,10 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="e.g. name@company.com"
-                className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
-                  errors.email
+                className={`w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${errors.email
                     ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
                     : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
-                }`}
+                  }`}
                 required
               />
               {errors.email && <p className="text-xs text-red-600 mt-1">{errors.email}</p>}
@@ -340,9 +349,8 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
               <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             </div>
             {/* Auto-subject preview pill */}
-            <div className={`mt-2 transition-all duration-300 ${
-              formData.productId ? 'opacity-100 max-h-10' : 'opacity-0 max-h-0 overflow-hidden'
-            }`}>
+            <div className={`mt-2 transition-all duration-300 ${formData.productId ? 'opacity-100 max-h-10' : 'opacity-0 max-h-0 overflow-hidden'
+              }`}>
               <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-brand-navy bg-brand-lightBlue border border-brand-iceBlue px-2.5 py-1 rounded-full">
                 <span className="w-2 h-2 rounded-full bg-brand-orange flex-shrink-0" />
                 Subject: {getAutoSubject(availableProducts.find(p => String(p.id) === String(formData.productId))?.name)}
@@ -362,11 +370,10 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
               value={formData.message}
               onChange={handleChange}
               placeholder="Please describe your operating environment, required lifting capacity, warehouse layout, or quantities needed..."
-              className={`w-full px-4 py-3 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
-                errors.message
+              className={`w-full px-4 py-3 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${errors.message
                   ? 'border-red-400 bg-red-50/50 focus:ring-red-400'
                   : 'border-slate-300 bg-slate-50/50 focus:ring-brand-orange focus:bg-white'
-              }`}
+                }`}
               required
             />
             {errors.message && <p className="text-xs text-red-600 mt-1">{errors.message}</p>}
@@ -392,13 +399,27 @@ export default function ContactForm({ prefilledProductId = null, prefilledProduc
               {isSubmitting ? 'Submitting Enquiry...' : 'Submit Equipment Enquiry'}
             </Button>
 
-            <a
-              href="tel:8080238541"
-              className="text-xs font-bold text-slate-600 hover:text-brand-orange transition-colors flex items-center gap-2"
-            >
-              <PhoneCall className="w-4 h-4 text-brand-orange" />
-              Prefer calling? <span className="underline">80802 38541</span>
-            </a>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="https://wa.me/918080238541?text=Hello%20ARYVON%20Team%2C%20I%20would%20like%20to%20enquire%20about%20your%20material%20handling%20equipment."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-bold text-emerald-700 hover:text-emerald-800 transition-colors flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg border border-emerald-200"
+                title="Chat with us on WhatsApp"
+              >
+                <WhatsAppIcon className="w-4 h-4 text-emerald-600" />
+                <span>WhatsApp: 80802 38541</span>
+              </a>
+
+              <a
+                href="tel:8080238541"
+                className="text-xs font-bold text-slate-600 hover:text-brand-orange transition-colors flex items-center gap-1.5"
+                title="Direct call"
+              >
+                <PhoneCall className="w-3.5 h-3.5 text-brand-orange" />
+                <span>Call: 80802 38541</span>
+              </a>
+            </div>
           </div>
         </form>
       </div>

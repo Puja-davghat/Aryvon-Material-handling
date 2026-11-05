@@ -7,6 +7,7 @@ import AnimatedSection from '../components/AnimatedSection';
 import { categories } from '../data/products';
 
 // Individual product card (subcategory or main)
+
 function ProductCard({ item, categoryName, categorySlug, index = 0 }) {
   const detailLink = `/products/${item.slug}`;
 

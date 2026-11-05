@@ -3,8 +3,12 @@ import { Phone, Mail, MapPin, Clock, ShieldCheck, Headphones, ArrowRight } from 
 import ContactForm from '../components/ContactForm';
 import IndustrialShapes from '../components/IndustrialShapes';
 import AnimatedSection from '../components/AnimatedSection';
+import WhatsAppIcon from '../components/WhatsAppIcon';
 
 export default function Contact() {
+  // Clean mailto without massive body to ensure the OS launches the default mail client directly without forcing Microsoft Edge
+  const mailtoUrl = 'mailto:aryvonmhe@gmail.com?subject=Material%20Handling%20Equipment%20Enquiry%20-%20ARYVON';
+  const whatsappUrl = 'https://wa.me/918080238541?text=Hello%20ARYVON%20Team%2C%20I%20would%20like%20to%20enquire%20about%20your%20material%20handling%20equipment.';
   return (
     <div className="space-y-12 sm:space-y-16 py-10 sm:py-16">
       {/* Page Header Banner */}
@@ -66,24 +70,71 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Business Email Info */}
+              {/* WhatsApp Quick Chat */}
+              <div className="flex items-start gap-4 pt-4 border-t border-slate-100">
+                <div className="p-3 bg-emerald-50 text-emerald-600 rounded-xl flex-shrink-0">
+                  <WhatsAppIcon className="w-6 h-6 text-emerald-600" />
+                </div>
+                <div className="space-y-1 flex-1">
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">
+                    WhatsApp Chat Support
+                  </span>
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xl font-black text-emerald-700 hover:text-emerald-800 transition-colors tracking-wide block mt-0.5"
+                    title="Open WhatsApp chat with 80802 38541"
+                  >
+                    80802 38541
+                  </a>
+                  <p className="text-xs text-slate-500">
+                    Instant consultation &amp; quotation chat with application engineers.
+                  </p>
+                  <div className="pt-1.5">
+                    <a
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 px-3.5 py-1.5 rounded-md transition-colors shadow-sm"
+                      title="Open WhatsApp with pre-filled enquiry message"
+                    >
+                      <WhatsAppIcon className="w-4 h-4 text-white" />
+                      <span>Chat on WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Direct Email Contact */}
               <div className="flex items-start gap-4 pt-4 border-t border-slate-100">
                 <div className="p-3 bg-brand-navy/10 text-brand-navy rounded-xl flex-shrink-0">
                   <Mail className="w-6 h-6 text-brand-navy" />
                 </div>
-                <div>
+                <div className="space-y-1 flex-1">
                   <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">
                     Direct Email Contact
                   </span>
                   <a
-                    href="mailto:aryvonmhe@gmail.com"
-                    className="text-lg font-bold text-brand-navy hover:text-brand-orange transition-colors tracking-wide block mt-1"
+                    href={mailtoUrl}
+                    className="text-lg font-bold text-brand-navy hover:text-brand-orange transition-colors tracking-wide block mt-0.5"
+                    title="Click to open your default email app"
                   >
                     aryvonmhe@gmail.com
                   </a>
-                  <p className="text-xs text-slate-500 mt-1">
-                    Send RFP documents, site drawings, and purchase requisitions directly.
+                  <p className="text-xs text-slate-500">
+                    Click to open your default email application directly, or send site drawings &amp; RFPs.
                   </p>
+                  <div className="pt-1.5">
+                    <a
+                      href={mailtoUrl}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-navy hover:text-white bg-slate-100 hover:bg-brand-orange px-3 py-1.5 rounded-md transition-colors border border-slate-200 shadow-sm"
+                      title="Opens your default mail app"
+                    >
+                      <Mail className="w-3.5 h-3.5 text-brand-orange hover:text-white" />
+                      <span>Send Email</span>
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -113,7 +164,8 @@ export default function Contact() {
                 <h4 className="font-bold text-base text-white">Proposal Transparency</h4>
               </div>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                All ARYVON technical proposals clearly delineate equipment capacities, mast configurations, electrical battery requirements, warranty terms, and estimated dispatch schedules.
+                All ARYVON technical proposals clearly deli
+                neate equipment capacities, mast configurations, electrical battery requirements, warranty terms, and estimated dispatch schedules.
               </p>
             </div>
           </div>

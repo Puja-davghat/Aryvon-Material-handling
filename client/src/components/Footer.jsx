@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, ArrowRight, ShieldCheck, Wrench, Clock } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 
 /**
  * WordFadeDown - Animates text word-by-word with a cascading fade-down transition.
@@ -247,6 +248,33 @@ export default function Footer() {
               {/* Divider */}
               <div className="border-t border-slate-700/50" />
 
+              {/* WhatsApp Chat */}
+              <div className="flex items-start gap-3">
+                <div className={`p-2 bg-emerald-600/30 rounded-full text-emerald-400 flex-shrink-0 transition-all duration-600 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'}`}>
+                  <WhatsAppIcon className="w-4 h-4 text-emerald-400" />
+                </div>
+                <div>
+                  <WordFadeDown
+                    inView={inView}
+                    baseDelay={0.32}
+                    stagger={0.04}
+                    className="block text-xs uppercase font-bold text-emerald-400 tracking-wider"
+                  >
+                    WhatsApp Chat
+                  </WordFadeDown>
+                  <a
+                    href="https://wa.me/918080238541?text=Hello%20ARYVON%20Team%2C%20I%20would%20like%20to%20enquire%20about%20your%20material%20handling%20equipment."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-semibold text-white hover:text-emerald-400 transition-colors block"
+                  >
+                    <WordFadeDown inView={inView} baseDelay={0.36} stagger={0.04}>
+                      Chat: 80802 38541
+                    </WordFadeDown>
+                  </a>
+                </div>
+              </div>
+
               {/* Online enquiry */}
               <div className="flex items-start gap-3">
                 <div className={`p-2 bg-brand-blueAccent/50 rounded-full text-white flex-shrink-0 transition-all duration-600 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'}`}>
@@ -255,14 +283,14 @@ export default function Footer() {
                 <div>
                   <WordFadeDown
                     inView={inView}
-                    baseDelay={0.34}
+                    baseDelay={0.38}
                     stagger={0.04}
                     className="block text-xs uppercase font-bold text-brand-paleOrange tracking-wider"
                   >
                     Official Email
                   </WordFadeDown>
-                  <a href="mailto:aryvonmhe@gmail.com" className="text-sm font-semibold text-white hover:text-brand-orange transition-colors block">
-                    <WordFadeDown inView={inView} baseDelay={0.4} stagger={0.04}>
+                  <a href="mailto:aryvonmhe@gmail.com?subject=Material%20Handling%20Equipment%20Enquiry%20-%20ARYVON" className="text-sm font-semibold text-white hover:text-brand-orange transition-colors block">
+                    <WordFadeDown inView={inView} baseDelay={0.42} stagger={0.04}>
                       aryvonmhe@gmail.com
                     </WordFadeDown>
                   </a>

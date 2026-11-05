@@ -179,8 +179,16 @@ try {
             <p style='font-size: 14px;'>Your specifications have been recorded and forwarded to our application engineering team. An engineer will contact you promptly at <strong>{$safePhone}</strong>.</p>
             
             <div style='background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 14px; margin: 16px 0; font-size: 13px;'>
-                <strong>Your Submitted Requirements:</strong><br>
-                {$safeMessage}
+                <strong style='color: #042c5c; font-size: 13px; display: block; margin-bottom: 8px;'>Your Submitted Enquiry Details:</strong>
+                <table style='width: 100%; border-collapse: collapse; font-size: 13px;'>
+                    <tr><td style='padding: 3px 0; color: #64748b; width: 140px;'>Reference ID:</td><td style='font-family: monospace; font-weight: bold; color: #042c5c;'>{$referenceId}</td></tr>
+                    <tr><td style='padding: 3px 0; color: #64748b;'>Full Name:</td><td style='font-weight: bold; color: #0f172a;'>{$safeFullName}</td></tr>
+                    <tr><td style='padding: 3px 0; color: #64748b;'>Company / Org:</td><td style='font-weight: bold; color: #0f172a;'>{$safeCompanyName}</td></tr>
+                    <tr><td style='padding: 3px 0; color: #64748b;'>Phone Number:</td><td style='font-weight: bold; color: #0f172a;'>{$safePhone}</td></tr>
+                    <tr><td style='padding: 3px 0; color: #64748b;'>Email Address:</td><td style='font-weight: bold; color: #0f172a;'>{$safeEmail}</td></tr>
+                    <tr><td style='padding: 3px 0; color: #64748b;'>Equipment:</td><td style='font-weight: bold; color: #ea580c;'>{$safeProduct}</td></tr>
+                    <tr><td valign='top' style='padding: 3px 0; color: #64748b;'>Requirements:</td><td style='color: #334155; line-height: 1.5;'>{$safeMessage}</td></tr>
+                </table>
             </div>
 
             <div style='margin: 20px 0; background: #fff7ed; border-left: 4px solid #f97316; padding: 14px;'>
@@ -212,7 +220,7 @@ try {
     $adminMail->addReplyTo($email, $fullName);
 
     $adminMail->isHTML(true);
-    $adminMail->Subject = "New Equipment Inquiry [{$referenceId}]: {$companyName} - {$productName}";
+    $adminMail->Subject = "New Enquiry Received";
 
     $adminMail->Body = "
     <div style='font-family: Arial, sans-serif; max-width: 650px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;'>

@@ -1,0 +1,28 @@
+# =============================================================================
+# ARYVON - cPanel / Apache Configuration
+# =============================================================================
+
+# Option A: If using cPanel "Setup Node.js App" with Phusion Passenger:
+<IfModule mod_passenger.c>
+    PassengerAppRoot "/home/USERNAME/server"
+    PassengerBaseURI "/"
+    PassengerNodejs "/home/USERNAME/nodevenv/server/20/bin/node"
+    PassengerAppType node
+    PassengerStartupFile app.js
+</IfModule>
+
+# Option B: If Node.js is running on a port (e.g. 5000) and Apache reverse proxies to it:
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Forward API requests to Node.js backend port if proxying
+    # RewriteRule ^api/(.*)$ http://127.0.0.1:5000/api/$1 [P,L]
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+

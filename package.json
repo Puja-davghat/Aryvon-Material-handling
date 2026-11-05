@@ -1,8 +1,12 @@
 {
   "name": "aryvon-material-handling-solutions",
   "version": "1.0.0",
-  "description": "Static Website for ARYVON - Material Handling Solutions with PHP Mailer",
+  "description": "ARYVON Material Handling Solutions - React Frontend + Node.js Resend Email API (Zero Database, cPanel Ready)",
   "scripts": {
+    "start": "node server/server.js",
+    "server": "npm start --prefix server",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
     "dev": "npm run dev --prefix client",
     "build": "npm run build --prefix client",
     "preview": "npm run preview --prefix client"
