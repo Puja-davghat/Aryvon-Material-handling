@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Warehousing and Storage Operations</title><desc id="desc">High-density pallet racking and warehouse storage</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4f7f8"/><stop offset="1" stop-color="#e2eaee"/></linearGradient>
+ <linearGradient id="orange" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffbd55"/><stop offset="1" stop-color="#e58a19"/></linearGradient>
+</defs>
+<rect width="1200" height="800" rx="28" fill="url(#bg)"/>
+<path d="M0 600 L1200 560 V800 H0Z" fill="#d5e0e5"/>
+<path d="M0 650 L1200 610" stroke="#c0cdd4" stroke-width="5"/>
+<g opacity=".35" stroke="#9eb0ba" stroke-width="4"><path d="M90 80V600M1110 80V600M90 180H1110M90 300H1110M90 420H1110"/></g>
+
+<g stroke="#263f50" stroke-width="18" fill="none"><path d="M150 160V545M450 160V545M750 160V545M1050 160V545"/><path d="M150 250H1050M150 365H1050M150 480H1050"/></g>
+<g fill="#c8752b"><rect x="175" y="175" width="250" height="65" rx="6"/><rect x="475" y="175" width="250" height="65" rx="6"/><rect x="775" y="175" width="250" height="65" rx="6"/><rect x="175" y="290" width="250" height="65" rx="6"/><rect x="475" y="290" width="250" height="65" rx="6"/><rect x="775" y="290" width="250" height="65" rx="6"/><rect x="175" y="405" width="250" height="65" rx="6"/><rect x="475" y="405" width="250" height="65" rx="6"/><rect x="775" y="405" width="250" height="65" rx="6"/></g>
+<g fill="#f7c46b"><rect x="195" y="190" width="85" height="35"/><rect x="290" y="190" width="115" height="35"/><rect x="495" y="190" width="85" height="35"/><rect x="590" y="190" width="115" height="35"/></g>
+<rect x="54" y="48" width="12" height="68" rx="6" fill="#e58a19"/>
+<text x="88" y="92" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="700" fill="#18384d">Warehousing and Storage Operations</text>
+<text x="88" y="140" font-family="Arial,Helvetica,sans-serif" font-size="19" fill="#607684">High-density pallet racking and warehouse storage</text>
+</svg>

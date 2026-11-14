@@ -1,0 +1,46 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /prerender/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+Disallow: /prerender/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+Disallow: /prerender/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /api/
+Disallow: /prerender/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+Disallow: /prerender/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /api/
+Disallow: /prerender/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+Disallow: /prerender/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+Disallow: /prerender/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /api/
+Disallow: /prerender/
+
+Sitemap: https://aryvonmaterialhandlingsolutions.com/sitemap.xml

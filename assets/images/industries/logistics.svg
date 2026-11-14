@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Logistics and Distribution Dock Operations</title><desc id="desc">Loading dock, transport vehicle and distribution operations</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4f7f8"/><stop offset="1" stop-color="#e2eaee"/></linearGradient>
+ <linearGradient id="orange" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffbd55"/><stop offset="1" stop-color="#e58a19"/></linearGradient>
+</defs>
+<rect width="1200" height="800" rx="28" fill="url(#bg)"/>
+<path d="M0 600 L1200 560 V800 H0Z" fill="#d5e0e5"/>
+<path d="M0 650 L1200 610" stroke="#c0cdd4" stroke-width="5"/>
+<g opacity=".35" stroke="#9eb0ba" stroke-width="4"><path d="M90 80V600M1110 80V600M90 180H1110M90 300H1110M90 420H1110"/></g>
+
+<g>
+ <rect x="125" y="200" width="565" height="320" rx="12" fill="#dce5e9" stroke="#263f50" stroke-width="12"/>
+ <rect x="180" y="260" width="155" height="260" fill="#294c62"/><rect x="365" y="260" width="155" height="260" fill="#294c62"/><rect x="550" y="260" width="85" height="260" fill="#294c62"/>
+ <path d="M690 430L800 400L880 430L770 460Z" fill="#e58a19" stroke="#263f50" stroke-width="10"/>
+ <rect x="770" y="315" width="230" height="125" rx="12" fill="#c8752b"/><rect x="830" y="250" width="115" height="90" rx="10" fill="#294c62"/>
+ <circle cx="825" cy="460" r="38" fill="#263f50"/><circle cx="960" cy="460" r="38" fill="#263f50"/>
+ <path d="M680 430L760 410" stroke="#263f50" stroke-width="20"/>
+</g>
+<rect x="54" y="48" width="12" height="68" rx="6" fill="#e58a19"/>
+<text x="88" y="92" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="700" fill="#18384d">Logistics and Distribution Dock Operations</text>
+<text x="88" y="140" font-family="Arial,Helvetica,sans-serif" font-size="19" fill="#607684">Loading dock, transport vehicle and distribution operations</text>
+</svg>
