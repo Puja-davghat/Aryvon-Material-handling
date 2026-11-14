@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. Allow direct access to the PHP email API
+  RewriteRule ^api/ - [L]
+
+  # 2. Do not rewrite if the file or directory actually exists (e.g. assets, images)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 3. Direct all other React Router page routes (like /contact, /products) to index.html
+  RewriteRule ^ index.html [L]
+</IfModule>
+
