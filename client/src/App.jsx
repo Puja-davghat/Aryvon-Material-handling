@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import FloatingContactButtons from './components/FloatingContactButtons';
 import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
@@ -55,6 +56,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <FloatingContactButtons />
     </div>
   );
 }
